@@ -1,0 +1,3 @@
+[submodule "gdb/3rdparty/dashboard"]
+	path = gdb/3rdparty/dashboard
+	url = git@github.com:cyrus-and/gdb-dashboard.git
