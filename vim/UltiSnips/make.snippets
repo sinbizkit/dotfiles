@@ -1,0 +1,23 @@
+snippet li "file information"
+#
+#  File: `!p snip.rv = fn`
+#  Created by Ivan Berdnikov on `date +%y-%m-%d`
+#
+
+$1
+endsnippet
+
+snippet inc "include Makefile" b
+include $($1)
+endsnippet
+
+snippet boiler "default Makefile boilerplate"
+MAKEFLAGS += --warn-undefined-variables
+SHELL := bash
+.SHELLFLAGS := -eu -o pipefail -c
+.DEFAULT_GOAL := all
+.DELETE_ON_ERROR:
+.SUFFIXES:
+
+$1
+endsnippet

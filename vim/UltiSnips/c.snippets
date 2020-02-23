@@ -1,0 +1,47 @@
+snippet sinc "include system header file"
+#include <$1>
+endsnippet
+
+snippet inc "include header file"
+#include "$1"
+endsnippet
+
+snippet struct "struct"
+struct ${1:StrucName}
+{
+	${2:/* data */}
+};//struct $1
+endsnippet
+
+snippet for "for loop"
+for(int ${1:i} = 0; $1 < $2; $1++)
+{
+	${3:/* data */}
+}
+endsnippet
+
+snippet fun "free function implementation"
+${4:void}
+${2:function}(${3})
+{
+}//function $2
+endsnippet
+
+snippet null "null autocompletion"
+NULL
+endsnippet
+
+snippet if "if condition"
+if(${1:/* condition */})
+{
+	${2:/* data */}
+}
+endsnippet
+
+snippet cmh "comment header"
+//---- ${1} ----//
+endsnippet
+
+snippet cmf "comment footer"
+//---- ** ----//
+endsnippet
