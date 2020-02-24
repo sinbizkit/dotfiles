@@ -2,8 +2,11 @@
 
 
 SDIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+SDIR := $(patsubst %/, %, $(SDIR))
+
 
 all: install-vim install-gdb install-tmux
+
 
 install-vim:
 	mkdir -p ${HOME}/.config/nvim
