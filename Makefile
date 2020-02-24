@@ -3,7 +3,7 @@
 
 SDIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
-all: install-vim install-gdb
+all: install-vim install-gdb install-tmux
 
 install-vim:
 	mkdir -p ${HOME}/.config/nvim
@@ -30,3 +30,8 @@ install-gdb-pretty-printers:
 		https://cgit.kde.org/kdevelop.git/plain/plugins/gdb/printers/helper.py
 	svn co svn://gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python ${HOME}/.local/share/gdb/stl
 
+
+install-tmux:
+	ln -sf ${SDIR}/tmux/tmux.conf ${HOME}/.tmux.conf
+	mkdir -p ${HOME}/.tmux/plugins
+	ln -sdf ${SDIR}/tmux/3rdparty/tpm ${HOME}/.tmux/plugins/tpm
