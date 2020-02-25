@@ -13,8 +13,8 @@ install-vim:
 	ln -sf ${SDIR}/vim/init.vim ${HOME}/.config/nvim/init.vim
 	ln -sf ${SDIR}/vim/coc-settings.json ${HOME}/.config/nvim/coc-settings.json
 	ln -sf ${SDIR}/vim/functions.vim ${HOME}/.config/nvim/functions.vim
-	ln -sdf ${SDIR}/vim/ftplugin ${HOME}/.config/nvim/ftplugin
-	ln -sdf ${SDIR}/vim/UltiSnips ${HOME}/.config/nvim/UltiSnips
+	ln -sdf ${SDIR}/vim/ftplugin ${HOME}/.config/nvim/
+	ln -sdf ${SDIR}/vim/UltiSnips ${HOME}/.config/nvim/
 	curl -fLo ${HOME}/.config/nvim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	nvim +PlugUpdate +qa
@@ -37,4 +37,4 @@ install-gdb-pretty-printers:
 install-tmux:
 	ln -sf ${SDIR}/tmux/tmux.conf ${HOME}/.tmux.conf
 	mkdir -p ${HOME}/.tmux/plugins
-	ln -sdf ${SDIR}/tmux/3rdparty/tpm ${HOME}/.tmux/plugins/tpm
+	ln -sdf ${SDIR}/tmux/3rdparty/tpm ${HOME}/.tmux/plugins/
