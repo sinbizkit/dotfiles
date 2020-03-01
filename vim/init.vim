@@ -173,7 +173,10 @@ nnoremap <silent> <Leader>so :CocList outline<CR>
 " Show all symbols.
 nnoremap <silent> <Leader>ss :CocList symbols<CR>
 " Do rename symbol.
-nmap <silent> <Leader>dr <Plug>(coc-rename)
+nnoremap <silent> <Leader>dr <Plug>(coc-rename)
+" Do format
+nmap <silent> <Leader>df <Plug>(coc-format)
+vmap <silent> <Leader>df <Plug>(coc-format-selected)
 
 call plug#end()
 
