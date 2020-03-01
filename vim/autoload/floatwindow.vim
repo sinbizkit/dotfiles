@@ -21,3 +21,4 @@ function! floatwindow#CreateWindow()
     " open the new window, floating, and enter to it
   call nvim_open_win(buf, v:true, opts)
 endfunction
+

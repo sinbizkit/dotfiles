@@ -58,4 +58,4 @@ install-gdb-pretty-printers:
 install-tmux:
 	ln -sf ${SDIR}/tmux/tmux.conf ${HOME}/.tmux.conf
 	mkdir -p ${HOME}/.tmux/plugins
-	ln -sdf ${SDIR}/tmux/3rdparty/tpm ${HOME}/.tmux/plugins/tpm
+	ln -sdf ${SDIR}/tmux/3rdparty/tpm ${HOME}/.tmux/plugins/
