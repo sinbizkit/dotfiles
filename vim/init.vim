@@ -19,13 +19,10 @@ if (has('nvim'))
   let g:loaded_node_provider = 0          " Disable node support
 endif
 
-let s:config_path = expand('<sfile>:p:h')
-execute 'source' s:config_path.'/functions.vim' | " Include utility functions.
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Plugins.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype plugin on  " Enable loading the plugin files for specific file types.
+filetype plugin indent on  " Enable loading the plugin and indent files for specific file types.
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -138,9 +135,9 @@ let g:fzf_action = {
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 
 " Using the custom window creation function
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+let g:fzf_layout = { 'window': 'call floatwindow#CreateWindow()' }
 
-autocmd FileType fzf set nonu nornu
+autocmd FileType fzf set nonumber norelativenumber
 let g:fzf_buffers_jump = 1 " Jump to the existing window if possible
 nnoremap <silent> <Leader>t :Files<CR>
 nnoremap <silent> <Leader>r :Tags<CR>

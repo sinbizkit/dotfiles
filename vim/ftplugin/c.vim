@@ -1,6 +1,5 @@
 let &colorcolumn="80,".join(range(121, 999),",")
 
-setlocal noexpandtab
-setlocal tabstop=4
-setlocal softtabstop=4
-setlocal shiftwidth=4
+" Format the current buffer using `clang-format`.
+nnoremap <silent> <Leader>cf :call clangformat#FixBuffer()<CR>
+vnoremap <silent> <Leader>cf :call clangformat#FixBuffer()<CR>

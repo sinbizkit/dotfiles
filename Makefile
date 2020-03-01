@@ -8,18 +8,39 @@ SDIR := $(patsubst %/, %, $(SDIR))
 all: install-vim install-gdb install-tmux
 
 
-install-vim:
+# vim.
+install-vim: mkdir-vim install-vim-vimrc install-vim-cocrc install-vim-after install-vim-autoload \
+	install-vim-ftplugin install-vim-snippets install-vim-plug update-vim-plugins
+
+mkdir-vim:
 	mkdir -p ${HOME}/.config/nvim
+
+install-vim-vimrc: mkdir-vim
 	ln -sf ${SDIR}/vim/init.vim ${HOME}/.config/nvim/init.vim
+
+install-vim-cocrc:
 	ln -sf ${SDIR}/vim/coc-settings.json ${HOME}/.config/nvim/coc-settings.json
-	ln -sf ${SDIR}/vim/functions.vim ${HOME}/.config/nvim/functions.vim
-	ln -sdf ${SDIR}/vim/ftplugin ${HOME}/.config/nvim/ftplugin
-	ln -sdf ${SDIR}/vim/UltiSnips ${HOME}/.config/nvim/UltiSnips
-	curl -fLo ${HOME}/.config/nvim/autoload/plug.vim --create-dirs \
+
+install-vim-after: mkdir-vim
+	ln -sdf ${SDIR}/vim/after ${HOME}/.config/nvim/
+
+install-vim-autoload: mkdir-vim
+	ln -sdf ${SDIR}/vim/autoload ${HOME}/.config/nvim/
+
+install-vim-ftplugin: mkdir-vim
+	ln -sdf ${SDIR}/vim/ftplugin ${HOME}/.config/nvim/
+
+install-vim-snippets: mkdir-vim
+	ln -sdf ${SDIR}/vim/UltiSnips ${HOME}/.config/nvim/
+
+install-vim-plug: mkdir-vim
+	curl -fLo ${SDIR}/vim/autoload/plug.vim \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+update-vim-plugins:
 	nvim +PlugUpdate +qa
 
-
+# gdb.
 install-gdb: install-gdb-pretty-printers
 	mkdir -p ${HOME}/.config/gdb
 	ln -sf ${SDIR}/gdb/3rdparty/dashboard/.gdbinit ${HOME}/.config/gdb/dashboard

@@ -1,18 +1,5 @@
-"
-"  File: functions.vim
-" Created by Ivan Berdnikov on 21/02/20
-"
-
-function! Filename()
-  return expand('%:t:r')
-endfunction
-
-function! Pathname()
-  return expand('%:p:h')
-endfunction
-
-" Function to create the custom floating window
-function! FloatingFZF()
+" Function to create the custom floating window.
+function! floatwindow#CreateWindow()
   " creates a scratch, unlisted, new, empty, unnamed buffer
   " to be used in the floating window
   let buf = nvim_create_buf(v:false, v:true)
@@ -34,4 +21,3 @@ function! FloatingFZF()
     " open the new window, floating, and enter to it
   call nvim_open_win(buf, v:true, opts)
 endfunction
-
