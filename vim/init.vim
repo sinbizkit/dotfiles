@@ -155,6 +155,7 @@ let g:coc_global_extensions = [
 " Enable highlight on CursorHold.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+" Trigger autocompletion.
 inoremap <silent><expr> <c-space> coc#refresh()
 " Go to definition.
 nmap <silent> <Leader>gd <Plug>(coc-definition)
@@ -164,6 +165,11 @@ nmap <silent> <Leader>ge <Plug>(coc-declaration)
 nmap <silent> <Leader>gi <Plug>(coc-implementation)
 " Go to references.
 nmap <silent> <Leader>gr <Plug>(coc-references)
+" Go to next diagnostic error position.
+nmap <silent> <Leader>gn <Plug>(coc-diagnostic-next-error)
+" Go to prev diagnostic error position.
+nmap <silent> <Leader>gp <Plug>(coc-diagnostic-prev-error)
+
 " Show hover (documentation of the current word).
 nnoremap <silent> <Leader>sh :call CocActionAsync('doHover')<CR>
 " Show diagnostic.
@@ -172,8 +178,12 @@ nnoremap <silent> <Leader>sd :CocList diagnostics<CR>
 nnoremap <silent> <Leader>so :CocList outline<CR>
 " Show all symbols.
 nnoremap <silent> <Leader>ss :CocList symbols<CR>
+
 " Do rename symbol.
 nnoremap <silent> <Leader>dr <Plug>(coc-rename)
+" Do refactor.
+nnoremap <silent> <Leader>de <Plug>(coc-refactor)
+
 " Do format
 nmap <silent> <Leader>df <Plug>(coc-format)
 vmap <silent> <Leader>df <Plug>(coc-format-selected)
