@@ -156,7 +156,7 @@ let g:coc_global_extensions = [
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Trigger autocompletion.
-inoremap <silent><expr> <c-space> coc#refresh()
+imap <silent><expr> <c-space> coc#refresh()
 " Go to definition.
 nmap <silent> <Leader>gd <Plug>(coc-definition)
 " Go to declaration.
@@ -171,18 +171,18 @@ nmap <silent> <Leader>gn <Plug>(coc-diagnostic-next-error)
 nmap <silent> <Leader>gp <Plug>(coc-diagnostic-prev-error)
 
 " Show hover (documentation of the current word).
-nnoremap <silent> <Leader>sh :call CocActionAsync('doHover')<CR>
+nmap <silent> <Leader>sh :call CocActionAsync('doHover')<CR>
 " Show diagnostic.
-nnoremap <silent> <Leader>sd :CocList diagnostics<CR>
+nmap <silent> <Leader>sd :CocList diagnostics<CR>
 " Show outline (Symbols in the current document).
-nnoremap <silent> <Leader>so :CocList outline<CR>
+nmap <silent> <Leader>so :CocList outline<CR>
 " Show all symbols.
-nnoremap <silent> <Leader>ss :CocList symbols<CR>
+nmap <silent> <Leader>ss :CocList symbols<CR>
 
 " Do rename symbol.
-nnoremap <silent> <Leader>dr <Plug>(coc-rename)
+nmap <silent> <Leader>dr <Plug>(coc-rename)
 " Do refactor.
-nnoremap <silent> <Leader>de <Plug>(coc-refactor)
+nmap <silent> <Leader>de <Plug>(coc-refactor)
 
 " Do format
 nmap <silent> <Leader>df <Plug>(coc-format)
