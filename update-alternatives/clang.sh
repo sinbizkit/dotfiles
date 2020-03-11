@@ -20,5 +20,4 @@ update-alternatives --install $BIN/clang-tidy clang-tidy $BIN/clang-tidy-$BVER $
 update-alternatives --install $BIN/clangd clangd $BIN/clangd-$BVER $PRIORITY \
 	--slave $MAN/clangd.gz clangd.gz $MAN/clangd-$MVER.gz
 
-update-alternatives --install $BIN/lld lld $BIN/lld-$BVER $PRIORITY \
-	--slave $MAN/lld.gz lld.gz $MAN/lld-$MVER.gz
+update-alternatives --install $BIN/lld lld $BIN/lld-$BVER $PRIORITY
