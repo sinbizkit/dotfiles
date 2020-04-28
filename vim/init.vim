@@ -135,9 +135,6 @@ let g:fzf_action = {
 " Reverse the layout to make the FZF list top-down
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 
-" Using the custom window creation function
-let g:fzf_layout = { 'window': 'call floatwindow#CreateWindow()' }
-
 autocmd FileType fzf set nonumber norelativenumber
 let g:fzf_buffers_jump = 1 " Jump to the existing window if possible
 nnoremap <silent> <Leader>t :Files<CR>
@@ -207,6 +204,7 @@ autocmd BufRead,BufNew * match ExtraWhitespace /\\\@<![\u3000[:space:]]\+$/
 " The above flashes annoyingly while typing, be calmer in insert mode
 autocmd InsertLeave *  match ExtraWhitespace /\\\@<![\u3000[:space:]]\+$/
 autocmd InsertEnter * match ExtraWhitespace /\\\@<![\u3000[:space:]]\+\%#\@<!$/
+autocmd TermOpen * setlocal nonumber norelativenumber
 
 " Neovim >= 0.1.5
 if (has("termguicolors"))
