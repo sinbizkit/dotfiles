@@ -206,6 +206,7 @@ autocmd BufRead,BufNew * match ExtraWhitespace /\\\@<![\u3000[:space:]]\+$/
 " The above flashes annoyingly while typing, be calmer in insert mode
 autocmd InsertLeave *  match ExtraWhitespace /\\\@<![\u3000[:space:]]\+$/
 autocmd InsertEnter * match ExtraWhitespace /\\\@<![\u3000[:space:]]\+\%#\@<!$/
+autocmd TermOpen * setlocal nonumber norelativenumber
 
 " Neovim >= 0.1.5
 if (has("termguicolors"))
