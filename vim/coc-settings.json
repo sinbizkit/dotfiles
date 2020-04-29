@@ -4,15 +4,11 @@
   "coc.preferences.hoverTarget": "float",
 
   "languageserver": {
-    "ccls": {
-      "command": "ccls",
+    "clangd": {
+      "command": "clangd",
       "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/" ],
-      "initializationOptions": {
-         "cache": {
-           "directory": ".ccls-cache"
-         }
-       }
+      "rootPatterns": [".clangd", "compile_commands.json", ".vim/", ".git/" ],
+      "args": ["--background-index", "-j=2", "--completion-style=detailed"]
     }
   }
 
