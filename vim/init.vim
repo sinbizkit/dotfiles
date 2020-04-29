@@ -132,8 +132,6 @@ let g:fzf_action = {
   \ , 'ctrl-o': 'split'
   \ , 'ctrl-e': 'vsplit'
   \ }
-" Reverse the layout to make the FZF list top-down
-let $FZF_DEFAULT_OPTS='--layout=reverse'
 
 autocmd FileType fzf set nonumber norelativenumber
 let g:fzf_buffers_jump = 1 " Jump to the existing window if possible

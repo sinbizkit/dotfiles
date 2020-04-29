@@ -5,7 +5,7 @@ SDIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 SDIR := $(patsubst %/, %, $(SDIR))
 
 
-all: install-vim install-gdb install-tmux
+all: install-vim install-gdb install-tmux install-alacritty
 
 
 # vim.
@@ -54,8 +54,13 @@ install-gdb-pretty-printers:
 		https://cgit.kde.org/kdevelop.git/plain/plugins/gdb/printers/helper.py
 	svn co svn://gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python ${HOME}/.local/share/gdb/stl
 
-
+# tmux.
 install-tmux:
 	ln -sf ${SDIR}/tmux/tmux.conf ${HOME}/.tmux.conf
 	mkdir -p ${HOME}/.tmux/plugins
 	ln -sdf ${SDIR}/tmux/3rdparty/tpm ${HOME}/.tmux/plugins/
+
+# alacritty.
+install-alacritty:
+	mkdir -p ${HOME}/.config/alacritty
+	ln -sf ${SDIR}/alacritty/alacritty.yml ${HOME}/.config/alacritty/alacritty.yml
