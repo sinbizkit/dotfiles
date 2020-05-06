@@ -7,7 +7,7 @@
     "ccls": {
       "command": "ccls",
       "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-      "rootPatterns": [".ccls-cache", "compile_commands.json", ".vim/", ".git/" ],
+      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/" ],
       "initializationOptions": {
         "cache": {
           "directory": ".ccls-cache"
