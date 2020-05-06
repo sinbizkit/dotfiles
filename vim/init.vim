@@ -146,6 +146,7 @@ let g:coc_global_extensions = [
   \ , 'coc-ultisnips'
   \ , 'coc-rls'
   \ , 'coc-python'
+  \ , 'coc-json'
   \ ]
 
 " Enable highlight on CursorHold.
