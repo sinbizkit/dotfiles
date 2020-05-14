@@ -64,3 +64,8 @@ install-tmux:
 install-alacritty:
 	mkdir -p ${HOME}/.config/alacritty
 	ln -sf ${SDIR}/alacritty/alacritty.yml ${HOME}/.config/alacritty/alacritty.yml
+
+# Midnight Commander.
+install-mc:
+	mkdir -p ${HOME}/.config/mc
+	ln -sf ${SDIR}/mc/ini ${HOME}/.config/mc/ini
