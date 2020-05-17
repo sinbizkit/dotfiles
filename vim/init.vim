@@ -125,7 +125,7 @@ let g:UltiSnipsEditSplit           = "vertical"
 
 " fzf is a general-purpose command-line fuzzy find.
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
-Plug 'junegunn/fzf', { 'tag': '0.21.1', 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split'
@@ -140,7 +140,7 @@ nnoremap <silent> <Leader>r :Tags<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 
 " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode.
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 let g:coc_global_extensions = [
   \ 'coc-highlight'
   \ , 'coc-ultisnips'
