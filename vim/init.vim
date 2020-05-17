@@ -100,7 +100,7 @@ Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
 Plug 'Yggdroot/indentLine'
 
 " Asynchronous Lint Engine.
-Plug 'dense-analysis/ale', {'tag': 'v2.6.0'}
+Plug 'dense-analysis/ale'
 let g:ale_completion_enabled   = 0
 let g:ale_sign_error           = '>>'
 let g:ale_sign_warning         = '--'
@@ -140,7 +140,7 @@ nnoremap <silent> <Leader>r :Tags<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 
 " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode.
-Plug 'neoclide/coc.nvim', {'tag': 'v0.0.78'}
+Plug 'neoclide/coc.nvim'
 let g:coc_global_extensions = [
   \ 'coc-highlight'
   \ , 'coc-ultisnips'
