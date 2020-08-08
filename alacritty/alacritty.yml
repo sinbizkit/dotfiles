@@ -23,10 +23,9 @@ font:
     style: Italic
 
   size: 12
+  dynamic_title: true
 
 background_opacity: 1.0
-
-dynamic_title: true
 
 colors:
   # Default colors
