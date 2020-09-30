@@ -11,18 +11,18 @@ scrolling:
 
 font:
   normal:
-    family: Inconsolata Nerd Font Mono
-    style: Medium
+    family: Hack Nerd Font Mono
+    style: Regular
 
   bold:
-    family: Inconsolata Nerd Font Mono
+    family: Hack Nerd Font Mono
     style: Bold
 
   italic:
-    family: Inconsolata Nerd Font Mono
+    family: Hack Nerd Font Mono
     style: Italic
 
-  size: 12
+  size: 10
   dynamic_title: true
 
 background_opacity: 1.0
