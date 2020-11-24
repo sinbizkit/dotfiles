@@ -36,6 +36,7 @@ Plug 'vim-airline/vim-airline'            "Lean & mean status/tabline for
 Plug 'vim-airline/vim-airline-themes'     "vim that's light as air.
 let g:airline#extensions#tabline#enabled              = 1
 let g:airline#extensions#coc#enabled                  = 1
+let g:airline#extensions#tagbar#enabled               = 0
 let g:airline_powerline_fonts                         = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
@@ -143,6 +144,7 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 let g:coc_global_extensions = [
   \ 'coc-highlight'
+  \ , 'coc-clangd'
   \ , 'coc-ultisnips'
   \ , 'coc-rls'
   \ , 'coc-python'
