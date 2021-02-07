@@ -182,6 +182,8 @@ nmap <silent> <Leader>ss :CocList symbols<CR>
 nmap <silent> <Leader>dr <Plug>(coc-rename)
 " Do refactor.
 nmap <silent> <Leader>de <Plug>(coc-refactor)
+" Do fix
+nmap <silent> <Leader>di <Plug>(coc-fix-current)
 
 " Do format
 nmap <silent> <Leader>df <Plug>(coc-format)
