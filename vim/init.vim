@@ -147,7 +147,7 @@ let g:coc_global_extensions = [
   \ , 'coc-clangd'
   \ , 'coc-ultisnips'
   \ , 'coc-rust-analyzer'
-  \ , 'coc-python'
+  \ , 'coc-pyright'
   \ , 'coc-json'
   \ ]
 
