@@ -26,7 +26,7 @@ filetype plugin indent on  " Enable loading the plugin and indent files for spec
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'morhetz/gruvbox'            "A dark theme.
+Plug 'arcticicestudio/nord-vim'   "An arctic, north-bluish clean and elegant Vim color theme.
 Plug 'tpope/vim-fugitive'         "Git wrapper.
 Plug 'mhinz/vim-signify'          "Show a diff using Vim its sign column.
 Plug 'ryanoasis/vim-devicons'     "Adds file type icons to Vim plugins.
@@ -103,8 +103,9 @@ Plug 'Yggdroot/indentLine'
 " Asynchronous Lint Engine.
 Plug 'dense-analysis/ale'
 let g:ale_completion_enabled   = 0
-let g:ale_sign_error           = '>>'
-let g:ale_sign_warning         = '--'
+let g:ale_sign_error           = '✘'
+let g:ale_sign_warning         = ''
+let g:ale_sign_info            = ''
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter        = 0
 let g:ale_lint_on_save         = 0
@@ -238,8 +239,7 @@ set shortmess+=c
 set laststatus=2 " The last window will always have a status line.
 
 " Theme.
-let g:gruvbox_contrast_dark='hard'
-silent! colorscheme gruvbox
+silent! colorscheme nord
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Global mappings.
