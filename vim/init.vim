@@ -26,7 +26,7 @@ filetype plugin indent on  " Enable loading the plugin and indent files for spec
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'arcticicestudio/nord-vim'   "An arctic, north-bluish clean and elegant Vim color theme.
+Plug 'morhetz/gruvbox'            "A dark theme.
 Plug 'tpope/vim-fugitive'         "Git wrapper.
 Plug 'mhinz/vim-signify'          "Show a diff using Vim its sign column.
 Plug 'ryanoasis/vim-devicons'     "Adds file type icons to Vim plugins.
@@ -239,7 +239,8 @@ set shortmess+=c
 set laststatus=2 " The last window will always have a status line.
 
 " Theme.
-silent! colorscheme nord
+let g:gruvbox_contrast_dark='hard'
+silent! colorscheme gruvbox
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Global mappings.
@@ -260,6 +261,14 @@ nnoremap <C-H> <C-W><C-H>
 " Tags.
 nnoremap <Leader>]n :tnext<CR>
 nnoremap <Leader>]p :tprevious<CR>
+" QuickFix.
+nnoremap <Leader>oq :copen<CR>
+nnoremap <Leader>nq :cnext<CR>
+nnoremap <Leader>pq :cprevious<CR>
+" LocationList.
+nnoremap <Leader>ol :lopen<CR>
+nnoremap <Leader>nl :lnext<CR>
+nnoremap <Leader>pl :lprevious<CR>
 " Change the behavior of the <Enter> key when the popup menu is visible. In that
 " case the Enter key will simply select the highlighted menu item, just as <C-Y> does.
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
