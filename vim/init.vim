@@ -16,7 +16,6 @@ let mapleader=";" " Change <Leader> key to a more convenient.
 
 if (has('nvim'))
   let g:loaded_ruby_provider = 0          " Disable ruby support
-  let g:loaded_node_provider = 0          " Disable node support
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
