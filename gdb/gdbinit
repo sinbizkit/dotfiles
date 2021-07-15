@@ -33,7 +33,7 @@ import sys
 try:
     qt5_pp_path = os.environ['HOME'] + '/.local/share/gdb/qt5'
     sys.path.insert(0, qt5_pp_path)
-    from qt import register_qt_printers
+    from qtprinters import register_qt_printers
     register_qt_printers (None)
 except Exception as exc:
     pass
@@ -50,7 +50,7 @@ define hookpost-down
 dashboard
 end
 
-dashboard source -style height 50
+dashboard source -style height 30
 dashboard source -style tab-size 4
 dashboard stack  -style compact 1
 dashboard -style syntax_highlighting 'monokai'
