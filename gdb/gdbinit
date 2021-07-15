@@ -8,6 +8,8 @@ set auto-load safe-path /
 set breakpoint pending on
 set print thread-events off
 
+set python print-stack full
+
 #-------------------------------------------------------------------------------
 # Third-party modules.
 #-------------------------------------------------------------------------------
@@ -30,13 +32,10 @@ end
 # Qt5 pretty-printers (Provided by KDE community).
 python
 import sys
-try:
-    qt5_pp_path = os.environ['HOME'] + '/.local/share/gdb/qt5'
-    sys.path.insert(0, qt5_pp_path)
-    from qtprinters import register_qt_printers
-    register_qt_printers (None)
-except Exception as exc:
-    pass
+qt5_pp_path = os.environ['HOME'] + '/.local/share/gdb/qt5/printers'
+sys.path.append(qt5_pp_path)
+from qtprinters import register_qt_printers
+register_qt_printers (None)
 end
 
 #-------------------------------------------------------------------------------
