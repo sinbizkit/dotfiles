@@ -48,10 +48,7 @@ install-gdb: install-gdb-pretty-printers
 
 install-gdb-pretty-printers:
 	mkdir -p ${HOME}/.local/share/gdb/qt5
-	curl -fLo ${HOME}/.local/share/gdb/qt5/qt.py \
-		https://cgit.kde.org/kdevelop.git/plain/plugins/gdb/printers/qt.py
-	curl -fLo ${HOME}/.local/share/gdb/qt5/helper.py \
-		https://cgit.kde.org/kdevelop.git/plain/plugins/gdb/printers/helper.py
+	git clone https://invent.kde.org/ebuka/gdb_printers.git ${HOME}/.local/share/gdb/qt5
 	svn co svn://gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python ${HOME}/.local/share/gdb/stl
 
 # tmux.
