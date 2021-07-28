@@ -1,6 +1,6 @@
 [submodule "gdb/3rdparty/dashboard"]
-	path = gdb/3rdparty/dashboard
+	path = gdb/.config/gdb/dashboard
 	url = https://github.com/cyrus-and/gdb-dashboard.git
 [submodule "tmux/3rdparty/tpm"]
-	path = tmux/3rdparty/tpm
+	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git

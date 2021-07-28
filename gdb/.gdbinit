@@ -15,7 +15,7 @@ set python print-stack full
 #-------------------------------------------------------------------------------
 # Modular visual interface for GDB in Python.
 # Source: https://github.com/cyrus-and/gdb-dashboard
-source ~/.config/gdb/dashboard
+source ~/.config/gdb/dashboard/.gdbinit
 
 # STL pretty-printers.
 python

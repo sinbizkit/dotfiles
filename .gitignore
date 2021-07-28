@@ -1,2 +1,7 @@
-vim/autoload/plug.vim
-vim/autoload/plug.vim.old
+nvim/.config/nvim/autoload/plug.vim
+nvim/.config/nvim/autoload/plug.vim.old
+nvim/.config/nvim/plugged
+
+
+tmux/.tmux/resurrect
+tmux/.tmux/plugins

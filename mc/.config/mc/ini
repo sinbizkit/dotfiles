@@ -3,6 +3,10 @@ base_color=lightgray,green:normal=green,default:selected=white,gray:marked=yello
 xterm-256color=
 color_terminals=
 
+screen-256color=
+
+screen=
+
 [Midnight-Commander]
 verbose=true
 shell_patterns=true
@@ -91,7 +95,7 @@ skin=default
 
 [Layout]
 output_lines=0
-left_panel_size=120
+left_panel_size=60
 top_panel_size=0
 message_visible=true
 keybar_visible=true
