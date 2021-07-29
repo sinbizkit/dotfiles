@@ -83,7 +83,6 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-set list lcs=tab:▸\ ,space:·    " Tab symbol.
 set cursorline                  " Highlighting that moves with the cursor.
 set noshowmode                  " Turn off the native mode indicator.
 set encoding=utf-8              " Default encoding.
