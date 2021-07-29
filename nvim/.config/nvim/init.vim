@@ -25,6 +25,7 @@ filetype plugin indent on  " Enable loading the plugin and indent files for spec
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 
 Plug 'morhetz/gruvbox'
@@ -55,8 +56,7 @@ Plug 'hrsh7th/nvim-compe' " nvim>=0.5, lua
 Plug 'dense-analysis/ale'
 Plug 'SirVer/ultisnips'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-telescope/telescope.nvim' " nvim>=0.5, lua
 
 call plug#end()
 
