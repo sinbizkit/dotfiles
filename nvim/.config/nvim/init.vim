@@ -32,9 +32,12 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
+Plug 'simrat39/symbols-outline.nvim' " nvim>=0.5 only, lua
+Plug 'folke/trouble.nvim' " nvim>=0.5 only, lua
 Plug 'lukas-reineke/indent-blankline.nvim' " nvim>=0.5 only, lua
 
 Plug 'tpope/vim-fugitive'
+Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/a.vim'
