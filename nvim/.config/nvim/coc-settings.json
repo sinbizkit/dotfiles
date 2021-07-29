@@ -1,9 +1,0 @@
-{
-  "diagnostic.messageTarget": "float",
-  "diagnostic.checkCurrentLine": true,
-  "diagnostic.errorSign": "✘",
-  "diagnostic.warningSign": "",
-  "diagnostic.infoSign": "",
-  "codeLens.enable": true,
-  "hover.target": "float"
-}
