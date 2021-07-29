@@ -21,3 +21,7 @@ nnoremap <silent><leader>df :lua vim.lsp.buf.formatting()<CR>
 vnoremap <silent><leader>df :lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent><leader>di :lua vim.lsp.buf.code_action()<CR>
 
+sign define LspDiagnosticsSignError text=✘ texthl=LspDiagnosticsSignError linehl= numhl=
+sign define LspDiagnosticsSignWarning text= texthl=LspDiagnosticsSignWarning linehl= numhl=
+sign define LspDiagnosticsSignInformation text=  texthl=LspDiagnosticsSignInformation linehl= numhl=
+sign define LspDiagnosticsSignHint text=💡 texthl=LspDiagnosticsSignHint linehl= numhl=
