@@ -16,8 +16,6 @@ install-nvim:
 	curl -fLo ${SDIR}/nvim/.config/nvim/autoload/plug.vim \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	stow nvim
-	nvim +PlugUpdate +qa
-	nvim +CocUpdateSync +qa
 
 install-gdb:
 	rm -rf ${HOME}/.local/share/gdb/qt5
