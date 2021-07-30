@@ -1,13 +1,14 @@
 lua require'lspconfig'.clangd.setup{}
 lua require'lspconfig'.rust_analyzer.setup{}
+lua require'lspconfig'.cmake.setup{}
 
 " g - go.
 nnoremap <silent><leader>ge :lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent><leader>gd :lua vim.lsp.buf.definition()<CR>
 nnoremap <silent><leader>gi :lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent><leader>gr :lua vim.lsp.buf.references()<CR>
 nnoremap <silent><leader>gn :lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent><leader>gp :lua vim.lsp.diatnostic.goto_prev()<CR>
+nnoremap <silent><leader>gs :ClangdSwitchSourceHeader<Cr>
 
 " s- show
 nnoremap <silent><leader>sh :lua vim.lsp.buf.hover()<CR>
