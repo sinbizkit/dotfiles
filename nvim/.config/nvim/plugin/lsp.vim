@@ -7,7 +7,7 @@ nnoremap <silent><leader>ge :lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent><leader>gd :lua vim.lsp.buf.definition()<CR>
 nnoremap <silent><leader>gi :lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent><leader>gn :lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent><leader>gp :lua vim.lsp.diatnostic.goto_prev()<CR>
+nnoremap <silent><leader>gp :lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent><leader>gs :ClangdSwitchSourceHeader<Cr>
 
 " s- show
