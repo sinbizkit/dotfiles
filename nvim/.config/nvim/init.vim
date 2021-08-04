@@ -25,33 +25,42 @@ filetype plugin indent on  " Enable loading the plugin and indent files for spec
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
+Plug 'simrat39/symbols-outline.nvim' " nvim>=0.5 only, lua
+Plug 'folke/trouble.nvim' " nvim>=0.5 only, lua
 
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
+Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'tpope/vim-surround'
-Plug 'vim-scripts/a.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'godlygeek/tabular'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind']}
 
-Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
-Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
-
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neovim/nvim-lspconfig' " nvim>=0.5, lua
+Plug 'hrsh7th/nvim-compe' " nvim>=0.5, lua
 Plug 'dense-analysis/ale'
 Plug 'SirVer/ultisnips'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " nvim>=0.5, lua
+Plug 'nvim-telescope/telescope.nvim' " nvim>=0.5, lua
+
+" Language specific.
+Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
+
 
 call plug#end()
 
@@ -87,7 +96,7 @@ set foldlevel=3                 " Close folds with the higher level.
 set number                      " Print the linenumber in front of each line.
 set relativenumber              " Show the line number relative to the line.
 set showtabline=2               " Always show the line with tab page labels.
-set shortmess=atI               " Remove all useless messages.
+set shortmess=atIc               " Remove all useless messages.
 set splitbelow                  " Splitting will put the new window below the current one.
 set pumheight=15                " Maximum number of items showed in a popup menu.
 set signcolumn=yes              " Always show the sign column.
@@ -96,9 +105,6 @@ set signcolumn=yes              " Always show the sign column.
 " prevent automatic selection (noselect) and prevent automatic text injection
 " into the current line (noinsert).
 set completeopt=noinsert,menuone,noselect
-" supress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-set shortmess+=c
 set laststatus=2 " The last window will always have a status line.
 
 " Theme.

@@ -8,7 +8,7 @@ SDIR := $(patsubst %/, %, $(SDIR))
 all: install
 
 
-install: install-nvim install-gdb install-tmux install-alacritty install-mc
+install: install-nvim install-gdb install-tmux install-alacritty install-i3 install-mc
 
 
 # vim.
@@ -16,8 +16,6 @@ install-nvim:
 	curl -fLo ${SDIR}/nvim/.config/nvim/autoload/plug.vim \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	stow nvim
-	nvim +PlugUpdate +qa
-	nvim +CocUpdateSync +qa
 
 install-gdb:
 	rm -rf ${HOME}/.local/share/gdb/qt5
@@ -32,9 +30,12 @@ install-tmux:
 install-alacritty:
 	stow alacritty
 
+install-i3:
+	stow i3 polybar
+
 install-mc:
 	stow --adopt mc
 
 
 clean:
-	stow --delete nvim gdb tmux alacritty mc
+	stow --delete nvim gdb tmux alacritty mc i3 polybar
