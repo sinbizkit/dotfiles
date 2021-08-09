@@ -57,7 +57,6 @@ Plug 'nvim-telescope/telescope.nvim' " nvim>=0.5, lua
 
 " Language specific.
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
 
