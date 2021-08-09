@@ -28,7 +28,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 
-Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -108,8 +108,7 @@ set completeopt=noinsert,menuone,noselect
 set laststatus=2 " The last window will always have a status line.
 
 " Theme.
-let g:gruvbox_contrast_dark='hard'
-silent! colorscheme gruvbox
+silent! colorscheme dracula
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Global mappings.
