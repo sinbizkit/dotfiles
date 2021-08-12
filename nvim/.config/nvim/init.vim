@@ -41,7 +41,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'tpope/vim-surround'
-Plug 'Lokaltog/vim-easymotion'
+Plug 'phaazon/hop.nvim'
 Plug 'godlygeek/tabular'
 
 Plug 'scrooloose/nerdcommenter'
