@@ -8,10 +8,11 @@ SDIR := $(patsubst %/, %, $(SDIR))
 all: install
 
 
-install: install-nvim install-gdb install-tmux install-alacritty install-i3 install-mc
+install: install-fish install-nvim install-gdb install-tmux install-alacritty install-i3 install-mc
 
+install-fish:
+	stow fish
 
-# vim.
 install-nvim:
 	curl -fLo ${SDIR}/nvim/.config/nvim/autoload/plug.vim \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -38,4 +39,4 @@ install-mc:
 
 
 clean:
-	stow --delete nvim gdb tmux alacritty mc i3 polybar
+	stow --delete fish nvim gdb tmux alacritty mc i3 polybar
