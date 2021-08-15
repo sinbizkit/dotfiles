@@ -1,8 +1,8 @@
 lua << EOF
 vim.g.symbols_outline = {
   auto_preview = false,
-  position = 'right'
+  position = 'left'
   }
 EOF
 
-nnoremap <silent><F7> :SymbolsOutline<CR>
+nnoremap <silent><F5> :SymbolsOutline<CR>
