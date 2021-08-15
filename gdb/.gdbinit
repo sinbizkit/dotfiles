@@ -25,17 +25,21 @@ try:
     sys.path.insert(0, stl_pp_path)
     from libstdcxx.v6.printers import register_libstdcxx_printers
     register_libstdcxx_printers (None)
-except:
+except Exception:
     pass
 end
 
 # Qt5 pretty-printers (Provided by KDE community).
 python
 import sys
-qt5_pp_path = os.environ['HOME'] + '/.local/share/gdb/qt5/printers'
-sys.path.append(qt5_pp_path)
-from qtprinters import register_qt_printers
-register_qt_printers (None)
+try:
+    qt5_pp_path = os.path.join(os.environ['HOME'], '.local/share/gdb/qt5')
+    sys.path.append(qt5_pp_path)
+    from printers import register_qt_printers
+    register_qt_printers(None)
+except Exception as e:
+    print("Qt5 Printers: Exception occured - ", e)
+    pass
 end
 
 #-------------------------------------------------------------------------------
