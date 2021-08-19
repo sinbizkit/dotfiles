@@ -30,8 +30,7 @@ Plug 'nvim-lua/plenary.nvim'
 
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'hoob3rt/lualine.nvim'
 Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
 Plug 'simrat39/symbols-outline.nvim' " nvim>=0.5 only, lua
@@ -108,6 +107,13 @@ set laststatus=2 " The last window will always have a status line.
 
 " Theme.
 silent! colorscheme dracula
+lua << EOF
+require('lualine').setup {
+  options = {
+    theme = 'dracula'
+  }
+}
+EOF
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Global mappings.
