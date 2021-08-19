@@ -33,8 +33,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
-Plug 'simrat39/symbols-outline.nvim' " nvim>=0.5 only, lua
-Plug 'folke/trouble.nvim' " nvim>=0.5 only, lua
+Plug 'simrat39/symbols-outline.nvim'
+Plug 'folke/trouble.nvim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
@@ -46,13 +46,14 @@ Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind']}
 
-Plug 'neovim/nvim-lspconfig' " nvim>=0.5, lua
-Plug 'hrsh7th/nvim-compe' " nvim>=0.5, lua
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 Plug 'dense-analysis/ale'
+Plug 'glepnir/lspsaga.nvim'
 Plug 'SirVer/ultisnips'
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " nvim>=0.5, lua
-Plug 'nvim-telescope/telescope.nvim' " nvim>=0.5, lua
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-telescope/telescope.nvim'
 
 " Language specific.
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
