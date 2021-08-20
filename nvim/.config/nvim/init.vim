@@ -108,13 +108,6 @@ set laststatus=2 " The last window will always have a status line.
 
 " Theme.
 silent! colorscheme dracula
-lua << EOF
-require('lualine').setup {
-  options = {
-    theme = 'dracula'
-  }
-}
-EOF
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Global mappings.
