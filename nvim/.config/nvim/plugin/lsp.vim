@@ -1,5 +1,6 @@
 lua require'lspconfig'.clangd.setup{}
 lua require'lspconfig'.rust_analyzer.setup{}
+lua require'lspconfig'.gopls.setup{}
 lua require'lspconfig'.cmake.setup{}
 
 " g - go.

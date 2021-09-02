@@ -43,6 +43,9 @@ set -x FZF_DEFAULT_OPTS    "--height 40% --layout=reverse --border --no-mouse"
 set -x FZF_DEFAULT_COMMAND "fd --type f --exclude .git --ignore-case"
 set -x FZF_CTRL_T_COMMAND  "$FZF_DEFAULT_COMMAND"
 
+set GOPATH $HOME/go
+set PATH $GOPATH/bin $PATH
+
 set PATH $HOME/.local/bin $PATH
 set PATH $HOME/.local/go/bin $PATH
 set PATH $HOME/.cargo/bin $PATH
