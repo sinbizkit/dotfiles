@@ -53,7 +53,6 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'dense-analysis/ale'
-Plug 'glepnir/lspsaga.nvim'
 Plug 'SirVer/ultisnips'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
