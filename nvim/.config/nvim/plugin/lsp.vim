@@ -3,6 +3,12 @@ lua require'lspconfig'.rust_analyzer.setup{}
 lua require'lspconfig'.gopls.setup{}
 lua require'lspconfig'.cmake.setup{}
 
+" s - show.
+nnoremap <silent><leader>sh :lua vim.lsp.buf.hover()<CR>
+nnoremap <silent><leader>si :lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent><leader>sf :Lspsaga lsp_finder<CR>
+nnoremap <silent><leader>sp :Lspsaga preview_definition<CR>
+
 " g - go.
 nnoremap <silent><leader>ge :lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent><leader>gn :lua vim.lsp.diagnostic.goto_next()<CR>
