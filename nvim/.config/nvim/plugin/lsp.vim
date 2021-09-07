@@ -23,3 +23,14 @@ sign define LspDiagnosticsSignError text=✘ texthl=LspDiagnosticsSignError line
 sign define LspDiagnosticsSignWarning text= texthl=LspDiagnosticsSignWarning linehl= numhl=
 sign define LspDiagnosticsSignInformation text=  texthl=LspDiagnosticsSignInformation linehl= numhl=
 sign define LspDiagnosticsSignHint text=💡 texthl=LspDiagnosticsSignHint linehl= numhl=
+
+lua << EOF
+require('cmp').setup {
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+    { name = 'path' }
+  }
+}
+
+EOF
