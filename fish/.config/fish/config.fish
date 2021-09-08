@@ -20,7 +20,7 @@ if type -q vim
 	set -Ux EDITOR vim
 end
 if type -q nvim
-	set -Ux MANPAGER "nvim -c 'set ft=man' -"
+	set -Ux MANPAGER "nvim +Man! -c ':set signcolumn='"
 end
 
 if type -q direnv
