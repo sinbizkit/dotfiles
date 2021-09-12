@@ -1,7 +1,59 @@
-lua require'lspconfig'.clangd.setup{}
-lua require'lspconfig'.rust_analyzer.setup{}
-lua require'lspconfig'.gopls.setup{}
-lua require'lspconfig'.cmake.setup{}
+lua << EOF
+local lspconfig = require'lspconfig'
+
+lspconfig.clangd.setup{}
+lspconfig.rust_analyzer.setup{}
+lspconfig.gopls.setup{}
+lspconfig.cmake.setup{}
+
+-- Lua.
+local sumneko_lua_path = os.getenv('SUMNEKO_LUA_PATH')
+if sumneko_lua_path then
+  local system_name
+  if vim.fn.has("mac") == 1 then
+    system_name = "macOS"
+  elseif vim.fn.has("unix") == 1 then
+    system_name = "Linux"
+  elseif vim.fn.has('win32') == 1 then
+    system_name = "Windows"
+  end
+  if system_name then
+    local sumneko_binary_fpath = sumneko_lua_path .. '/bin/' .. system_name .. '/lua-language-server'
+    lspconfig.sumneko_lua.setup {
+      cmd = {sumneko_binary_fpath, '-E', sumneko_lua_path .. "/main.lua"},
+      settings = {
+        Lua = {
+          runtime = {
+            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+            version = 'LuaJIT',
+            -- Setup your lua path
+            path = {
+              '?.lua',
+              '?/init.lua',
+              vim.fn.expand'~/.luarocks/share/lua/5.3/?.lua',
+              vim.fn.expand'~/.luarocks/share/lua/5.3/?/init.lua',
+              '/usr/share/5.3/?.lua',
+              '/usr/share/lua/5.3/?/init.lua'
+              }
+          },
+          diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = {'vim'},
+          },
+          workspace = {
+            -- Make the server aware of Neovim runtime files
+            library = vim.api.nvim_get_runtime_file("", true),
+          },
+          -- Do not send telemetry data containing a randomized but unique identifier
+          telemetry = {
+            enable = false,
+          },
+        },
+      },
+    }
+  end
+end
+EOF
 
 " s - show.
 nnoremap <silent><leader>sh :lua vim.lsp.buf.hover()<CR>
@@ -32,5 +84,4 @@ require('cmp').setup {
     { name = 'path' }
   }
 }
-
 EOF
