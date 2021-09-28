@@ -5,6 +5,7 @@ lspconfig.clangd.setup{}
 lspconfig.rust_analyzer.setup{}
 lspconfig.gopls.setup{}
 lspconfig.cmake.setup{}
+lspconfig.pylsp.setup{}
 
 -- Lua.
 local sumneko_lua_path = os.getenv('SUMNEKO_LUA_PATH')
