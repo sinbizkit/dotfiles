@@ -1,11 +1,12 @@
 lua << EOF
 local lspconfig = require'lspconfig'
 
-lspconfig.clangd.setup{}
+lspconfig.clangd.setup{ filetypes = { "c", "cpp" } }
 lspconfig.rust_analyzer.setup{}
 lspconfig.gopls.setup{}
 lspconfig.cmake.setup{}
 lspconfig.pylsp.setup{}
+lspconfig.sourcekit.setup{ filetypes = { "swift", "objective-c", "objective-cpp" } }
 
 -- Lua.
 local sumneko_lua_path = os.getenv('SUMNEKO_LUA_PATH')
