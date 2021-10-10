@@ -1,1 +1,1 @@
-lua require('gitsigns').setup()
+lua require 'gitsigns'.setup {}

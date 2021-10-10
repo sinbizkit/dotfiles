@@ -61,6 +61,7 @@ Plug 'nvim-telescope/telescope.nvim'
 " Language specific.
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'simrat39/rust-tools.nvim'
 Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
 
 
