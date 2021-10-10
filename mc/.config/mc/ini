@@ -7,6 +7,8 @@ screen-256color=
 
 screen=
 
+tmux-256color=
+
 [Midnight-Commander]
 verbose=true
 shell_patterns=true
@@ -95,7 +97,7 @@ skin=default
 
 [Layout]
 output_lines=0
-left_panel_size=120
+left_panel_size=59
 top_panel_size=0
 message_visible=true
 keybar_visible=true
