@@ -1,5 +1,5 @@
 lua << EOF
-local modules = { "cpp", "rust", "go", "lua", "python", "cmake", }
+local modules = { "cpp", "rust", "go", "lua", "python", "cmake", "javascript" }
 if vim.fn.has("mac") == 1 then
   table.insert(modules, "swift")
 end

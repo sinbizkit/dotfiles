@@ -28,6 +28,7 @@ lspconfig.rust_analyzer.setup{}
 lspconfig.gopls.setup{}
 lspconfig.cmake.setup{}
 lspconfig.pylsp.setup{}
+lspconfig.tsserver.setup{}
 
 if (system == OS.MACOS) then
   lspconfig.sourcekit.setup{ filetypes = { "swift", "objective-c", "objective-cpp" } }
