@@ -1,9 +1,8 @@
 lua << EOF
 require('lualine').setup {
   options = {
-    theme = 'dracula',
-    section_separators = {'', ''},
-    component_separators = {'', ''},
+    section_separators = { left = '', right = '' },
+    component_separators = { left = '', left = '' },
   }, sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch'},
