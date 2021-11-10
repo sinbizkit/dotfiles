@@ -1,1 +1,1 @@
-require 'gitsigns'.setup {}
+

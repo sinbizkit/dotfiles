@@ -1,47 +1,94 @@
--- filetype plugin indent on
+vim.cmd [[ filetype plugin indent on ]]
 
-vim.cmd [[
-call plug#begin('~/.config/nvim/plugged')
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
+require 'packer'.startup({
+	function (use)
+		use('wbthomason/packer.nvim')
 
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'majutsushi/tagbar'
-Plug 'Yggdroot/indentLine'
-Plug 'simrat39/symbols-outline.nvim'
-Plug 'folke/trouble.nvim'
+		use 'nvim-lua/popup.nvim'
 
-Plug 'tpope/vim-fugitive'
-Plug 'lewis6991/gitsigns.nvim'
+		use 'dracula/vim'
+		use {
+			'nvim-lualine/lualine.nvim',
+			requires = {'kyazdani42/nvim-web-devicons', opt = true}
+		}
 
-Plug 'tpope/vim-surround'
-Plug 'phaazon/hop.nvim'
-Plug 'godlygeek/tabular'
+		use 'majutsushi/tagbar'
+		use 'Yggdroot/indentLine'
+		use 'simrat39/symbols-outline.nvim'
+		use {
+			"folke/trouble.nvim",
+			requires = "kyazdani42/nvim-web-devicons",
+		}
+		use 'tpope/vim-fugitive'
+		use {
+			'lewis6991/gitsigns.nvim',
+			requires = 'nvim-lua/plenary.nvim',
+			config = function() require 'gitsigns'.setup() end,
+		}
 
-Plug 'scrooloose/nerdcommenter'
-Plug 'kyazdani42/nvim-tree.lua'
+		use 'tpope/vim-surround'
+		use {
+			'phaazon/hop.nvim',
+			branch = 'v1', -- optional but strongly recommended
+			config = function() require'hop'.setup() end
+		}
+		use 'godlygeek/tabular'
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'dense-analysis/ale'
-Plug 'SirVer/ultisnips'
+		use 'scrooloose/nerdcommenter'
+		use {
+			'kyazdani42/nvim-tree.lua',
+			requires = 'kyazdani42/nvim-web-devicons',
+			config = function() require'nvim-tree'.setup() end
+		}
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-telescope/telescope.nvim'
+		use 'neovim/nvim-lspconfig'
+		use {
+			'hrsh7th/nvim-cmp',
+			requires = {
+				{ 'hrsh7th/cmp-nvim-lsp' },
+				{ 'hrsh7th/cmp-buffer' },
+				{ 'hrsh7th/cmp-path' },
+			},
+		}
 
-" Language specific.
-Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'simrat39/rust-tools.nvim'
-Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
+		use {
+			'ray-x/lsp_signature.nvim',
+			config = function() require 'lsp_signature'.setup() end
+		}
+		use 'dense-analysis/ale'
+		use 'SirVer/ultisnips'
 
-call plug#end()
-]]
+		use {
+			'nvim-treesitter/nvim-treesitter',
+			run = ':TSUpdate'
+		}
+		use {
+			'nvim-telescope/telescope.nvim',
+			requires = 'nvim-lua/plenary.nvim'
+		}
 
+		-- {{{ Language specific.
+		use {
+			'vim-scripts/a.vim',
+			ft = { 'c', 'cpp' },
+		}
+		use {
+			'rust-lang/rust.vim',
+			ft = 'rust' ,
+		}
+		use {
+			'simrat39/rust-tools.nvim',
+			ft = 'rust',
+			config = function() require 'rust-tools'.setup() end
+		}
+		-- }}}
+
+	end,
+	-- display packer dialouge in the center in a floating window
+	config = {
+		display = {
+			open_fn = require('packer.util').float,
+		},
+	},
+})
 
