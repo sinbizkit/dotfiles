@@ -1,4 +1,3 @@
-lua << EOF
 local modules = { "cpp", "rust", "go", "lua", "python", "cmake", "javascript" }
 if vim.fn.has("mac") == 1 then
   table.insert(modules, "swift")
@@ -10,4 +9,3 @@ require 'nvim-treesitter.configs'.setup {
       enable = true, -- you can also use a table with list of langs here (e.g. { "python", "javascript" })
     },
 }
-EOF

@@ -1,0 +1,18 @@
+return {
+	require('config.plugin.a'),
+	require('config.plugin.ale'),
+	require('config.plugin.cmp'),
+	require('config.plugin.gitsigns'),
+	require('config.plugin.lsp'),
+	require('config.plugin.lsp_signature'),
+	require('config.plugin.lualine'),
+	require('config.plugin.nerdcommenter'),
+	require('config.plugin.nvim-tree'),
+	require('config.plugin.rust-tools'),
+	require('config.plugin.symbols-outline'),
+	require('config.plugin.tagbar'),
+	require('config.plugin.telescope'),
+	require('config.plugin.treesitter'),
+	require('config.plugin.trouble'),
+	require('config.plugin.ultisnips'),
+}
