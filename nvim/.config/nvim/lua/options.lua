@@ -42,4 +42,11 @@ opt.laststatus  = 2 -- The last window will always have a status line.
 
 vim.cmd('silent! colorscheme dracula')
 
+vim.cmd [[
+sign define LspDiagnosticsSignError text=✘ texthl=LspDiagnosticsSignError linehl= numhl=
+sign define LspDiagnosticsSignWarning text= texthl=LspDiagnosticsSignWarning linehl= numhl=
+sign define LspDiagnosticsSignInformation text=  texthl=LspDiagnosticsSignInformation linehl= numhl=
+sign define LspDiagnosticsSignHint text=💡 texthl=LspDiagnosticsSignHint linehl= numhl=
+]]
+
 -- }}}

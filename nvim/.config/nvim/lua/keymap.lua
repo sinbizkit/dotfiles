@@ -6,9 +6,6 @@ local function map(mode, bind, exec, opts)
 	vim.api.nvim_set_keymap(mode, bind, exec, options)
 end
 
-local opt = {} --empty opt for maps with no extra options
-local M = {}
-
 -- {{{ Panes creation
 map('n', 'ne', ':vsplit<CR>') -- Split current window vertically.
 map('n', 'no', ':split<CR>') -- Split current window horizontally.
@@ -119,5 +116,3 @@ map('n', '<Leader>ss', ':lua require("telescope.builtin").lsp_dynamic_workspace_
 -- {{{ Trouble
 map('n', '<Leader>sd', ':TroubleToggle<CR>')
 -- }}}
-
-return M

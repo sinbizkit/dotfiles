@@ -2,8 +2,9 @@
 require('plugin')
 
 -- Load keybindings and the editor options.
-require('keymap')
 require('options')
+require('keymap')
 
 -- Load various configurations (plugins, lsp, ...)
+require('config.lsp')
 require('config.plugin')
