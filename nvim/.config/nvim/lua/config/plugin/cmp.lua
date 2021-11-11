@@ -1,4 +1,3 @@
-lua << EOF
 local cmp = require 'cmp'
 cmp.setup {
   sources = {
@@ -21,4 +20,3 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
   },
 }
-EOF

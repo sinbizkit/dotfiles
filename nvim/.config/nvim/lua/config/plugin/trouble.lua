@@ -1,5 +1,4 @@
-lua << EOF
-  require("trouble").setup {
+  require "trouble".setup {
       position = "bottom", -- position of the list can be: bottom, top, left, right
       height = 10, -- height of the trouble list when position is top or bottom
       width = 50, -- width of the list when position is left or right
@@ -43,6 +42,3 @@ lua << EOF
       },
       use_lsp_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
   }
-EOF
-
-nnoremap <silent><leader>sd :TroubleToggle<CR>

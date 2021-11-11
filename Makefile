@@ -14,9 +14,10 @@ install-fish:
 	stow fish
 
 install-nvim:
-	curl -fLo ${SDIR}/nvim/.config/nvim/autoload/plug.vim \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	stow nvim
+	rm -rf ${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim
+	git clone -q --depth 1 https://github.com/wbthomason/packer.nvim \
+		${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 install-gdb:
 	rm -rf ${HOME}/.local/share/gdb/qt5

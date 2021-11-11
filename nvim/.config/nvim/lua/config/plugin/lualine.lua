@@ -1,8 +1,7 @@
-lua << EOF
-require('lualine').setup {
+require 'lualine'.setup {
   options = {
     section_separators = { left = '', right = '' },
-    component_separators = { left = '', left = '' },
+    component_separators = { right = '', left = '' },
   }, sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch'},
@@ -15,4 +14,3 @@ require('lualine').setup {
     lualine_z = {'location' }
   },
 }
-EOF
