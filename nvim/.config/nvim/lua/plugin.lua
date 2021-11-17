@@ -13,11 +13,12 @@ require 'packer'.startup({
 		}
 
 		use 'majutsushi/tagbar'
+		use 'lukas-reineke/indent-blankline.nvim'
 
 		use 'simrat39/symbols-outline.nvim'
 		use {
-			"folke/trouble.nvim",
-			requires = "kyazdani42/nvim-web-devicons",
+			'folke/trouble.nvim',
+			requires = 'kyazdani42/nvim-web-devicons',
 		}
 		use 'tpope/vim-fugitive'
 		use {

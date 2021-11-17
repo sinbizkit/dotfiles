@@ -21,7 +21,7 @@ g.loaded_ruby_provider = false
 opt.termguicolors = true
 
 opt.list           = true
-opt.listchars      = { tab = '▸ ', space = '·', eol = '↴' }
+opt.listchars      = { tab = '  ', space = '·', eol = '↴' }
 opt.cursorline     = true     -- Highlighting that moves with the cursor.
 opt.showmode       = true     -- Turn off the native mode indicator.
 opt.encoding       = 'utf-8'  -- Default encoding.
