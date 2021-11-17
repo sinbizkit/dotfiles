@@ -13,7 +13,7 @@ require 'packer'.startup({
 		}
 
 		use 'majutsushi/tagbar'
-		use 'Yggdroot/indentLine'
+
 		use 'simrat39/symbols-outline.nvim'
 		use {
 			"folke/trouble.nvim",
