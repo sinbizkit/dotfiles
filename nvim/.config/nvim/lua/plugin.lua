@@ -13,7 +13,6 @@ require 'packer'.startup({
 		}
 
 		use 'majutsushi/tagbar'
-		use 'lukas-reineke/indent-blankline.nvim'
 
 		use 'simrat39/symbols-outline.nvim'
 		use {

@@ -2,7 +2,6 @@ return {
 	require('config.plugin.a'),
 	require('config.plugin.ale'),
 	require('config.plugin.cmp'),
-	require('config.plugin.indent-blankline'),
 	require('config.plugin.lspconfig'),
 	require('config.plugin.lualine'),
 	require('config.plugin.nerdcommenter'),
