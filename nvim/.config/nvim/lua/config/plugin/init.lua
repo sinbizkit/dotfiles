@@ -5,7 +5,6 @@ return {
 	require('config.plugin.lspconfig'),
 	require('config.plugin.lualine'),
 	require('config.plugin.nerdcommenter'),
-	require('config.plugin.nvim-cmp'),
 	require('config.plugin.nvim-tree'),
 	require('config.plugin.symbols-outline'),
 	require('config.plugin.tagbar'),
