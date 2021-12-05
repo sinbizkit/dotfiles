@@ -6,6 +6,7 @@ lspconfig.rust_analyzer.setup{}
 lspconfig.gopls.setup{}
 lspconfig.cmake.setup{}
 lspconfig.pylsp.setup{}
+lspconfig.bashls.setup{}
 lspconfig.tsserver.setup{}
 
 if (vim.fn.has('mac')) then
