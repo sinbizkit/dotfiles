@@ -12,7 +12,7 @@ end
 local sumneko_lua_path = os.getenv('SUMNEKO_LUA_PATH')
 if sumneko_lua_path then
   if system_name then
-    local sumneko_binary_fpath = sumneko_lua_path .. '/bin/' .. system_name .. '/lua-language-server'
+    local sumneko_binary_fpath = sumneko_lua_path .. '/lua-language-server'
     local runtime_path = vim.split(package.path, ';')
     table.insert(runtime_path, "lua/?.lua")
     table.insert(runtime_path, "lua/?/init.lua")
