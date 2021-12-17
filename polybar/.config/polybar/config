@@ -42,7 +42,6 @@ nord13 = #ebcb8b
 nord14 = #a3be8c
 nord15 = #b48ead
 
-
 [bar/main_bar]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
@@ -77,7 +76,7 @@ modules-right = fsroot fshdd memory cpu battery date alsa xkeyboard powermenu
 
 tray-position = right
 tray-padding = 2
-tray-background = ${palette.nord3}
+tray-background = ${palette.nord0}
 
 wm-restack = i3
 
@@ -153,6 +152,7 @@ label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
+label-urgent-foreground = ${palette.nord0}
 label-urgent-background = ${palette.nord13}
 label-urgent-padding = 2
 

@@ -33,7 +33,7 @@ install-alacritty:
 	stow alacritty
 
 install-i3:
-	stow i3 polybar
+	stow i3 polybar rofi
 
 install-mc:
 	stow --adopt mc
