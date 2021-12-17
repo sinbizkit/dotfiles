@@ -9,7 +9,7 @@ font pango:Hack Nerd Font Mono 9
 client.focused          #4c566a #4c566a #d8dee9 #5e81ac   #4c566a
 client.focused_inactive #434c5e #434c5e #d8dee9 #484e50   #434c5e
 client.unfocused        #2e3440 #2e3440 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.urgent           #2f343a #bf616a #d8dee9 #bf616a   #bf616a
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
