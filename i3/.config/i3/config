@@ -28,6 +28,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -7%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# Multimedia
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86Launch5 exec --no-startup-id playerctl previous
+bindsym XF86Launch6 exec --no-startup-id playerctl next
 # Display.
 bindsym XF86MonBrightnessUp exec light -A 1 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 1 # decrease screen brightness
@@ -187,6 +191,13 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Locking.
 bindsym $mod+Ctrl+l exec i3lock -c 000000
+# Screenshot.
+bindsym Print exec filepath=$(date +%s.png) && \
+	maim ${filepath} && \
+	notify-send --expire-time=4000 mime "Screenshot saved (${filepath})"
+bindsym Ctrl+Print exec filepath=$(date +%s.png) && \
+	maim -s ${filepath} && \
+	notify-send --expire-time=4000 mime "Screenshot saved (${filepath})"
 
 # Windows compositor.
 exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
