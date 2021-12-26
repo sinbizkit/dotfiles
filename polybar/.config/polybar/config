@@ -110,7 +110,7 @@ interval = 30
 
 mount-0 = /
 
-label-mounted = %{F#8fbcbb}root%{F-}: %percentage_used%%
+label-mounted = %{F#8fbcbb}SSD%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${palette.nord11}
 
@@ -120,7 +120,7 @@ interval = 60
 
 mount-0 = /mnt/hdd
 
-label-mounted = %{F#8fbcbb}hdd%{F-}: %percentage_used%%
+label-mounted = %{F#8fbcbb}HDD%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${palette.nord11}
 
