@@ -5,6 +5,7 @@ end:
 window:
   decorations: full
   startup_mode: Maximized
+  opacity: 1.0
 
 scrolling:
   history: 1000
@@ -28,8 +29,6 @@ font:
 
   size: 10
   dynamic_title: true
-
-background_opacity: 1.0
 
 # Project:    Nord Alacritty
 # Version:    0.1.0
