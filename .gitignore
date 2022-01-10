@@ -1,6 +1,3 @@
-nvim/.config/nvim/autoload/plug.vim
-nvim/.config/nvim/autoload/plug.vim.old
-nvim/.config/nvim/plugged
 nvim/.config/nvim/plugin/packer_compiled.lua
 
 fish/.config/fish/fish_variables
