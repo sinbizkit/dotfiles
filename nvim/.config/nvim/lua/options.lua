@@ -41,7 +41,7 @@ opt.signcolumn     = 'yes'    -- Always show the sign column.
 opt.completeopt = {'noinsert', 'menuone', 'noselect'}
 opt.laststatus  = 2 -- The last window will always have a status line.
 
-vim.cmd('silent! colorscheme dracula')
+require('nightfox').load('nordfox')
 
 vim.cmd [[
 sign define LspDiagnosticsSignError text=✘ texthl=LspDiagnosticsSignError linehl= numhl=
