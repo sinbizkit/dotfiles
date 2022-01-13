@@ -25,7 +25,7 @@ opt.listchars      = { tab = '•·', space = '·', eol = '↴', extends = '»',
 opt.cursorline     = true     -- Highlighting that moves with the cursor.
 opt.showmode       = true     -- Turn off the native mode indicator.
 opt.encoding       = 'utf-8'  -- Default encoding.
-opt.foldmethod     = 'syntax' -- Syntax highlighting items specify folds.
+opt.foldmethod     = 'indent' -- Syntax highlighting items specify folds.
 opt.foldlevel      = 3        -- Close folds with the higher level.
 opt.number         = true     -- Print the linenumber in front of each line.
 opt.relativenumber = true     -- Show the line number relative to the line.
