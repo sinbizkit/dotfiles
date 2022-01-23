@@ -15,7 +15,8 @@ opt.backup      = false
 opt.autoread = true
 
 g.mapleader = ';'
-g.loaded_ruby_provider = false
+g.loaded_ruby_provider = 0
+g.loaded_perl_provider = 0
 
 -- {{{ Appearance
 opt.termguicolors = true
