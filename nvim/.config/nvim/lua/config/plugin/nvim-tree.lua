@@ -1,11 +1,9 @@
 require 'nvim-tree'.setup {
   auto_close = true,
   view = {
-    width = 30,
-    height = 30,
-    side = 'left',
-    auto_resize = true,
-    number = true,
+    width = 40,
+    number = false,
+    signcolumn = "no",
     relativenumber = true,
     mappings = {
       custom_only = false,
