@@ -3,7 +3,7 @@ local lspconfig = require 'lspconfig'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local servers = { 'clangd', 'gopls', 'cmake', 'pylsp', 'bashls', 'tsserver' }
+local servers = { 'clangd', 'gopls', 'cmake', 'pyright', 'bashls', 'tsserver' }
 local configs = {}
 
 -- Returns configuration for provided `server` if found, empty value otherwise.
