@@ -1,9 +1,19 @@
+-- A handy shorthand for vim.api.nvim_set_keymap with reasonable default opts.
 local function map(mode, bind, exec, opts)
-	local options = { noremap = true, silent = true }
-	if opts then
-		options = vim.tbl_extend('force', options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, bind, exec, options)
+  local options = { noremap = true, silent = true }
+  if opts then
+  options = vim.tbl_extend('force', options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, bind, exec, options)
+end
+
+-- A handy shorthand for vim.api.nvim_buf_set_keymap with reasonable default opts.
+local function buf_map(mode, bind, exec, opts)
+  local options = { noremap = true, silent = true }
+  if opts then
+  options = vim.tbl_extend('force', options, opts)
+  end
+  vim.api.nvim_buf_set_keymap(0, mode, bind, exec, options)
 end
 
 -- {{{ Panes creation
@@ -34,27 +44,6 @@ map('n', '<Leader>pq', '<Cmd>cprevious<CR>')
 map('n', '<Leader>ol', '<Cmd>lopen<CR>')
 map('n', '<Leader>nl', '<Cmd>lnext<CR>')
 map('n', '<Leader>pl', '<Cmd>lprevious<CR>')
--- }}}
-
--- {{{ LSP
--- s - show.
-map('n', '<Leader>sh', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-map('n', '<Leader>si', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
-
--- g - go.
-map('n', '<Leader>ge', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
-map('n', '<Leader>gt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>')
-map('n', '<Leader>gI', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
-map('n', '<Leader>gn', '<Cmd>lua vim.diagnostic.goto_next()<CR>')
-map('n', '<Leader>gp', '<Cmd>lua vim.diagnostic.goto_prev()<CR>')
-map('n', '<Leader>gs', '<Cmd>ClangdSwitchSourceHeader<CR>')
-
--- d - do
-map('n', '<Leader>di', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
-map('n', '<Leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>')
-map('n', '<Leader>df', '<Cmd>lua vim.lsp.buf.formatting()<CR>')
-map('v', '<Leader>df', '<Cmd>lua vim.lsp.buf.range_formatting()<CR>')
-
 -- }}}
 
 -- {{{ ALE plugin
@@ -104,14 +93,40 @@ map('n', '<F4>', '<Cmd>TagbarToggle<CR>')
 map('n', '<Leader>t', '<Cmd>lua require("telescope.builtin").find_files()<CR>')
 map('n', '<Leader>r', '<Cmd>lua require("telescope.builtin").tags()<CR>')
 map('n', '<Leader>b', '<Cmd>lua require("telescope.builtin").buffers()<CR>')
-
-map('n', '<Leader>gr', '<Cmd>lua require("telescope.builtin").lsp_references()<CR>')
-map('n', '<Leader>gd', '<Cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
-map('n', '<Leader>gi', '<Cmd>lua require("telescope.builtin").lsp_implementations()<CR>')
 map('n', '<Leader>gg', '<Cmd>lua require("telescope.builtin").live_grep()<CR>')
-
 map('n', '<Leader>sd', '<Cmd>lua require("telescope.builtin").diagnostics()<CR>')
-map('n', '<Leader>so', '<Cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
-map('n', '<Leader>ss', '<Cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>')
 -- }}}
 
+local M = {
+  map = map,
+  buf_map = buf_map,
+}
+
+-- Sets keybindings for interaction with LSP servers.
+M.map_lsp_keys = function()
+  -- s - show.
+  buf_map('n', '<Leader>sh', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+  buf_map('n', '<Leader>si', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
+
+  -- g - go.
+  buf_map('n', '<Leader>ge', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
+  buf_map('n', '<Leader>gt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>')
+  buf_map('n', '<Leader>gI', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
+  buf_map('n', '<Leader>gn', '<Cmd>lua vim.diagnostic.goto_next()<CR>')
+  buf_map('n', '<Leader>gp', '<Cmd>lua vim.diagnostic.goto_prev()<CR>')
+
+  -- d - do
+  buf_map('n', '<Leader>di', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
+  buf_map('n', '<Leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>')
+  buf_map('n', '<Leader>df', '<Cmd>lua vim.lsp.buf.formatting()<CR>')
+  buf_map('v', '<Leader>df', '<Cmd>lua vim.lsp.buf.range_formatting()<CR>')
+
+  -- Telescope
+  buf_map('n', '<Leader>gr', '<Cmd>lua require("telescope.builtin").lsp_references()<CR>')
+  buf_map('n', '<Leader>gd', '<Cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
+  buf_map('n', '<Leader>gi', '<Cmd>lua require("telescope.builtin").lsp_implementations()<CR>')
+  buf_map('n', '<Leader>so', '<Cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
+  buf_map('n', '<Leader>ss', '<Cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>')
+end
+
+return M
