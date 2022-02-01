@@ -111,10 +111,8 @@ map('n', '<Leader>gd', ':lua require("telescope.builtin").lsp_definitions()<CR>'
 map('n', '<Leader>gi', ':lua require("telescope.builtin").lsp_implementations()<CR>')
 map('n', '<Leader>gg', ':lua require("telescope.builtin").live_grep()<CR>')
 
+map('n', '<Leader>sd', ':lua require("telescope.builtin").diagnostics()<CR>')
 map('n', '<Leader>so', ':lua require("telescope.builtin").lsp_document_symbols()<CR>')
 map('n', '<Leader>ss', ':lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>')
 -- }}}
 
--- {{{ Trouble
-map('n', '<Leader>sd', ':TroubleToggle<CR>')
--- }}}

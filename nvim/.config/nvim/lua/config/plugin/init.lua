@@ -11,6 +11,5 @@ return {
 	require('config.plugin.tagbar'),
 	require('config.plugin.telescope'),
 	require('config.plugin.treesitter'),
-	require('config.plugin.trouble'),
 	require('config.plugin.ultisnips'),
 }

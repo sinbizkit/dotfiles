@@ -15,10 +15,6 @@ require 'packer'.startup({
     use 'majutsushi/tagbar'
 
     use 'simrat39/symbols-outline.nvim'
-    use {
-      'folke/trouble.nvim',
-      requires = 'kyazdani42/nvim-web-devicons',
-    }
     use 'tpope/vim-fugitive'
     use {
       'lewis6991/gitsigns.nvim',
