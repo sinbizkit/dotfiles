@@ -44,8 +44,10 @@ map('n', '<Leader>si', ':lua vim.lsp.buf.signature_help()<CR>')
 
 -- g - go.
 map('n', '<Leader>ge', ':lua vim.lsp.buf.declaration()<CR>')
-map('n', '<Leader>gn', ':lua vim.lsp.diagnostic.goto_next()<CR>')
-map('n', '<Leader>gp', ':lua vim.lsp.diagnostic.goto_prev()<CR>')
+map('n', '<Leader>gt', ':lua vim.lsp.buf.type_definition()<CR>')
+map('n', '<Leader>gI', ':lua vim.lsp.buf.implementation()<CR>')
+map('n', '<Leader>gn', ':lua vim.diagnostic.goto_next()<CR>')
+map('n', '<Leader>gp', ':lua vim.diagnostic.goto_prev()<CR>')
 map('n', '<Leader>gs', ':ClangdSwitchSourceHeader<CR>')
 
 -- d - do
