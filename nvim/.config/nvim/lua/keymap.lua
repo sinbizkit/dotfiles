@@ -7,9 +7,9 @@ local function map(mode, bind, exec, opts)
 end
 
 -- {{{ Panes creation
-map('n', 'ne', '<cmd>vsplit<CR>') -- Split current window vertically.
-map('n', 'no', '<cmd>split<CR>') -- Split current window horizontally.
-map('n', 'nt', '<cmd>tabnew<CR>') -- Open new tab.
+map('n', 'ne', '<Cmd>vsplit<CR>') -- Split current window vertically.
+map('n', 'no', '<Cmd>split<CR>') -- Split current window horizontally.
+map('n', 'nt', '<Cmd>tabnew<CR>') -- Open new tab.
 -- }}}
 --
 -- {{{ Panes navigation.
@@ -20,98 +20,98 @@ map('n', '<C-H>', '<C-W><C-H>')
 -- }}}
 
 -- {{{ Tags.
-map('n', '<Leader>]n', '<cmd>tnext<CR>')
-map('n', '<Leader>]p', '<cmd>tprevious<CR>')
+map('n', '<Leader>]n', '<Cmd>tnext<CR>')
+map('n', '<Leader>]p', '<Cmd>tprevious<CR>')
 -- }}}
 
 -- {{{ QuickFix.
-map('n', '<Leader>oq', '<cmd>copen<CR>')
-map('n', '<Leader>nq', '<cmd>cnext<CR>')
-map('n', '<Leader>pq', '<cmd>cprevious<CR>')
+map('n', '<Leader>oq', '<Cmd>copen<CR>')
+map('n', '<Leader>nq', '<Cmd>cnext<CR>')
+map('n', '<Leader>pq', '<Cmd>cprevious<CR>')
 -- }}}
 
 -- {{{ LocationList.
-map('n', '<Leader>ol', '<cmd>lopen<CR>')
-map('n', '<Leader>nl', '<cmd>lnext<CR>')
-map('n', '<Leader>pl', '<cmd>lprevious<CR>')
+map('n', '<Leader>ol', '<Cmd>lopen<CR>')
+map('n', '<Leader>nl', '<Cmd>lnext<CR>')
+map('n', '<Leader>pl', '<Cmd>lprevious<CR>')
 -- }}}
 
 -- {{{ LSP
 -- s - show.
-map('n', '<Leader>sh', '<cmd>lua vim.lsp.buf.hover()<CR>')
-map('n', '<Leader>si', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+map('n', '<Leader>sh', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+map('n', '<Leader>si', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
 
 -- g - go.
-map('n', '<Leader>ge', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-map('n', '<Leader>gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-map('n', '<Leader>gI', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-map('n', '<Leader>gn', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-map('n', '<Leader>gp', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-map('n', '<Leader>gs', '<cmd>ClangdSwitchSourceHeader<CR>')
+map('n', '<Leader>ge', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
+map('n', '<Leader>gt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>')
+map('n', '<Leader>gI', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
+map('n', '<Leader>gn', '<Cmd>lua vim.diagnostic.goto_next()<CR>')
+map('n', '<Leader>gp', '<Cmd>lua vim.diagnostic.goto_prev()<CR>')
+map('n', '<Leader>gs', '<Cmd>ClangdSwitchSourceHeader<CR>')
 
 -- d - do
-map('n', '<Leader>di', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-map('n', '<Leader>dr', '<cmd>lua vim.lsp.buf.rename()<CR>')
-map('n', '<Leader>df', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-map('v', '<Leader>df', '<cmd>lua vim.lsp.buf.range_formatting()<CR>')
+map('n', '<Leader>di', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
+map('n', '<Leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>')
+map('n', '<Leader>df', '<Cmd>lua vim.lsp.buf.formatting()<CR>')
+map('v', '<Leader>df', '<Cmd>lua vim.lsp.buf.range_formatting()<CR>')
 
 -- }}}
 
 -- {{{ ALE plugin
-map('n', '<Leader>ll', '<cmd>ALELint<CR>')
-map('n', '<Leader>lj', '<cmd>ALENext<CR>')
-map('n', '<Leader>lk', '<cmd>ALEPrevious<CR>')
-map('n', '<Leader>lf', '<cmd>ALEFix<CR>')
+map('n', '<Leader>ll', '<Cmd>ALELint<CR>')
+map('n', '<Leader>lj', '<Cmd>ALENext<CR>')
+map('n', '<Leader>lk', '<Cmd>ALEPrevious<CR>')
+map('n', '<Leader>lf', '<Cmd>ALEFix<CR>')
 -- }}}
 
 -- {{{ Hop plugin
-map('n', '<Leader><Leader>w', '<cmd>HopWord<CR>')
-map('n', '<Leader><Leader>f', '<cmd>HopWordAC<CR>')
-map('n', '<Leader><Leader>b', '<cmd>HopWordBC<CR>')
-map('n', '<Leader><Leader>c', '<cmd>HopChar1<CR>')
+map('n', '<Leader><Leader>w', '<Cmd>HopWord<CR>')
+map('n', '<Leader><Leader>f', '<Cmd>HopWordAC<CR>')
+map('n', '<Leader><Leader>b', '<Cmd>HopWordBC<CR>')
+map('n', '<Leader><Leader>c', '<Cmd>HopChar1<CR>')
 -- }}}
 
 -- {{{ nvim-tree
-map('n', '<F6>', '<cmd>NvimTreeToggle<CR>')
-map('n', '<Leader><F6>', '<cmd>NvimTreeFindFile<CR>')
+map('n', '<F6>', '<Cmd>NvimTreeToggle<CR>')
+map('n', '<Leader><F6>', '<Cmd>NvimTreeFindFile<CR>')
 -- }}}
 
 -- {{{ SymbolsOutline
-map('n', '<F5>', '<cmd>SymbolsOutline<CR>')
+map('n', '<F5>', '<Cmd>SymbolsOutline<CR>')
 -- }}}
 
 -- {{{ Tabular
-map('n', '<Leader>aa', '<cmd>Tabularize / /l0<CR>')
-map('n', '<Leader>a=', '<cmd>Tabularize /=/l1<CR>')
-map('v', '<Leader>a=', '<cmd>Tabularize /=/l1<CR>')
-map('n', '<Leader>a:', '<cmd>Tabularize /:/l1<CR>')
-map('v', '<Leader>a:', '<cmd>Tabularize /:/l1<CR>')
-map('n', '<Leader>a,', '<cmd>Tabularize /,/l1<CR>')
-map('v', '<Leader>a,', '<cmd>Tabularize /,/l1<CR>')
-map('n', '<Leader>a(', '<cmd>Tabularize /(/l0<CR>')
-map('v', '<Leader>a(', '<cmd>Tabularize /(/l0<CR>')
-map('n', '<Leader>a{', '<cmd>Tabularize /{/l0<CR>')
-map('v', '<Leader>a{', '<cmd>Tabularize /{/l0<CR>')
-map('n', '<Leader>a*', '<cmd>Tabularize /*/l1l0<CR>')
-map('v', '<Leader>a*', '<cmd>Tabularize /*/l1l0<CR>')
+map('n', '<Leader>aa', '<Cmd>Tabularize / /l0<CR>')
+map('n', '<Leader>a=', '<Cmd>Tabularize /=/l1<CR>')
+map('v', '<Leader>a=', '<Cmd>Tabularize /=/l1<CR>')
+map('n', '<Leader>a:', '<Cmd>Tabularize /:/l1<CR>')
+map('v', '<Leader>a:', '<Cmd>Tabularize /:/l1<CR>')
+map('n', '<Leader>a,', '<Cmd>Tabularize /,/l1<CR>')
+map('v', '<Leader>a,', '<Cmd>Tabularize /,/l1<CR>')
+map('n', '<Leader>a(', '<Cmd>Tabularize /(/l0<CR>')
+map('v', '<Leader>a(', '<Cmd>Tabularize /(/l0<CR>')
+map('n', '<Leader>a{', '<Cmd>Tabularize /{/l0<CR>')
+map('v', '<Leader>a{', '<Cmd>Tabularize /{/l0<CR>')
+map('n', '<Leader>a*', '<Cmd>Tabularize /*/l1l0<CR>')
+map('v', '<Leader>a*', '<Cmd>Tabularize /*/l1l0<CR>')
 -- }}}
 
 -- {{{ Tagbar
-map('n', '<F4>', '<cmd>TagbarToggle<CR>')
+map('n', '<F4>', '<Cmd>TagbarToggle<CR>')
 -- }}}
 
 -- {{{ Telescope
-map('n', '<Leader>t', '<cmd>lua require("telescope.builtin").find_files()<CR>')
-map('n', '<Leader>r', '<cmd>lua require("telescope.builtin").tags()<CR>')
-map('n', '<Leader>b', '<cmd>lua require("telescope.builtin").buffers()<CR>')
+map('n', '<Leader>t', '<Cmd>lua require("telescope.builtin").find_files()<CR>')
+map('n', '<Leader>r', '<Cmd>lua require("telescope.builtin").tags()<CR>')
+map('n', '<Leader>b', '<Cmd>lua require("telescope.builtin").buffers()<CR>')
 
-map('n', '<Leader>gr', '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
-map('n', '<Leader>gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
-map('n', '<Leader>gi', '<cmd>lua require("telescope.builtin").lsp_implementations()<CR>')
-map('n', '<Leader>gg', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
+map('n', '<Leader>gr', '<Cmd>lua require("telescope.builtin").lsp_references()<CR>')
+map('n', '<Leader>gd', '<Cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
+map('n', '<Leader>gi', '<Cmd>lua require("telescope.builtin").lsp_implementations()<CR>')
+map('n', '<Leader>gg', '<Cmd>lua require("telescope.builtin").live_grep()<CR>')
 
-map('n', '<Leader>sd', '<cmd>lua require("telescope.builtin").diagnostics()<CR>')
-map('n', '<Leader>so', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
-map('n', '<Leader>ss', '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>')
+map('n', '<Leader>sd', '<Cmd>lua require("telescope.builtin").diagnostics()<CR>')
+map('n', '<Leader>so', '<Cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>')
+map('n', '<Leader>ss', '<Cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>')
 -- }}}
 
