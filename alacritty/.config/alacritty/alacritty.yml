@@ -27,7 +27,7 @@ font:
     family: JetBrainsMono Nerd Font Mono
     style: Bold Italic
 
-  size: 10
+  size: 13
   dynamic_title: true
 
 # Project:    Nord Alacritty

@@ -3,10 +3,10 @@
 BIN=/usr/bin
 MAN=/usr/share/man/man1
 
-BVER=12
-MVER=12.1
+BVER=13
+MVER=13.1
 
-PRIORITY=212
+PRIORITY=213
 
 
 update-alternatives --install $BIN/clang clang $BIN/clang-$BVER $PRIORITY \

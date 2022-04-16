@@ -192,10 +192,10 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Locking.
 bindsym $mod+Ctrl+l exec i3lock -c 000000
 # Screenshot.
-bindsym Print exec filepath=$(date +%s.png) && \
+bindsym Print exec filepath=~/Pictures/$(date +%s.png) && \
 	maim ${filepath} && \
 	notify-send --expire-time=4000 mime "Screenshot saved (${filepath})"
-bindsym Ctrl+Print exec filepath=$(date +%s.png) && \
+bindsym Ctrl+Print exec filepath=~/Pictures/$(date +%s.png) && \
 	maim -s ${filepath} && \
 	notify-send --expire-time=4000 mime "Screenshot saved (${filepath})"
 
