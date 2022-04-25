@@ -27,7 +27,6 @@ require 'packer'.startup({
       branch = 'v1', -- optional but strongly recommended
       config = function() require'hop'.setup() end
     }
-    use 'godlygeek/tabular'
 
     use 'scrooloose/nerdcommenter'
     use {

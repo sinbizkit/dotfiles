@@ -1,19 +1,20 @@
 -- A handy shorthand for vim.api.nvim_set_keymap with reasonable default opts.
-local function map(mode, bind, exec, opts)
+
+local function map(modes, bind, exec, opts)
   local options = { noremap = true, silent = true }
   if opts then
-  options = vim.tbl_extend('force', options, opts)
+    options = vim.tbl_extend('force', options, opts)
   end
-  vim.api.nvim_set_keymap(mode, bind, exec, options)
+  vim.keymap.set(modes, bind, exec, options)
 end
 
 -- A handy shorthand for vim.api.nvim_buf_set_keymap with reasonable default opts.
 local function buf_map(mode, bind, exec, opts)
-  local options = { noremap = true, silent = true }
+  local options = { noremap = true, silent = true, buffer = true }
   if opts then
-  options = vim.tbl_extend('force', options, opts)
+    options = vim.tbl_extend('force', options, opts)
   end
-  vim.api.nvim_buf_set_keymap(0, mode, bind, exec, options)
+  vim.keymap.set(mode, bind, exec, options)
 end
 
 -- {{{ Panes creation
@@ -67,22 +68,6 @@ map('n', '<Leader><F6>', '<Cmd>NvimTreeFindFile<CR>')
 
 -- {{{ SymbolsOutline
 map('n', '<F5>', '<Cmd>SymbolsOutline<CR>')
--- }}}
-
--- {{{ Tabular
-map('n', '<Leader>aa', '<Cmd>Tabularize / /l0<CR>')
-map('n', '<Leader>a=', '<Cmd>Tabularize /=/l1<CR>')
-map('v', '<Leader>a=', '<Cmd>Tabularize /=/l1<CR>')
-map('n', '<Leader>a:', '<Cmd>Tabularize /:/l1<CR>')
-map('v', '<Leader>a:', '<Cmd>Tabularize /:/l1<CR>')
-map('n', '<Leader>a,', '<Cmd>Tabularize /,/l1<CR>')
-map('v', '<Leader>a,', '<Cmd>Tabularize /,/l1<CR>')
-map('n', '<Leader>a(', '<Cmd>Tabularize /(/l0<CR>')
-map('v', '<Leader>a(', '<Cmd>Tabularize /(/l0<CR>')
-map('n', '<Leader>a{', '<Cmd>Tabularize /{/l0<CR>')
-map('v', '<Leader>a{', '<Cmd>Tabularize /{/l0<CR>')
-map('n', '<Leader>a*', '<Cmd>Tabularize /*/l1l0<CR>')
-map('v', '<Leader>a*', '<Cmd>Tabularize /*/l1l0<CR>')
 -- }}}
 
 -- {{{ Tagbar
