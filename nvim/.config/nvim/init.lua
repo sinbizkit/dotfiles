@@ -6,5 +6,4 @@ require('options')
 require('keymap')
 
 -- Load various configurations (plugins, lsp, ...)
-require('config.lsp')
 require('config.plugin')
