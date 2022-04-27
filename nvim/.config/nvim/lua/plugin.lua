@@ -53,11 +53,6 @@ require 'packer'.startup({
 		use 'SirVer/ultisnips'
 
 		use {
-			'norcalli/nvim-colorizer.lua',
-			config = function() require 'colorizer'.setup() end
-		}
-
-		use {
 			'nvim-treesitter/nvim-treesitter',
 			run = ':TSUpdate'
 		}
@@ -67,10 +62,6 @@ require 'packer'.startup({
 		}
 
 		-- {{{ Language specific.
-		use {
-			'vim-scripts/a.vim',
-			ft = { 'c', 'cpp' },
-		}
 		use {
 			'rust-lang/rust.vim',
 			ft = 'rust',
