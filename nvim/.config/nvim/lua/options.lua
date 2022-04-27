@@ -23,31 +23,31 @@ opt.termguicolors = true
 
 opt.list           = true
 opt.listchars      = { tab = '•·', space = '·', eol = '↴', extends = '»', precedes = '«', trail = '~', nbsp = '⦸' }
-opt.cursorline     = true     -- Highlighting that moves with the cursor.
-opt.showmode       = true     -- Turn off the native mode indicator.
-opt.encoding       = 'utf-8'  -- Default encoding.
+opt.cursorline     = true -- Highlighting that moves with the cursor.
+opt.showmode       = true -- Turn off the native mode indicator.
+opt.encoding       = 'utf-8' -- Default encoding.
 opt.foldmethod     = 'indent' -- Syntax highlighting items specify folds.
-opt.foldlevel      = 3        -- Close folds with the higher level.
-opt.number         = true     -- Print the linenumber in front of each line.
-opt.relativenumber = true     -- Show the line number relative to the line.
-opt.showtabline    = 2        -- Always show the line with tab page labels.
-opt.shortmess      = 'atIc'   -- Remove all useless messages.
-opt.splitbelow     = true     -- Splitting will put the new window below the current one.
-opt.pumheight      = 15       -- Maximum number of items showed in a popup menu.
-opt.signcolumn     = 'yes'    -- Always show the sign column.
+opt.foldlevel      = 3 -- Close folds with the higher level.
+opt.number         = true -- Print the linenumber in front of each line.
+opt.relativenumber = true -- Show the line number relative to the line.
+opt.showtabline    = 2 -- Always show the line with tab page labels.
+opt.shortmess      = 'atIc' -- Remove all useless messages.
+opt.splitbelow     = true -- Splitting will put the new window below the current one.
+opt.pumheight      = 15 -- Maximum number of items showed in a popup menu.
+opt.signcolumn     = 'yes' -- Always show the sign column.
 
 -- This will show the popup menu even if there's only one match (menuone),
 -- prevent automatic selection (noselect) and prevent automatic text injection
 -- into the current line (noinsert).
-opt.completeopt = {'noinsert', 'menuone', 'noselect'}
+opt.completeopt = { 'noinsert', 'menuone', 'noselect' }
 opt.laststatus  = 2 -- The last window will always have a status line.
 
 vim.cmd [[ colorscheme nightfox ]]
 
 local signs = { Error = "✘", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 -- }}}

@@ -1,4 +1,5 @@
 local g = vim.g
+
 g.ale_completion_enabled   = 0
 g.ale_sign_error           = '✘'
 g.ale_sign_warning         = ''

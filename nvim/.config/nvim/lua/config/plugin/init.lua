@@ -1,5 +1,4 @@
 return {
-	require('config.plugin.a'),
 	require('config.plugin.ale'),
 	require('config.plugin.cmp'),
 	require('config.plugin.gitsigns'),
