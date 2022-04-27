@@ -83,6 +83,26 @@ map('n', '<Leader>sd', '<Cmd>lua require("telescope.builtin").diagnostics()<CR>'
 map('n', '<Leader>v', '<Cmd>lua require("sinbizkit.telescope").find_vimconf()<CR>')
 -- }}}
 
+-- {{{ LuaSnips
+map({'i', 'n'}, '<C-j>', function()
+	local ls = require("luasnip")
+	print(ls.expand_or_jumpable())
+	if ls.expand_or_jumpable() then
+		ls.expand_or_jump()
+	end
+end)
+-- Snippets reload.
+map('n', '<Leader>rs', function()
+	local path = vim.api.nvim_get_runtime_file("lua/config/plugin/luasnip.lua", false)
+	if #path ~= 1 then
+		error("Snippet file not found.")
+		return
+	end
+	vim.cmd("source "..path[1])
+	print("Snippets are reloaded.")
+end)
+-- }}}
+
 local M = {
 	map = map,
 	buf_map = buf_map,

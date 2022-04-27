@@ -3,6 +3,7 @@ local cmp = require 'cmp'
 cmp.setup {
 	sources = {
 		{ name = 'nvim_lsp' },
+		{ name = 'luasnip' },
 		{ name = 'path' },
 		{ name = 'buffer', keyword_length = 5 },
 	},
@@ -22,7 +23,9 @@ cmp.setup {
 		},
 	},
 	snippet = {
-		expand = function(args) vim.fn["UltiSnips#Anon"](args.body) end
+		expand = function(args)
+			require('luasnip').lsp_expand(args.body)
+		end
 	},
 	formatting = {
 		format = lspkind.cmp_format {

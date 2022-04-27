@@ -38,6 +38,7 @@ require 'packer'.startup({
 		use {
 			'hrsh7th/nvim-cmp',
 			requires = {
+				{ 'saadparwaiz1/cmp_luasnip' },
 				{ 'hrsh7th/cmp-nvim-lsp' },
 				{ 'hrsh7th/cmp-buffer' },
 				{ 'hrsh7th/cmp-path' },
@@ -50,7 +51,7 @@ require 'packer'.startup({
 			config = function() require 'lsp_signature'.setup() end
 		}
 		use 'dense-analysis/ale'
-		use 'SirVer/ultisnips'
+		use 'L3MON4D3/LuaSnip'
 
 		use {
 			'nvim-treesitter/nvim-treesitter',
