@@ -94,7 +94,7 @@ cursor-scroll = ns-resize
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = "⏻ "
+format-prefix = " "
 format-prefix-foreground = ${palette.nord7}
 
 label-layout = %layout%
