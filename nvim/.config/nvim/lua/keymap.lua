@@ -79,6 +79,8 @@ map('n', '<Leader>r', '<Cmd>lua require("telescope.builtin").tags()<CR>')
 map('n', '<Leader>b', '<Cmd>lua require("telescope.builtin").buffers()<CR>')
 map('n', '<Leader>gg', '<Cmd>lua require("telescope.builtin").live_grep()<CR>')
 map('n', '<Leader>sd', '<Cmd>lua require("telescope.builtin").diagnostics()<CR>')
+
+map('n', '<Leader>v', '<Cmd>lua require("sinbizkit.telescope").find_vimconf()<CR>')
 -- }}}
 
 local M = {
