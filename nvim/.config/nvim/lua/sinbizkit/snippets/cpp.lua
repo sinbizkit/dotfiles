@@ -6,14 +6,21 @@ local i = ls.i
 local rep = require("luasnip.extras").rep
 
 return {
-	s("sinc", fmt(
+	s({ trig = "sincc", name = "system include directive" }, fmt(
 		[[
 		#include <{}>
 		]], { i(1) })
 	),
-	s("inc", fmt(
+	s({ trig = "inc", name = "include directive" }, fmt(
 		[[
 		#include "{}"
 		]], { i(1) })
+	),
+	s({ trig = "main", name = "main function template" }, fmt(
+		[[
+		int main(int argc, char *argv[]) {{
+			{}
+		}}
+		]], { i(0) })
 	),
 }
