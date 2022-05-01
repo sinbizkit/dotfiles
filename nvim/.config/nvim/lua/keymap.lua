@@ -86,11 +86,23 @@ map('n', '<Leader>v', '<Cmd>lua require("sinbizkit.telescope").find_vimconf()<CR
 -- {{{ LuaSnips
 map({'i', 'n'}, '<C-j>', function()
 	local ls = require("luasnip")
-	print(ls.expand_or_jumpable())
 	if ls.expand_or_jumpable() then
 		ls.expand_or_jump()
 	end
 end)
+map({'i', 'n'}, '<C-k>', function()
+	local ls = require("luasnip")
+	if ls.jumpable(-1) then
+		ls.jump(-1)
+	end
+end)
+map({'i', 'n'}, '<C-l>', function()
+	local ls = require("luasnip")
+	if ls.choice_active() then
+		ls.change_choice(1)
+	end
+end)
+
 -- Snippets reload.
 map('n', '<Leader>rs', function()
 	local path = vim.api.nvim_get_runtime_file("lua/config/plugin/luasnip.lua", false)
