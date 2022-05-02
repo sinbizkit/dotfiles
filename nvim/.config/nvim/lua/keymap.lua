@@ -96,7 +96,7 @@ map({'i', 'n'}, '<C-k>', function()
 		ls.jump(-1)
 	end
 end)
-map({'i', 'n'}, '<C-l>', function()
+map({'i', 'n', 's'}, '<C-l>', function()
 	local ls = require("luasnip")
 	if ls.choice_active() then
 		ls.change_choice(1)

@@ -2,6 +2,9 @@ local ls = require("luasnip")
 ls.config.set_config({
 	-- Update more often, :h events for more info.
 	update_events = "TextChanged,TextChangedI",
+	delete_check_events = "TextChanged",
+	ext_base_prio = 300,
+	ext_prio_increase = 1,
 })
 
 ls.cleanup()
