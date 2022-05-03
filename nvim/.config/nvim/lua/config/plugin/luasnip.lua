@@ -7,8 +7,12 @@ ls.config.set_config({
 	ext_prio_increase = 1,
 })
 
-ls.cleanup()
-for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/sinbizkit/snippets/*.lua", true)) do
-	local ft = vim.fn.fnamemodify(ft_path, ":t:r")
-	ls.add_snippets(ft, loadfile(ft_path)())
+local path = vim.api.nvim_get_runtime_file("init.lua", false)
+if #path ~= 1 then
+	error("Config directory not found.")
 end
+
+path = vim.fn.fnamemodify(path[1], ":p:h")
+path = vim.fn.join({ path, "lua/sinbizkit/snippets" }, '/')
+local from_lua = require("luasnip.loaders.from_lua")
+from_lua.load({ paths = path })
