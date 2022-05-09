@@ -16,6 +16,13 @@ local default_config = {
 -- An LSP config dictionary which should be extended with custom per-server settings.
 local configs = {
   clangd = {
+    cmd = {
+      "clangd",
+      "--background-index",
+      "--suggest-missing-includes",
+      "--clang-tidy",
+      "--header-insertion=iwyu",
+    },
     on_attach = function()
       default_lsp_attach_handler()
       require("keymap").map("n", "<Leader>gs", "<Cmd>ClangdSwitchSourceHeader<CR>")
