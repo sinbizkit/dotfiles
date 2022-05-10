@@ -8,10 +8,10 @@ local f = ls.f
 return {
   s(
     "req",
-    fmt([[local {} = require("{}")]], {
+    fmt([[local {} = require "{}"]], {
       f(function(args)
         local splitted = vim.split(args[1][1], ".", { plain = true })
-        return splitted[#splitted]
+        return splitted[#splitted]:gsub("-", "_")
       end, { 1 }),
       i(1),
     })
