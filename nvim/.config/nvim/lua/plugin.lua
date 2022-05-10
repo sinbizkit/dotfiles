@@ -68,14 +68,8 @@ require("packer").startup {
     }
 
     -- {{{ Language specific.
-    use {
-      "rust-lang/rust.vim",
-      ft = "rust",
-    }
-    use {
-      "simrat39/rust-tools.nvim",
-      ft = "rust",
-    }
+    use "rust-lang/rust.vim"
+    use "simrat39/rust-tools.nvim"
     -- }}}
   end,
   -- display packer dialouge in the center in a floating window
