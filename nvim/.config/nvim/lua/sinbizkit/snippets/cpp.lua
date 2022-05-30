@@ -77,18 +77,15 @@ return {
 
   s("foe", { t "for (const auto &val: ", i(1, "arr"), t { ") {", "\t" }, i(0), t { "", "}" } }),
 
-  s(
-    "foi",
-    {
-      t "for (auto it = std::begin(",
-      i(1, "arr"),
-      t "), e = std::end(",
-      rep(1),
-      t { "); it != e; ++it) {", "\t" },
-      i(0),
-      t { "", "}" },
-    }
-  ),
+  s("foi", {
+    t "for (auto it = std::begin(",
+    i(1, "arr"),
+    t "), e = std::end(",
+    rep(1),
+    t { "); it != e; ++it) {", "\t" },
+    i(0),
+    t { "", "}" },
+  }),
 
   s("if", { t "if (", i(1), t { ") {", "\t" }, i(0), t { "", "}" } }),
 
