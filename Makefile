@@ -40,4 +40,4 @@ install-mc:
 
 
 clean:
-	stow --delete fish nvim gdb tmux alacritty mc i3 polybar
+	stow --delete fish nvim gdb tmux alacritty mc i3 polybar rofi
