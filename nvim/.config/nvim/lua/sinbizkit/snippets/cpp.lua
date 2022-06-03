@@ -169,11 +169,10 @@ return {
   }),
 
   s("dtor", {
-    t "~",
     d(1, function()
       return sn(nil, i(1, vim.fn.expand "%:t:r"))
     end),
-    t "::",
+    t "::~",
     rep(1),
     t "()",
     c(2, {
