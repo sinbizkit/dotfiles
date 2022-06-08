@@ -1,8 +1,7 @@
 #!/bin/bash
 
 
-SDIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
-SDIR := $(patsubst %/, %, $(SDIR))
+TARGET_DIR := $(HOME)
 
 
 all: install
@@ -11,10 +10,10 @@ all: install
 install: install-fish install-nvim install-gdb install-tmux install-alacritty install-i3 install-mc
 
 install-fish:
-	stow fish
+	stow --target=${TARGET_DIR} fish
 
 install-nvim:
-	stow nvim
+	stow --target=${TARGET_DIR} nvim
 	rm -rf ${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim
 	git clone -q --depth 1 https://github.com/wbthomason/packer.nvim \
 		${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim
@@ -24,20 +23,20 @@ install-gdb:
 	mkdir -p ${HOME}/.local/share/gdb/qt5
 	git clone https://invent.kde.org/ebuka/gdb_printers.git ${HOME}/.local/share/gdb/qt5
 	svn co svn://gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python ${HOME}/.local/share/gdb/stl
-	stow gdb
+	stow --target=${TARGET_DIR} gdb
 
 install-tmux:
-	stow tmux
+	stow --target=${TARGET_DIR} tmux
 
 install-alacritty:
-	stow alacritty
+	stow --target=${TARGET_DIR} alacritty
 
 install-i3:
-	stow i3 polybar rofi
+	stow --target=${TARGET_DIR} i3 polybar rofi
 
 install-mc:
-	stow --adopt mc
+	stow --adopt --target=${TARGET_DIR} mc
 
 
 clean:
-	stow --delete fish nvim gdb tmux alacritty mc i3 polybar rofi
+	stow --delete --target=${TARGET_DIR} fish nvim gdb tmux alacritty mc i3 polybar rofi
