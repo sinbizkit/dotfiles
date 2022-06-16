@@ -68,8 +68,8 @@ map("n", "<F4>", "<Cmd>TagbarToggle<CR>")
 
 -- {{{ Telescope
 map("n", "<Leader>t", require("telescope.builtin").find_files)
-map("n", "<Leader>r", require("telescope.builtin").tags)
-map("n", "<Leader>b", require("telescope.builtin").buffers)
+map("n", "<Leader>st", require("telescope.builtin").tags)
+map("n", "<Leader>sb", require("telescope.builtin").buffers)
 map("n", "<Leader>gg", require("telescope.builtin").live_grep)
 map("n", "<Leader>sd", require("telescope.builtin").diagnostics)
 
