@@ -1,9 +1,10 @@
 return {
   require "config.plugin.cmp",
+  require "config.plugin.comment",
   require "config.plugin.gitsigns",
   require "config.plugin.lspconfig",
   require "config.plugin.lualine",
-  require "config.plugin.nerdcommenter",
+  require "config.plugin.luasnip",
   require "config.plugin.null-ls",
   require "config.plugin.nvim-tree",
   require "config.plugin.rust-tools",
@@ -11,5 +12,4 @@ return {
   require "config.plugin.tagbar",
   require "config.plugin.telescope",
   require "config.plugin.treesitter",
-  require "config.plugin.luasnip",
 }
