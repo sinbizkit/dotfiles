@@ -46,13 +46,6 @@ map("n", "<Leader>nl", "<Cmd>lnext<CR>")
 map("n", "<Leader>pl", "<Cmd>lprevious<CR>")
 -- }}}
 
--- {{{ ALE plugin
-map("n", "<Leader>ll", "<Cmd>ALELint<CR>")
-map("n", "<Leader>lj", "<Cmd>ALENext<CR>")
-map("n", "<Leader>lk", "<Cmd>ALEPrevious<CR>")
-map("n", "<Leader>lf", "<Cmd>ALEFix<CR>")
--- }}}
-
 -- {{{ Hop plugin
 map("n", "<Leader><Leader>w", "<Cmd>HopWord<CR>")
 map("n", "<Leader><Leader>f", "<Cmd>HopWordAC<CR>")
