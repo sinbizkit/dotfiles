@@ -151,6 +151,15 @@ return {
     t { "", "};" },
   }),
 
+  s("st", {
+    t "struct ",
+    i(1, "StructName "),
+    t { " {", "" },
+    t { "\t" },
+    i(0),
+    t { "", "};" },
+  }),
+
   s("ctor", {
     d(1, function()
       return sn(nil, i(1, vim.fn.expand "%:t:r"))
