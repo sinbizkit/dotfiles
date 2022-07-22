@@ -78,19 +78,19 @@ map("n", "<Leader>v", require("sinbizkit.telescope").find_vimconf)
 
 local ls = require "luasnip"
 -- {{{ LuaSnips
-map({ "i", "n", "s" }, "<C-j>", function()
+map("i", "<C-j>", function()
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
   end
 end)
 
-map({ "i", "n", "s" }, "<C-k>", function()
+map("i", "<C-k>", function()
   if ls.jumpable(-1) then
     ls.jump(-1)
   end
 end)
 
-map({ "i", "n", "s" }, "<C-l>", function()
+map("i", "<C-l>", function()
   if ls.choice_active() then
     ls.change_choice(1)
   end
