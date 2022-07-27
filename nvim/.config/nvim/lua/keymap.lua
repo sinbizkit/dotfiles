@@ -16,6 +16,11 @@ local function buf_map(mode, bind, exec, opts)
   vim.keymap.set(mode, bind, exec, options)
 end
 
+-- {{{ Tabs moving
+map("n", "<M-h>", "<Cmd>-tabmove<CR>") -- Move current tab page to the left.
+map("n", "<M-l>", "<Cmd>+tabmove<CR>") -- Move current tab page to the right.
+-- }}}
+
 -- {{{ Panes creation
 map("n", "ne", "<Cmd>vsplit<CR>") -- Split current window vertically.
 map("n", "no", "<Cmd>split<CR>") -- Split current window horizontally.
