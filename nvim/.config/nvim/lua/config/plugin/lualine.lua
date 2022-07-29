@@ -9,7 +9,7 @@ require("lualine").setup {
     lualine_c = { "filename" },
     lualine_x = { "encoding", "fileformat", "filetype" },
     lualine_y = {
-      { "diagnostics", sources = { "nvim_diagnostic", "ale" } },
+      { "diagnostics", sources = { "nvim_diagnostic" } },
       "progress",
     },
     lualine_z = { "location" },
