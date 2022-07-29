@@ -1,13 +1,20 @@
--- Init options for pickers without the preview.
-local wopreview_picker_opts = {
+-- Init options for pickers the preview.
+local default_picker_opts = {
   theme = "dropdown",
-  width = 0.8,
-  prompt_title = "",
-  prompt_prefix = "  ",
   previewer = false,
   layout_config = {
-    width = 0.8,
+    height = 0.95,
   },
+}
+
+local preview_picker_opts = {
+	layout_strategy = "vertical",
+	layout_config = {
+		width = 0.8,
+		height = 0.95,
+		prompt_position = "bottom",
+		preview_cutoff = 30,
+	}
 }
 
 require("telescope").setup {
@@ -18,9 +25,19 @@ require("telescope").setup {
         ["<C-k>"] = require("telescope.actions").move_selection_previous,
       },
     },
+    prompt_prefix = "  ",
+    selection_caret = " ",
+    path_display = { "truncate" },
   },
   pickers = {
-    find_files = wopreview_picker_opts,
-    buffers = wopreview_picker_opts,
+    find_files = default_picker_opts,
+    buffers = default_picker_opts,
+    diagnostics = preview_picker_opts,
+    live_grep = preview_picker_opts,
+    lsp_references = preview_picker_opts,
+    lsp_document_symbols = preview_picker_opts,
+    lsp_dynamic_workspace_symbols = preview_picker_opts,
+    lsp_dynamic_definitions = preview_picker_opts,
+    lsp_dynamic_implementations = preview_picker_opts,
   },
 }
