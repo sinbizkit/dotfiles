@@ -17,8 +17,13 @@ local function buf_map(mode, bind, exec, opts)
 end
 
 -- {{{ Tabs moving
-map("n", "<M-h>", "<Cmd>-tabmove<CR>") -- Move current tab page to the left.
-map("n", "<M-l>", "<Cmd>+tabmove<CR>") -- Move current tab page to the right.
+map("n", "<M-H>", "<Cmd>-tabmove<CR>") -- Move current tab page to the left.
+map("n", "<M-L>", "<Cmd>+tabmove<CR>") -- Move current tab page to the right.
+-- }}}
+
+-- {{{ Tabs navigation
+map("n", "<M-h>", "<Cmd>tabprevious<CR>") -- Move current tab page to the left.
+map("n", "<M-l>", "<Cmd>tabnext<CR>") -- Move current tab page to the right.
 -- }}}
 
 -- {{{ Panes creation
@@ -72,11 +77,12 @@ map("n", "<F4>", "<Cmd>TagbarToggle<CR>")
 -- }}}
 
 -- {{{ Telescope
-map("n", "<Leader>t", require("telescope.builtin").find_files)
-map("n", "<Leader>st", require("telescope.builtin").tags)
-map("n", "<Leader>sb", require("telescope.builtin").buffers)
-map("n", "<Leader>gg", require("telescope.builtin").live_grep)
-map("n", "<Leader>sd", require("telescope.builtin").diagnostics)
+local builtin = require("telescope.builtin")
+map("n", "<Leader>t", builtin.find_files)
+map("n", "<Leader>st", builtin.tags)
+map("n", "<Leader>sb", builtin.buffers)
+map("n", "<Leader>gg", builtin.live_grep)
+map("n", "<Leader>sd", builtin.diagnostics)
 
 map("n", "<Leader>v", require("sinbizkit.telescope").find_vimconf)
 -- }}}
@@ -138,11 +144,11 @@ M.map_lsp_keys = function()
   buf_map("v", "<Leader>df", [[<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>]])
 
   -- Telescope
-  buf_map("n", "<Leader>gr", require("telescope.builtin").lsp_references)
-  buf_map("n", "<Leader>gd", require("telescope.builtin").lsp_definitions)
-  buf_map("n", "<Leader>gi", require("telescope.builtin").lsp_implementations)
-  buf_map("n", "<Leader>so", require("telescope.builtin").lsp_document_symbols)
-  buf_map("n", "<Leader>ss", require("telescope.builtin").lsp_dynamic_workspace_symbols)
+  buf_map("n", "<Leader>gr", builtin.lsp_references)
+  buf_map("n", "<Leader>gd", builtin.lsp_definitions)
+  buf_map("n", "<Leader>gi", builtin.lsp_implementations)
+  buf_map("n", "<Leader>so", builtin.lsp_document_symbols)
+  buf_map("n", "<Leader>ss", builtin.lsp_dynamic_workspace_symbols)
 end
 
 return M
