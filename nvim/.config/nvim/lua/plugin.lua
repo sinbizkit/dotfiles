@@ -14,7 +14,19 @@ require("packer").startup {
 
     use "majutsushi/tagbar"
 
-    use "simrat39/symbols-outline.nvim"
+    use {
+      "simrat39/symbols-outline.nvim",
+      config = function()
+        require("symbols-outline").setup {
+          auto_preview = false,
+          position = "left",
+          relative_width = true,
+          width = 25,
+          show_relative_numbers = true,
+          show_symbol_details = false,
+        }
+      end,
+    }
     use "tpope/vim-fugitive"
     use {
       "lewis6991/gitsigns.nvim",
