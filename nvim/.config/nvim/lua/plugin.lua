@@ -78,7 +78,9 @@ require("packer").startup {
     use {
       "nvim-treesitter/nvim-treesitter-context",
       config = function()
-        require("nvim-treesitter-context").setup()
+        require("treesitter-context").setup {
+          separator = "―",
+        }
       end,
     }
 
