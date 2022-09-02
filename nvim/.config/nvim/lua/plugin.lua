@@ -74,6 +74,14 @@ require("packer").startup {
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
     }
+
+    use {
+      "nvim-treesitter/nvim-treesitter-context",
+      config = function()
+        require("nvim-treesitter-context").setup()
+      end,
+    }
+
     use {
       "nvim-telescope/telescope.nvim",
       requires = "nvim-lua/plenary.nvim",
