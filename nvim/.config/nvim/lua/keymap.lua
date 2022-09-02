@@ -77,12 +77,14 @@ map("n", "<F4>", "<Cmd>TagbarToggle<CR>")
 -- }}}
 
 -- {{{ Telescope
-local builtin = require("telescope.builtin")
+local builtin = require "telescope.builtin"
 map("n", "<Leader>t", builtin.find_files)
 map("n", "<Leader>st", builtin.tags)
 map("n", "<Leader>sb", builtin.buffers)
 map("n", "<Leader>gg", builtin.live_grep)
-map("n", "<Leader>sd", builtin.diagnostics)
+map("n", "<Leader>sd", function()
+  builtin.diagnostics { bufnr = 0 }
+end)
 
 map("n", "<Leader>v", require("sinbizkit.telescope").find_vimconf)
 -- }}}
