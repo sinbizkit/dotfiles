@@ -22,7 +22,7 @@ g.loaded_perl_provider = 0
 opt.termguicolors = true
 
 opt.list = true
-opt.listchars = { tab = "•·", space = "·", eol = "↴", extends = "»", precedes = "«", trail = "~", nbsp = "⦸" }
+opt.listchars = { tab = "•·", space = "·", eol = "↲", extends = "❯", precedes = "❮", trail = "~", nbsp = "⦸" }
 opt.cursorline = true -- Highlighting that moves with the cursor.
 opt.showmode = true -- Turn off the native mode indicator.
 opt.encoding = "utf-8" -- Default encoding.
