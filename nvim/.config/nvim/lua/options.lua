@@ -42,7 +42,6 @@ opt.signcolumn = "yes" -- Always show the sign column.
 opt.completeopt = { "noinsert", "menuone", "noselect" }
 opt.laststatus = 2 -- The last window will always have a status line.
 
-g.tokyonight_style = "night"
 vim.cmd [[ colorscheme tokyonight ]]
 
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }

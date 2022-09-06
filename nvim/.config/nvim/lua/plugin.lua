@@ -6,7 +6,13 @@ require("packer").startup {
 
     use "nvim-lua/popup.nvim"
 
-    use "folke/tokyonight.nvim"
+    use {
+      "folke/tokyonight.nvim",
+      config = function()
+        require("tokyonight").setup { style = "night" }
+      end,
+    }
+
     use {
       "nvim-lualine/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
