@@ -42,7 +42,7 @@ opt.signcolumn = "yes" -- Always show the sign column.
 opt.completeopt = { "noinsert", "menuone", "noselect" }
 opt.laststatus = 2 -- The last window will always have a status line.
 
-vim.cmd [[ colorscheme tokyonight ]]
+vim.cmd [[ colorscheme tokyonight-night ]]
 
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do

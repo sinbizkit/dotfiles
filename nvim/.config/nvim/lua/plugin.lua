@@ -5,13 +5,7 @@ require("packer").startup {
     use "wbthomason/packer.nvim"
 
     use "nvim-lua/popup.nvim"
-
-    use {
-      "folke/tokyonight.nvim",
-      config = function()
-        require("tokyonight").setup { style = "night" }
-      end,
-    }
+		use "folke/tokyonight.nvim"
 
     use {
       "nvim-lualine/lualine.nvim",
