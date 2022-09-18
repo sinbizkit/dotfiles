@@ -37,7 +37,7 @@ require("telescope").setup {
     lsp_references = preview_picker_opts,
     lsp_document_symbols = preview_picker_opts,
     lsp_dynamic_workspace_symbols = preview_picker_opts,
-    lsp_dynamic_definitions = preview_picker_opts,
-    lsp_dynamic_implementations = preview_picker_opts,
+    lsp_definitions = preview_picker_opts,
+    lsp_implementations = preview_picker_opts,
   },
 }
