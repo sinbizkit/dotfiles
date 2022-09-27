@@ -5,7 +5,7 @@ require("packer").startup {
     use "wbthomason/packer.nvim"
 
     use "nvim-lua/popup.nvim"
-		use "folke/tokyonight.nvim"
+		use { "catppuccin/nvim", as = "catppuccin" }
 
     use {
       "nvim-lualine/lualine.nvim",
