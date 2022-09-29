@@ -31,7 +31,7 @@ cmp.setup {
     format = lspkind.cmp_format {
       with_text = true,
       maxwidth = 50,
-      menu = { buffer = "[Buffer]", nvim_lsp = "[LSP]", path = "[Path]" },
+      menu = { buffer = "[Buf]", nvim_lsp = "[LSP]", path = "[Path]" },
     },
   },
   experimental = {
