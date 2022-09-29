@@ -12,8 +12,6 @@ require("packer").startup {
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
     }
 
-    use "majutsushi/tagbar"
-
     use {
       "simrat39/symbols-outline.nvim",
       config = function()
