@@ -5,3 +5,5 @@ fish/.config/fish/fish_variables
 
 tmux/.tmux/resurrect
 tmux/.tmux/plugins
+
+.envrc
