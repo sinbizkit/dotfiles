@@ -3,20 +3,23 @@ local default_picker_opts = {
   theme = "dropdown",
   previewer = false,
   layout_config = {
-    height = 0.95,
+		width = 0.87,
+    height = 0.8,
   },
-	path_display = { truncate = 5 },
+  path_display = { truncate = 2 },
 }
 
 local preview_picker_opts = {
-	layout_strategy = "vertical",
-	layout_config = {
-		width = 0.8,
-		height = 0.95,
-		prompt_position = "bottom",
-		preview_cutoff = 30,
-	},
-	path_display = { truncate = 5 },
+  layout_strategy = "vertical",
+  layout_config = {
+    width = 0.87,
+    height = 0.8,
+    prompt_position = "bottom",
+    preview_cutoff = 120,
+  },
+  path_display = { "smart", "truncate" },
+  fname_width = 40,
+  trim_text = true,
 }
 
 require("telescope").setup {
@@ -29,7 +32,7 @@ require("telescope").setup {
     },
     prompt_prefix = "  ",
     selection_caret = " ",
-    path_display = { truncate = 5 },
+    path_display = { "truncate" },
   },
   pickers = {
     find_files = default_picker_opts,
