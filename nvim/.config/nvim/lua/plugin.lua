@@ -5,6 +5,7 @@ require("packer").startup {
     use "wbthomason/packer.nvim"
 
     use "nvim-lua/popup.nvim"
+    use "kyazdani42/nvim-web-devicons"
     use { "catppuccin/nvim", as = "catppuccin" }
 
     use {
