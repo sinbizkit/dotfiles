@@ -57,8 +57,8 @@ local configs = {
     on_attach = function(client)
       default_lsp_attach_handler()
       -- formatting provided by stylua.
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
+      client.server_capabilities.document_formatting = false
+      client.server_capabilities.document_range_formatting = false
     end,
   },
 }
