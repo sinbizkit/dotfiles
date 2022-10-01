@@ -72,9 +72,6 @@ map("n", "<Leader><F6>", "<Cmd>NvimTreeFindFile<CR>")
 map("n", "<F5>", "<Cmd>SymbolsOutline<CR>")
 -- }}}
 
--- {{{ Tagbar
-map("n", "<F4>", "<Cmd>TagbarToggle<CR>")
--- }}}
 
 -- {{{ Telescope
 local builtin = require "telescope.builtin"
