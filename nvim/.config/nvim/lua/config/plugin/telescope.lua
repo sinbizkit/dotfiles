@@ -31,7 +31,7 @@ require("telescope").setup {
       },
     },
     prompt_prefix = "  ",
-    selection_caret = " ",
+    selection_caret = "➤ ",
     path_display = { "truncate" },
   },
   pickers = {
