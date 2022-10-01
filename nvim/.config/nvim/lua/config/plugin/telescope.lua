@@ -5,6 +5,7 @@ local default_picker_opts = {
   layout_config = {
     height = 0.95,
   },
+	path_display = { truncate = 5 },
 }
 
 local preview_picker_opts = {
@@ -14,7 +15,8 @@ local preview_picker_opts = {
 		height = 0.95,
 		prompt_position = "bottom",
 		preview_cutoff = 30,
-	}
+	},
+	path_display = { truncate = 5 },
 }
 
 require("telescope").setup {
@@ -27,7 +29,7 @@ require("telescope").setup {
     },
     prompt_prefix = "  ",
     selection_caret = " ",
-    path_display = { "truncate" },
+    path_display = { truncate = 5 },
   },
   pickers = {
     find_files = default_picker_opts,
