@@ -3,7 +3,7 @@ local default_picker_opts = {
   theme = "dropdown",
   previewer = false,
   layout_config = {
-		width = 0.87,
+    width = 0.87,
     height = 0.8,
   },
   path_display = { truncate = 2 },
