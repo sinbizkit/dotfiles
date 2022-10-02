@@ -1,5 +1,6 @@
 local ls = require "luasnip"
 ls.config.set_config {
+  history = true,
   -- Update more often, :h events for more info.
   update_events = "TextChanged,TextChangedI",
   delete_check_events = "TextChanged",
