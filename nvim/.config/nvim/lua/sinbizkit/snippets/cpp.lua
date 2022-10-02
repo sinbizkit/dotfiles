@@ -102,24 +102,29 @@ return {
   s(
     "map",
     c(1, {
-      fmt([[std::map<{}, {}> {} ]], { i(1), i(2), i(3) }),
-      fmt([[std::unordered_map<{}, {}> {} ]], { i(1), i(2), i(3) }),
+      fmt([[std::map<{}, {}> {};]], { i(1), i(2), i(3) }),
+      fmt([[std::unordered_map<{}, {}> {};]], { i(1), i(2), i(3) }),
     })
   ),
 
   s("ns", {
-    t "namespace ",
-    i(1),
-    t { " {", "", "" },
-    i(0),
-    t { "", "", "} // namespace " },
-    rep(1),
-  }),
-
-  s("ans", {
-    t { "namespace { ", "", "" },
-    i(0),
-    t { "", "", "} // anonymous namespace " },
+    c(1, {
+      -- named namespace
+      sn(nil, {
+        t "namespace ",
+        i(1),
+        t { " {", "", "" },
+        i(2),
+        t { "", "", "} // namespace" },
+        rep(1),
+      }),
+      -- anonymous namespace
+      sn(nil, {
+        t { "namespace { ", "", "" },
+        i(1),
+        t { "", "", "} // anonymous namespace" },
+      }),
+    }),
   }),
 
   s("sw", {
