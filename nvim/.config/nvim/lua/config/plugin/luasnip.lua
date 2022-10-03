@@ -3,9 +3,6 @@ ls.config.set_config {
   history = true,
   -- Update more often, :h events for more info.
   update_events = "TextChanged,TextChangedI",
-  delete_check_events = "TextChanged",
-  ext_base_prio = 300,
-  ext_prio_increase = 1,
 }
 
 local path = vim.api.nvim_get_runtime_file("init.lua", false)
