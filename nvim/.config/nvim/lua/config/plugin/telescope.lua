@@ -15,10 +15,10 @@ local preview_picker_opts = {
     width = 0.87,
     height = 0.8,
     prompt_position = "bottom",
-    preview_cutoff = 120,
+    preview_cutoff = 40,
   },
   path_display = { "smart", "truncate" },
-  fname_width = 40,
+  fname_width = 50,
   trim_text = true,
 }
 
