@@ -9,7 +9,6 @@ return {
   require "config.plugin.nvim-tree",
   require "config.plugin.nvim-web-devicons",
   require "config.plugin.rust-tools",
-  require "config.plugin.tagbar",
   require "config.plugin.telescope",
   require "config.plugin.treesitter",
 }
