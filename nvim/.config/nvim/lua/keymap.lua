@@ -139,8 +139,7 @@ M.map_lsp_keys = function()
   -- d - do
   buf_map("n", "<Leader>di", vim.lsp.buf.code_action)
   buf_map("n", "<Leader>dr", vim.lsp.buf.rename)
-  buf_map("n", "<Leader>df", vim.lsp.buf.formatting)
-  buf_map("v", "<Leader>df", [[<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>]])
+  buf_map({"n", "v"}, "<Leader>df", vim.lsp.buf.format)
 
   -- Telescope
   buf_map("n", "<Leader>gr", builtin.lsp_references)
