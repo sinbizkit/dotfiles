@@ -115,7 +115,7 @@ return {
         i(1),
         t { " {", "", "" },
         i(2),
-        t { "", "", "} // namespace" },
+        t { "", "", "} // namespace " },
         rep(1),
       }),
       -- anonymous namespace
