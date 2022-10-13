@@ -27,11 +27,10 @@ return {
     "li",
     fmt(
       [[
-//  File: {}
-//  Created by Ivan Berdnikov on {}
-//
-{}
-]],
+      //  File: {}
+      //  Created by Ivan Berdnikov on {}
+      //
+      {}]],
       {
         f(function()
           return vim.fn.expand "%:t"
@@ -56,36 +55,25 @@ return {
     "once",
     c(1, {
       sn(nil, { t { "#pragma once", "" }, i(1) }),
-      sn(nil, {
-        t "#ifndef ",
-        d(1, function()
-          return sn(nil, t(string.upper(string.gsub(vim.fn.expand "%:t", "%.", "_"))))
-        end),
-        t { "", "#define	" },
-        rep(1),
-        t { "", "", "" },
-        i(2),
-        t { "", "", "#endif" },
-      }),
+      fmt(
+        [[
+        #ifndef {guard}
+        #define {guard_rep}
+
+        {content}
+
+        #endif
+        ]],
+        {
+          guard = d(1, function()
+            return sn(nil, t(string.upper(string.gsub(vim.fn.expand "%:t", "%.", "_"))))
+          end),
+          guard_rep = rep(1),
+          content = i(2),
+        }
+      ),
     })
   ),
-
-  s(
-    "for",
-    { t "for (size_t i = 0, size = ", i(1, "arr"), t { ".size(); i < size; ++i) {", "\t" }, i(0), t { "", "}" } }
-  ),
-
-  s("foe", { t "for (const auto &val: ", i(1, "arr"), t { ") {", "\t" }, i(0), t { "", "}" } }),
-
-  s("foi", {
-    t "for (auto it = std::begin(",
-    i(1, "arr"),
-    t "), e = std::end(",
-    rep(1),
-    t { "); it != e; ++it) {", "\t" },
-    i(0),
-    t { "", "}" },
-  }),
 
   s("if", { t "if (", i(1), t { ") {", "\t" }, i(0), t { "", "}" } }),
 
@@ -110,14 +98,20 @@ return {
   s("ns", {
     c(1, {
       -- named namespace
-      sn(nil, {
-        t "namespace ",
-        i(1),
-        t { " {", "", "" },
-        i(2),
-        t { "", "", "} // namespace " },
-        rep(1),
-      }),
+      fmt(
+        [[
+        namespace {name} {{
+
+        {content}
+
+        }} // namespace {name_rep}
+        ]],
+        {
+          name = i(1),
+          content = i(2),
+          name_rep = rep(1),
+        }
+      ),
       -- anonymous namespace
       sn(nil, {
         t { "namespace { ", "", "" },
@@ -127,127 +121,152 @@ return {
     }),
   }),
 
-  s("sw", {
-    t "switch(",
-    i(1),
-    t ") {",
-    t { "", "case " },
-    i(2),
-    t { ": ", "" },
-    i(0),
-    t "break;",
-    t { "", "default: break;" },
-    t { "", "}" },
-  }),
+  s(
+    "cl",
+    fmt(
+      [[
+      class {name} {{
+      public:
+        {content}
+      }};
+      ]],
+      { name = i(1, "Name"), content = i(0) }
+    )
+  ),
 
-  s("cl", {
-    t "class ",
-    i(1, "ClassName "),
-    c(2, {
-      sn(nil, {
-        t ": public ",
-        i(1, "ParentName"),
+  s(
+    "st",
+    fmt(
+      [[
+      struct {name} {{
+        {content}
+      }};
+      ]],
+      { name = i(1, "Name"), content = i(0) }
+    )
+  ),
+
+  s(
+    "en",
+    fmt(
+      [[
+      {enum_type} {enum_name} {{
+      {enum_content}
+      }};
+      ]],
+      {
+        enum_type = c(1, {
+          t "enum",
+          t "enum class",
+        }),
+        enum_name = i(2, "Name"),
+        enum_content = i(0),
+      }
+    )
+  ),
+
+  s(
+    "ctor",
+    fmt([[ {name}::{name_rep}({params}) {body}]], {
+      name = d(1, function()
+        return sn(nil, i(1, vim.fn.expand "%:t:r"))
+      end),
+      name_rep = rep(1),
+      params = i(2),
+      body = c(3, {
+        sn(1, {
+          t { "{", "\t" },
+          i(1),
+          t { "", "}" },
+        }),
+        t "= default;",
       }),
-      t "",
-    }),
-    t { " {", "" },
-    t { "public:", "\t" },
-    i(0),
-    t { "", "};" },
-  }),
+    })
+  ),
 
-  s("st", {
-    t "struct ",
-    i(1, "StructName "),
-    t { " {", "" },
-    t { "\t" },
-    i(0),
-    t { "", "};" },
-  }),
-
-  s("ctor", {
-    d(1, function()
-      return sn(nil, i(1, vim.fn.expand "%:t:r"))
-    end),
-    t "::",
-    rep(1),
-    t "()",
-    c(2, {
-      sn(nil, {
-        t { " {", "\t" },
-        i(1),
-        t { "", "}" },
+  s(
+    "dtor",
+    fmt([[ {name}::~{name_rep}() {body}]], {
+      name = d(1, function()
+        return sn(nil, i(1, vim.fn.expand "%:t:r"))
+      end),
+      name_rep = rep(1),
+      body = c(2, {
+        sn(1, {
+          t { "{", "\t" },
+          i(1),
+          t { "", "}" },
+        }),
+        t "= default;",
       }),
-      t " = default;",
-    }),
-  }),
+    })
+  ),
 
-  s("dtor", {
-    d(1, function()
-      return sn(nil, i(1, vim.fn.expand "%:t:r"))
-    end),
-    t "::~",
-    rep(1),
-    t "()",
-    c(2, {
-      sn(nil, {
-        t { " {", "\t" },
-        i(1),
-        t { "", "}" },
-      }),
-      t " = default;",
-    }),
-  }),
+  s(
+    "fun",
+    fmt(
+      [[
+      {ret} {name}({params}) {{
+        {content}
+      }}
+      ]],
+      {
+        ret = i(3, "void"),
+        name = i(1, "name"),
+        params = i(2),
+        content = i(0),
+      }
+    )
+  ),
 
-  s("fun", {
-    i(3, "void"),
-    t " ",
-    i(1, "function"),
-    t "(",
-    i(2),
-    t { ") {", "\t" },
-    i(0),
-    t { "", "}" },
-  }),
+  s(
+    "mfun",
+    fmt(
+      [[ 
+      {ret} {cl_name}::{name}({params}) {cv_qual}{{
+        {content}
+      }}
+      ]],
+      {
+        ret = i(5, "void"),
+        cl_name = d(1, function()
+          return sn(nil, i(1, vim.fn.expand "%:t:r"))
+        end),
+        name = i(2, "name"),
+        params = i(3),
+        cv_qual = i(4),
+        content = i(0),
+      }
+    )
+  ),
 
-  s("mfun", {
-    i(5, "void"),
-    t " ",
-    d(1, function()
-      return sn(nil, i(1, vim.fn.expand "%:t:r"))
-    end),
-    t "::",
-    i(2, "function"),
-    t "(",
-    i(3),
-    t ") ",
-    i(4),
-    t { " {", "\t" },
-    i(0),
-    t { "", "}" },
-  }),
-
-  s("main", {
-    t { "int main(int argc, char *argv[]) {", "\t" },
-    i(0),
-    t { "", "}" },
-  }),
+  s(
+    "main",
+    fmt(
+      [[
+      int main(int argc, char *argv[]) {{
+        {}
+      }}
+      ]],
+      { i(1) }
+    )
+  ),
 
   s(
     "todo",
-    fmt("//{}({}: {}) {}", {
-      c(1, {
-        i(nil, "TODO"),
-        i(nil, "FIXME"),
-        i(nil, "NOTE"),
+    fmt("//{type}({email}: {date}) {descr}", {
+      type = c(1, {
+        t "TODO",
+        t "FIXME",
+        t "NOTE",
       }),
-      f(function()
+      email = f(function()
         return git_user_email()
       end),
-      f(function()
+      date = f(function()
         return os.date "%d/%m/%y"
       end),
-      i(0, "description"),
+      descr = i(0, "description"),
     })
   ),
 
