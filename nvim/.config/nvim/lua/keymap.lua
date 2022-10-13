@@ -72,7 +72,6 @@ map("n", "<Leader><F6>", "<Cmd>NvimTreeFindFile<CR>")
 map("n", "<F5>", "<Cmd>SymbolsOutline<CR>")
 -- }}}
 
-
 -- {{{ Telescope
 local builtin = require "telescope.builtin"
 map("n", "<Leader>t", builtin.find_files)
@@ -118,6 +117,31 @@ map("n", "<Leader>rs", function()
 end)
 -- }}}
 
+-- {{{ Gitsigns
+local gitsigns = require "gitsigns"
+local line = vim.fn.line
+-- Stage
+map("n", "<Leader>hs", gitsigns.stage_hunk)
+map("v", "<Leader>hs", function()
+  gitsigns.stage_hunk { line ".", line "v" }
+end)
+map("n", "<leader>hS", gitsigns.stage_buffer)
+-- Reset
+map("n", "<Leader>hr", gitsigns.reset_hunk)
+map("v", "<Leader>hh", function()
+  gitsigns.reset_hunk { line ".", line "v" }
+end)
+map("n", "<Leader>hR", gitsigns.reset_buffer)
+-- Misc
+map("n", "<Leader>hu", gitsigns.undo_stage_hunk)
+map("n", "<Leader>hp", gitsigns.preview_hunk)
+map("n", "<Leader>hd", gitsigns.diffthis)
+map("n", "<Leader>hD", function()
+  gitsigns.diffthis "~"
+end)
+map('n', '<Leader>hb', function() gitsigns.blame_line{full=true} end)
+-- }}}
+
 local M = {
   map = map,
   buf_map = buf_map,
@@ -139,7 +163,7 @@ M.map_lsp_keys = function()
   -- d - do
   buf_map("n", "<Leader>di", vim.lsp.buf.code_action)
   buf_map("n", "<Leader>dr", vim.lsp.buf.rename)
-  buf_map({"n", "v"}, "<Leader>df", vim.lsp.buf.format)
+  buf_map({ "n", "v" }, "<Leader>df", vim.lsp.buf.format)
 
   -- Telescope
   buf_map("n", "<Leader>gr", builtin.lsp_references)
