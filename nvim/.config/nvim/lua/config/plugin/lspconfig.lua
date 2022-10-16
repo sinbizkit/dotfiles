@@ -1,7 +1,7 @@
 local lspconfig = require "lspconfig"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local function default_lsp_attach_handler()
   require("keymap").map_lsp_keys()
