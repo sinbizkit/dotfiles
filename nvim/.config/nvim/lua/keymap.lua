@@ -16,6 +16,11 @@ local function buf_map(mode, bind, exec, opts)
   vim.keymap.set(mode, bind, exec, options)
 end
 
+-- {{{ Motions
+map({"n", "v"}, "<", ",")
+map({"n", "v"}, ">", ";")
+-- }}}
+
 -- {{{ Tabs moving
 map("n", "<M-H>", "<Cmd>-tabmove<CR>") -- Move current tab page to the left.
 map("n", "<M-L>", "<Cmd>+tabmove<CR>") -- Move current tab page to the right.
