@@ -32,9 +32,9 @@ map("n", "<M-l>", "<Cmd>tabnext<CR>") -- Move current tab page to the right.
 -- }}}
 
 -- {{{ Panes creation
-map("n", "ne", "<Cmd>vsplit<CR>") -- Split current window vertically.
-map("n", "no", "<Cmd>split<CR>") -- Split current window horizontally.
-map("n", "nt", "<Cmd>tabnew<CR>") -- Open new tab.
+map("n", "<Space>e", "<Cmd>vsplit<CR>") -- Split current window vertically.
+map("n", "<Space>o", "<Cmd>split<CR>") -- Split current window horizontally.
+map("n", "<Space>t", "<Cmd>tabnew<CR>") -- Open new tab.
 -- }}}
 --
 -- {{{ Panes navigation.
