@@ -1,3 +1,3 @@
 set GOPATH $HOME/go
 set PATH $GOPATH/bin $PATH
-set PATH $HOME/.local/go/bin $PATH
+fish_add_path $HOME/.local/go/bin
