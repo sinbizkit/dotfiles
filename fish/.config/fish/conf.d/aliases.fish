@@ -3,3 +3,10 @@
 if test (uname) = "Darwin"; and test -e (which nvim)
 	alias vim="nvim"
 end
+
+if type -q exa
+	alias ls="exa --group-directories-first"
+	alias la="exa --all --group-directories-first"
+	alias ll="exa --long --group-directories-first"
+	alias lla="exa --long --all --group-directories-first"
+end
