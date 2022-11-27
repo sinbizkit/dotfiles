@@ -82,7 +82,11 @@ local builtin = require "telescope.builtin"
 map("n", "<Leader>t", builtin.find_files)
 map("n", "<Leader>st", builtin.tags)
 map("n", "<Leader>sb", builtin.buffers)
+map("n", "<Leader>sk", builtin.keymaps)
+map("n", "<Leader>sr", builtin.registers)
+map("n", "<Leader>sj", builtin.jumplist)
 map("n", "<Leader>gg", builtin.live_grep)
+map("v", "<Leader>gg", builtin.grep_string)
 map("n", "<Leader>sd", function()
   builtin.diagnostics { bufnr = 0 }
 end)
