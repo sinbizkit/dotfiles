@@ -21,6 +21,13 @@ map({"n", "v"}, "<", ",")
 map({"n", "v"}, ">", ";")
 -- }}}
 
+-- {{{ Buffer modification
+map("n", "J", ":m .+1<CR>==") -- Move current line down
+map("n", "K", ":m .-2<CR>==") -- Move current line up
+map("v", "J", ":m '>+1<CR>gv=gv") -- Move selected block down
+map("v", "K", ":m '<-2<CR>gv=gv") -- Move selected block up
+-- }}}
+
 -- {{{ Tabs moving
 map("n", "<M-H>", "<Cmd>-tabmove<CR>") -- Move current tab page to the left.
 map("n", "<M-L>", "<Cmd>+tabmove<CR>") -- Move current tab page to the right.
