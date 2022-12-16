@@ -17,8 +17,8 @@ local function buf_map(mode, bind, exec, opts)
 end
 
 -- {{{ Motions
-map({"n", "v"}, "<", ",")
-map({"n", "v"}, ">", ";")
+map({ "n", "v" }, "<", ",")
+map({ "n", "v" }, ">", ";")
 -- }}}
 
 -- {{{ Buffer modification
@@ -86,17 +86,25 @@ map("n", "<F5>", "<Cmd>SymbolsOutline<CR>")
 
 -- {{{ Telescope
 local builtin = require "telescope.builtin"
-map("n", "<Leader>t", builtin.find_files)
+-- s - show
 map("n", "<Leader>st", builtin.tags)
 map("n", "<Leader>sb", builtin.buffers)
-map("n", "<Leader>sk", builtin.keymaps)
 map("n", "<Leader>sr", builtin.registers)
 map("n", "<Leader>sj", builtin.jumplist)
-map("n", "<Leader>gg", builtin.live_grep)
-map("v", "<Leader>gg", builtin.grep_string)
 map("n", "<Leader>sd", function()
   builtin.diagnostics { bufnr = 0 }
 end)
+-- f- find
+map("n", "<Leader>t", builtin.find_files)
+map("n", "<Leader>fg", builtin.live_grep)
+map("v", "<Leader>fg", function()
+  local _, ls, cs = unpack(vim.fn.getpos "v") -- visual selection start
+  local _, le, ce = unpack(vim.fn.getpos ".") -- visual selection end
+  local st = table.concat(vim.api.nvim_buf_get_text(0, ls - 1, cs - 1, le - 1, ce, {}))
+  builtin.grep_string { search = st, word_match = "-w" }
+end)
+map("n", "<Leader>fk", builtin.keymaps)
+map("n", "<Leader>fh", builtin.help_tags)
 
 map("n", "<Leader>v", require("sinbizkit.telescope").find_vimconf)
 -- }}}
@@ -155,7 +163,9 @@ map("n", "<Leader>hd", gitsigns.diffthis)
 map("n", "<Leader>hD", function()
   gitsigns.diffthis "~"
 end)
-map('n', '<Leader>hb', function() gitsigns.blame_line{full=true} end)
+map("n", "<Leader>hb", function()
+  gitsigns.blame_line { full = true }
+end)
 -- }}}
 
 local M = {
