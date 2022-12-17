@@ -17,6 +17,8 @@ local function buf_map(mode, bind, exec, opts)
 end
 
 -- {{{ Motions
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 map({ "n", "v" }, "<", ",")
 map({ "n", "v" }, ">", ";")
 -- }}}
@@ -94,6 +96,7 @@ map("n", "<Leader>sj", builtin.jumplist)
 map("n", "<Leader>sd", function()
   builtin.diagnostics { bufnr = 0 }
 end)
+map("n", "<Leader>st", builtin.resume)
 -- f- find
 map("n", "<Leader>t", builtin.find_files)
 map("n", "<Leader>fg", function()
@@ -105,6 +108,7 @@ map("v", "<Leader>fg", function()
   local st = table.concat(vim.api.nvim_buf_get_text(0, ls - 1, cs - 1, le - 1, ce, {}))
   builtin.grep_string { search = st, word_match = "-w", path_display = { "shorten" } }
 end)
+map("n", "<Leader>fb", builtin.current_buffer_fuzzy_find)
 map("n", "<Leader>fk", builtin.keymaps)
 map("n", "<Leader>fh", builtin.help_tags)
 
