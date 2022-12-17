@@ -29,8 +29,8 @@ map("v", "K", ":m '<-2<CR>gv=gv") -- Move selected block up
 -- }}}
 
 -- {{{ Tabs moving
-map("n", "<M-H>", "<Cmd>-tabmove<CR>") -- Move current tab page to the left.
-map("n", "<M-L>", "<Cmd>+tabmove<CR>") -- Move current tab page to the right.
+map("n", "<M-j>", "<Cmd>-tabmove<CR>") -- Move current tab page to the left.
+map("n", "<M-k>", "<Cmd>+tabmove<CR>") -- Move current tab page to the right.
 -- }}}
 
 -- {{{ Tabs navigation
