@@ -40,6 +40,8 @@ require("telescope").setup {
     diagnostics = preview_picker_opts,
     live_grep = preview_picker_opts,
     grep_string = preview_picker_opts,
+    current_buffer_fuzzy_find = preview_picker_opts,
+    help_tags = preview_picker_opts,
     lsp_references = preview_picker_opts,
     lsp_document_symbols = preview_picker_opts,
     lsp_dynamic_workspace_symbols = preview_picker_opts,
