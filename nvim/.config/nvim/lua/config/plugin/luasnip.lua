@@ -1,5 +1,9 @@
-local ls = require "luasnip"
-ls.config.set_config {
+local has_luasnip, luasnip = pcall(require, "luasnip")
+if not has_luasnip then
+  return
+end
+
+luasnip.config.set_config {
   history = true,
   -- Update more often, :h events for more info.
   update_events = "TextChanged,TextChangedI",

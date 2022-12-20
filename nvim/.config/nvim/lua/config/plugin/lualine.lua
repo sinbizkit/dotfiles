@@ -1,4 +1,9 @@
-require("lualine").setup {
+local has_lualine, lualine = pcall(require, "lualine")
+if not has_lualine then
+  return
+end
+
+lualine.setup {
   options = {
     section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "" },

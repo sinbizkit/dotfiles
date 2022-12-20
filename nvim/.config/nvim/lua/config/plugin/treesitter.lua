@@ -1,8 +1,14 @@
+local has_configs, configs = pcall(require, "nvim-treesitter.configs")
+if not has_configs then
+  return
+end
+
 local modules = { "cpp", "rust", "go", "lua", "python", "cmake", "javascript" }
 if vim.fn.has "mac" == 1 then
   table.insert(modules, "swift")
 end
-require("nvim-treesitter.configs").setup {
+
+configs.setup {
   -- ensure_installed can be "all" or a list of languages { "python", "javascript" }
   ensure_installed = modules,
   highlight = { -- enable highlighting for all file types

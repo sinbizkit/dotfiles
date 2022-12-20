@@ -1,7 +1,13 @@
-local lspconfig = require "lspconfig"
+local has_lspconfig, lspconfig = pcall(require, "lspconfig")
+if not has_lspconfig then
+  return
+end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if has_cmp_nvim_lsp then
+  capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+end
 
 local function default_lsp_attach_handler()
   require("keymap").map_lsp_keys()

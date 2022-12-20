@@ -1,5 +1,26 @@
-local lspkind = require "lspkind"
-local cmp = require "cmp"
+local has_cmp, cmp = pcall(require, "cmp")
+if not has_cmp then
+  return
+end
+
+local has_luasnip, luasnip = pcall(require, "luasnip")
+local lsp_expand
+if has_luasnip then
+  lsp_expand = function(args)
+    luasnip.lsp_expand(args.body)
+  end
+end
+
+local has_lspkind, lspkind = pcall(require, "lspkind")
+local lspkind_format
+if has_lspkind then
+  lspkind_format = lspkind.cmp_format {
+    with_text = true,
+    maxwidth = 50,
+    menu = { buffer = "[Buf]", nvim_lsp = "[LSP]", path = "[Path]" },
+  }
+end
+
 cmp.setup {
   sources = {
     { name = "nvim_lsp" },
@@ -23,16 +44,10 @@ cmp.setup {
     },
   },
   snippet = {
-    expand = function(args)
-      require("luasnip").lsp_expand(args.body)
-    end,
+    expand = lsp_expand
   },
   formatting = {
-    format = lspkind.cmp_format {
-      with_text = true,
-      maxwidth = 50,
-      menu = { buffer = "[Buf]", nvim_lsp = "[LSP]", path = "[Path]" },
-    },
+    format = lspkind_format,
   },
   experimental = {
     native_menu = false,

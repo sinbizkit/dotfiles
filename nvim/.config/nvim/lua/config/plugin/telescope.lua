@@ -1,3 +1,8 @@
+local has_telescope, telescope = pcall(require, "telescope")
+if not has_telescope then
+  return
+end
+
 -- Init options for pickers the preview.
 local default_picker_opts = {
   theme = "dropdown",
@@ -22,7 +27,7 @@ local preview_picker_opts = {
   trim_text = true,
 }
 
-require("telescope").setup {
+telescope.setup {
   defaults = {
     mappings = {
       i = {
