@@ -7,7 +7,7 @@ rust_tools.setup {
   server = {
     standalone = true,
     on_attach = function()
-      require("keymap").map_lsp_keys()
+      require("sinbizkit.lsp.mappings").map_lsp_keys()
     end,
   },
 }

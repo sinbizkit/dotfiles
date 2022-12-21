@@ -10,7 +10,7 @@ if has_cmp_nvim_lsp then
 end
 
 local function default_lsp_attach_handler()
-  require("keymap").map_lsp_keys()
+  require("sinbizkit.lsp.mappings").map_lsp_keys()
 end
 
 local servers = { "clangd", "gopls", "cmake", "pyright", "bashls", "tsserver", "sumneko_lua" }
@@ -31,7 +31,7 @@ local configs = {
     },
     on_attach = function()
       default_lsp_attach_handler()
-      require("keymap").map("n", "<Leader>gs", "<Cmd>ClangdSwitchSourceHeader<CR>")
+      require("sinbizkit.keymap").map("n", "<Leader>gs", "<Cmd>ClangdSwitchSourceHeader<CR>")
     end,
   },
   sumneko_lua = {

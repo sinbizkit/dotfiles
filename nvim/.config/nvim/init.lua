@@ -3,7 +3,7 @@ local core_modules = {
   "plugin",
   -- Load keybindings and the editor options.
   "options",
-  "keymap",
+  "mappings",
   -- Load various configurations (plugins, lsp, ...)
   "config.plugin",
 }

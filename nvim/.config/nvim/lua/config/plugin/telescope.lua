@@ -3,7 +3,39 @@ if not has_telescope then
   return
 end
 
--- Init options for pickers the preview.
+-------------------------------------------------------------------------------
+-- Keymaps.
+-------------------------------------------------------------------------------
+local builtin = require "telescope.builtin"
+local km = require "sinbizkit.keymap"
+-- s - show
+km.map("n", "<Leader>st", builtin.tags)
+km.map("n", "<Leader>sb", builtin.buffers)
+km.map("n", "<Leader>sr", builtin.registers)
+km.map("n", "<Leader>sj", builtin.jumplist)
+km.map("n", "<Leader>sd", function()
+  builtin.diagnostics { bufnr = 0 }
+end)
+km.map("n", "<Leader>st", builtin.resume)
+-- f- find
+km.map("n", "<Leader>t", builtin.find_files)
+km.map("n", "<Leader>fg", function()
+  builtin.live_grep { path_display = { "shorten" } }
+end)
+km.map("v", "<Leader>fg", function()
+  local _, ls, cs = unpack(vim.fn.getpos "v") -- visual selection start
+  local _, le, ce = unpack(vim.fn.getpos ".") -- visual selection end
+  local st = table.concat(vim.api.nvim_buf_get_text(0, ls - 1, cs - 1, le - 1, ce, {}))
+  builtin.grep_string { search = st, word_match = "-w", path_display = { "shorten" } }
+end)
+km.map("n", "<Leader>fb", builtin.current_buffer_fuzzy_find)
+km.map("n", "<Leader>fk", builtin.keymaps)
+km.map("n", "<Leader>fh", builtin.help_tags)
+
+km.map("n", "<Leader>v", require("sinbizkit.telescope").find_vimconf)
+-------------------------------------------------------------------------------
+-- Pickers layout setup.
+-------------------------------------------------------------------------------
 local default_picker_opts = {
   theme = "dropdown",
   previewer = false,
@@ -27,6 +59,9 @@ local preview_picker_opts = {
   trim_text = true,
 }
 
+-------------------------------------------------------------------------------
+-- Setup.
+-------------------------------------------------------------------------------
 telescope.setup {
   defaults = {
     mappings = {

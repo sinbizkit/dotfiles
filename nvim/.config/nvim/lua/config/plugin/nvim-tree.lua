@@ -19,3 +19,7 @@ nvim_tree.setup {
     ignore = false,
   },
 }
+
+local km = require "sinbizkit.keymap"
+km.map("n", "<F6>", "<Cmd>NvimTreeToggle<CR>")
+km.map("n", "<Leader><F6>", "<Cmd>NvimTreeFindFile<CR>")

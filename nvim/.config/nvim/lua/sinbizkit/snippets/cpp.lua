@@ -9,18 +9,7 @@ local f = ls.function_node
 local sn = ls.snippet_node
 local d = ls.dynamic_node
 local rep = require("luasnip.extras").rep
-
-local git_user_email = function()
-  local def_value = "i.berdnikov"
-  local handle = io.popen "git config --get user.email"
-  if handle == nil then
-    return def_value
-  end
-  local result = handle:read "*a"
-  handle:close()
-  result = string.gsub(result, "\n", "")
-  return #result > 0 and result or def_value
-end
+local git = require("sinbizkit.git")
 
 return {
   s(
@@ -260,9 +249,7 @@ return {
         t "FIXME",
         t "NOTE",
       }),
-      email = f(function()
-        return git_user_email()
-      end),
+      email = f(git.user_email),
       date = f(function()
         return os.date "%d/%m/%y"
       end),
