@@ -2,6 +2,8 @@ local km = require "sinbizkit.keymap"
 -- {{{ Motions
 km.map("n", "<C-d>", "<C-d>zz")
 km.map("n", "<C-u>", "<C-u>zz")
+km.map({ "n", "v" }, "<", ",")
+km.map({ "n", "v" }, ">", ";")
 -- }}}
 
 -- {{{ Buffer modification
@@ -22,9 +24,9 @@ km.map("n", "<M-l>", "<Cmd>tabnext<CR>") -- Move current tab page to the right.
 -- }}}
 
 -- {{{ Panes creation
-km.map("n", "<Leader>e", "<Cmd>vsplit<CR>") -- Split current window vertically.
-km.map("n", "<Leader>o", "<Cmd>split<CR>") -- Split current window horizontally.
-km.map("n", "<Leader>t", "<Cmd>tabnew<CR>") -- Open new tab.
+km.map("n", "<Space>e", "<Cmd>vsplit<CR>") -- Split current window vertically.
+km.map("n", "<Space>o", "<Cmd>split<CR>") -- Split current window horizontally.
+km.map("n", "<Space>t", "<Cmd>tabnew<CR>") -- Open new tab.
 -- }}}
 --
 -- {{{ Panes navigation.
