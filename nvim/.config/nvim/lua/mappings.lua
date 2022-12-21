@@ -1,4 +1,4 @@
-local km = require("sinbizkit.keymap")
+local km = require "sinbizkit.keymap"
 -- {{{ Motions
 km.map("n", "<C-d>", "<C-d>zz")
 km.map("n", "<C-u>", "<C-u>zz")

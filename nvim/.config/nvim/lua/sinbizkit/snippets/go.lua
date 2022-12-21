@@ -15,11 +15,11 @@ return {
     "li",
     fmt(
       [[
-//
-//  File: {}
-//  Created by Ivan Berdnikov on {}
-//
-	]],
+      //
+      //  File: {}
+      //  Created by Ivan Berdnikov on {}
+      //
+	    ]],
       {
         f(function()
           return vim.fn.expand "%:t"
