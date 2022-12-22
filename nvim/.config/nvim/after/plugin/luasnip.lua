@@ -49,7 +49,7 @@ end)
 
 -- Snippets reload.
 km.map("n", "<Leader>rs", function()
-  local luasnip_path = vim.api.nvim_get_runtime_file("lua/config/plugin/luasnip.lua", false)
+  local luasnip_path = vim.api.nvim_get_runtime_file("after/plugin/luasnip.lua", false)
   if #luasnip_path ~= 1 then
     error "Snippet file not found."
     return
