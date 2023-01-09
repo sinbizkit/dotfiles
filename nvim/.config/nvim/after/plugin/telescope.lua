@@ -9,7 +9,6 @@ end
 local builtin = require "telescope.builtin"
 local km = require "sinbizkit.keymap"
 -- s - show
-km.map("n", "<Leader>st", builtin.tags)
 km.map("n", "<Leader>sb", builtin.buffers)
 km.map("n", "<Leader>sr", builtin.registers)
 km.map("n", "<Leader>sj", builtin.jumplist)
