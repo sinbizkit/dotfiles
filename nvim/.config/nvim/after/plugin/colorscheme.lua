@@ -1,8 +1,6 @@
-local has_catppuccin, catppuccin = pcall(require, "catppuccin")
-if not has_catppuccin then
+local has_tokyonight, tokyonight = pcall(require, "tokyonight")
+if not has_tokyonight then
   return
 end
 
-vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-catppuccin.setup()
-vim.cmd [[ colorscheme catppuccin ]]
+vim.cmd [[ colorscheme tokyonight-moon ]]
