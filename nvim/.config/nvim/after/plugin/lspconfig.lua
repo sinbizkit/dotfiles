@@ -28,6 +28,7 @@ local configs = {
       "--suggest-missing-includes",
       "--clang-tidy",
       "--header-insertion=iwyu",
+      "--header-insertion-decorators=false",
     },
     on_attach = function()
       default_lsp_attach_handler()
