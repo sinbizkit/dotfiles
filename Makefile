@@ -14,9 +14,6 @@ install-fish:
 .PHONY: install-nvim
 install-nvim:
 	stow --target=${TARGET_DIR} nvim
-	rm -rf ${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim
-	git clone -q --depth 1 https://github.com/wbthomason/packer.nvim \
-		${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 .PHONY: install-gdb
 install-gdb:

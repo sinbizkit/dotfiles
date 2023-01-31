@@ -1,9 +1,9 @@
 local core_modules = {
+  "options",
+  -- Load keybindings and the editor options.
+  "mappings",
   -- Load all plugins.
   "plugin",
-  -- Load keybindings and the editor options.
-  "options",
-  "mappings",
 }
 
 for _, module in ipairs(core_modules) do

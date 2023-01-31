@@ -1,6 +1,7 @@
 local km = require "sinbizkit.keymap"
+
 return {
-  map_lsp_keys = function()
+  map_buf = function()
     -- s - show.
     km.buf_map("n", "<Leader>sh", vim.lsp.buf.hover)
     km.buf_map("n", "<Leader>si", vim.lsp.buf.signature_help)

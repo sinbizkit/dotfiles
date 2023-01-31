@@ -1,7 +1,5 @@
 local km = require "sinbizkit.keymap"
 -- {{{ Motions
-km.map("n", "<C-d>", "<C-d>zz")
-km.map("n", "<C-u>", "<C-u>zz")
 km.map({ "n", "v" }, "<", ",")
 km.map({ "n", "v" }, ">", ";")
 -- }}}

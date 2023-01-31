@@ -1,5 +1,0 @@
-local km = require("sinbizkit.keymap")
-km.map("n", "<Leader><Leader>w", "<Cmd>HopWord<CR>")
-km.map("n", "<Leader><Leader>f", "<Cmd>HopWordAC<CR>")
-km.map("n", "<Leader><Leader>b", "<Cmd>HopWordBC<CR>")
-km.map("n", "<Leader><Leader>c", "<Cmd>HopChar1<CR>")
