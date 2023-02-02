@@ -9,7 +9,7 @@ local f = ls.function_node
 local sn = ls.snippet_node
 local d = ls.dynamic_node
 local rep = require("luasnip.extras").rep
-local git = require("sinbizkit.git")
+local git = require "sinbizkit.git"
 
 return {
   s(
