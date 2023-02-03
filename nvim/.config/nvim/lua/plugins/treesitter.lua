@@ -16,6 +16,9 @@ return {
         enable = true, -- you can also use a table with list of langs here (e.g. { "python", "javascript" })
       },
     },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
   },
 
   {
