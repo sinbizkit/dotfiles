@@ -63,9 +63,7 @@ return {
 
   {
     "phaazon/hop.nvim",
-    opts = {
-      branch = "v1",
-    },
+    branch = "v2",
     keys = {
       "<Leader><Leader>w",
       "<Leader><Leader>f",
