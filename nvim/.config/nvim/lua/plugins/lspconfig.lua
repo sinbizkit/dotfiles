@@ -1,5 +1,6 @@
 local M = {
   "neovim/nvim-lspconfig",
+  dependencies = { "ray-x/lsp_signature.nvim" },
 }
 
 function M.config()
@@ -11,7 +12,8 @@ function M.config()
     capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
   end
 
-  local function default_lsp_attach_handler()
+  local function default_lsp_attach_handler(_, bufnr)
+    require("lsp_signature").on_attach({}, bufnr)
     require("sinbizkit.lsp.mappings").map_buf()
   end
 
@@ -32,8 +34,8 @@ function M.config()
         "--header-insertion=iwyu",
         "--header-insertion-decorators=false",
       },
-      on_attach = function()
-        default_lsp_attach_handler()
+      on_attach = function(client, bufnr)
+        default_lsp_attach_handler(client, bufnr)
         require("sinbizkit.keymap").map("n", "<Leader>gs", "<Cmd>ClangdSwitchSourceHeader<CR>")
       end,
     },

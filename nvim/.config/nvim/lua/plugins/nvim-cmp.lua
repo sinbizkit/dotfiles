@@ -1,5 +1,6 @@
 local M = {
   "hrsh7th/nvim-cmp",
+  event = "InsertEnter",
   priority = 200,
   dependencies = {
     "saadparwaiz1/cmp_luasnip",
