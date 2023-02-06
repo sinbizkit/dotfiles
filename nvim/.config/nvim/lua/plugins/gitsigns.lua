@@ -36,7 +36,8 @@ function M.config()
       km.map("n", "<Leader>hD", function()
         gitsigns.diffthis "~"
       end)
-      km.map("n", "<Leader>hb", function()
+      km.map("n", "<Leader>hb", gitsigns.blame_line)
+      km.map("n", "<Leader>hB", function()
         gitsigns.blame_line { full = true }
       end)
     end,
