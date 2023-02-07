@@ -33,6 +33,7 @@ function M.config()
         "--clang-tidy",
         "--header-insertion=iwyu",
         "--header-insertion-decorators=false",
+        "--completion-style=detailed",
       },
       on_attach = function(client, bufnr)
         default_lsp_attach_handler(client, bufnr)
