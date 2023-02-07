@@ -68,6 +68,12 @@ function M.config()
   -------------------------------------------------------------------------------
   -- Keymaps.
   -------------------------------------------------------------------------------
+  local vis_selection = function()
+    local _, ls, cs = unpack(vim.fn.getpos "v") -- visual selection start
+    local _, le, ce = unpack(vim.fn.getpos ".") -- visual selection end
+    return table.concat(vim.api.nvim_buf_get_text(0, ls - 1, cs - 1, le - 1, ce, {}))
+  end
+
   local builtin = require "telescope.builtin"
   local km = require "sinbizkit.keymap"
   -- s - show
@@ -84,13 +90,12 @@ function M.config()
     builtin.live_grep { path_display = { "shorten" } }
   end)
   km.map("v", "<Leader>fg", function()
-    local _, ls, cs = unpack(vim.fn.getpos "v") -- visual selection start
-    local _, le, ce = unpack(vim.fn.getpos ".") -- visual selection end
-    local st = table.concat(vim.api.nvim_buf_get_text(0, ls - 1, cs - 1, le - 1, ce, {}))
-    builtin.grep_string { search = st, word_match = "-w", path_display = { "truncate" } }
+    builtin.grep_string { search = vis_selection(), word_match = "-w", path_display = { "truncate" } }
   end)
   km.map("n", "<Leader>fb", builtin.current_buffer_fuzzy_find)
-  km.map("n", "<Leader>fk", builtin.keymaps)
+  km.map("v", "<Leader>fb", function()
+    builtin.current_buffer_fuzzy_find { default_text = vis_selection() }
+  end)
   km.map("n", "<Leader>fh", builtin.help_tags)
 
   km.map("n", "<Leader>v", require("sinbizkit.telescope.vimconf_picker").find_vimconf)
