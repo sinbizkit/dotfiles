@@ -1,5 +1,12 @@
 SHELL := /bin/bash
 TARGET_DIR := $(HOME)
+FONTS_DIR := ${HOME}/.local/share/fonts/ttf/nerd-fonts/JetBrainsMono
+
+
+REQUIRED_EXECUTABLES = stow svn git
+# The use of the := assignment operator that is required in order to force immediate evaluation of the RHS expression
+K := $(foreach exec,$(REQUIRED_EXECUTABLES),\
+$(if $(shell which $(exec)),some string,$(error "No $(exec) in PATH")))
 
 
 all: install
@@ -29,6 +36,10 @@ install-tmux:
 
 .PHONY: install-alacritty
 install-alacritty:
+	rm -rf ${FONTS_DIR}
+	mkdir -p ${FONTS_DIR}
+	svn co https://github.com/ryanoasis/nerd-fonts/trunk/patched-fonts/JetBrainsMono/Ligatures ${FONTS_DIR}
+	fc-cache -f
 	stow --target=${TARGET_DIR} alacritty
 
 .PHONY: install-i3
