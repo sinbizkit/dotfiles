@@ -3,6 +3,9 @@
 # Created by Ivan Berdnikov on 06/03/19
 #
 
+# vi-keybindings by default
+fish_vi_key_bindings
+
 # Supress greetings message.
 function fish_greeting
 end
