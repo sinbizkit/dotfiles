@@ -17,7 +17,7 @@ function M.config()
     require("sinbizkit.lsp.mappings").map_buf()
   end
 
-  local servers = { "clangd", "gopls", "cmake", "pyright", "bashls", "tsserver", "sumneko_lua" }
+  local servers = { "clangd", "gopls", "cmake", "pyright", "bashls", "tsserver", "lua_ls" }
   local default_config = {
     capabilities = capabilities,
     on_attach = default_lsp_attach_handler,
@@ -40,7 +40,7 @@ function M.config()
         require("sinbizkit.keymap").map("n", "<Leader>gs", "<Cmd>ClangdSwitchSourceHeader<CR>")
       end,
     },
-    sumneko_lua = {
+    lua_ls = {
       settings = {
         Lua = {
           runtime = {
