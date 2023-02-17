@@ -30,6 +30,7 @@ function M.config()
     },
     path_display = { "smart", "truncate" },
     fname_width = 50,
+    symbol_width = 50,
     trim_text = true,
   }
 
