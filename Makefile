@@ -1,11 +1,11 @@
 SHELL := /bin/bash
 TARGET_DIR := $(HOME)
-
+MKFILE_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 all: install
 
 
-install: install-fish install-nvim install-gdb install-tmux install-alacritty install-i3 install-mc
+install: install-fish install-nvim install-gdb install-tmux install-alacritty install-i3 install-mc install-fzf
 
 .PHONY: install-fish
 install-fish:
@@ -13,6 +13,7 @@ install-fish:
 
 .PHONY: install-nvim
 install-nvim:
+	${SHELL} ${MKFILE_DIR}/script/install_nvim.sh
 	stow --target=${TARGET_DIR} nvim
 
 .PHONY: install-gdb
@@ -38,6 +39,10 @@ install-i3:
 .PHONY: install-mc
 install-mc:
 	stow --adopt --target=${TARGET_DIR} mc
+
+.PHONY: install-fzf
+install-fzf:
+	${SHELL} ${MKFILE_DIR}/script/install_fzf.sh
 
 .PHONY: clean
 clean:
