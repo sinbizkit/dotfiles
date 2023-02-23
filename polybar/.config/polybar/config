@@ -73,8 +73,8 @@ dpi = 138
 tray-maxsize = 32
 
 modules-left = i3
-modules-center =
-modules-right = fsroot fshdd memory cpu date alsa xkeyboard powermenu
+modules-center = 
+modules-right = fsroot fshdd cpu gpu memory date alsa xkeyboard powermenu
 
 tray-position = right
 tray-padding = 2
@@ -161,10 +161,21 @@ label-urgent-padding = 2
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${palette.nord11}
 format-underline = ${palette.nord11}
 label = %percentage:2%%
+
+[module/gpu]
+type = custom/script
+interval = 2
+exec = nvidia-smi --format=nounits,csv,noheader --query-gpu=temperature.gpu
+tail = true
+format="<label>C"
+format-prefix = " "
+format-prefix-foreground = #76b900
+format-underline = #76b900
+label=%output%
 
 [module/memory]
 type = internal/memory
