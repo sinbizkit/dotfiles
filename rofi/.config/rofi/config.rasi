@@ -1,1 +1,7 @@
+configuration {
+    display-run: "";
+    display-drun: "";
+    font: "JetBrainsMono Nerd Font Mono 20";
+}
+
 @theme "nord"
