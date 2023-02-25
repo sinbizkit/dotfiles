@@ -1,5 +1,17 @@
 #!/bin/bash
 
+if [[ -f "/etc/arch-release" ]]; then
+	sudo pacman -Syu fzf
+	if [[ $? -eq 0 ]]; then
+		echo "FZF is installed succesfully."
+		exit 0
+	else
+		echo "Error. FZF installation failed."
+		exit 1
+	fi
+fi
+
+
 user=junegunn
 repo=fzf
 api_url="https://api.github.com/repos/${user}/${repo}/releases/latest"

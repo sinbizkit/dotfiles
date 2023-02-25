@@ -1,5 +1,16 @@
 #!/bin/bash
 
+if [[ -f "/etc/arch-release" ]]; then
+	sudo pacman -Syu neovim
+	if [[ $? -eq 0 ]]; then
+		echo "NeoVim is installed succesfully."
+		exit 0
+	else
+		echo "Error. NeoVim installation failed."
+		exit 1
+	fi
+fi
+
 user=neovim
 repo=neovim
 fname=nvim-linux64.deb
