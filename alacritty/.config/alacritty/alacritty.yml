@@ -1,6 +1,6 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
-end:
-  TERM: alacritty
+env:
+  TERM: xterm-256color
 
 window:
   decorations: full
