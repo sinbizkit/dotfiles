@@ -1,23 +1,18 @@
 #!/bin/bash
 
 if [[ -f "/etc/arch-release" ]]; then
-	sudo pacman -Syu fzf
-	if [[ $? -eq 0 ]]; then
-		echo "FZF is installed succesfully."
-		exit 0
-	else
-		echo "Error. FZF installation failed."
-		exit 1
-	fi
+	sudo pacman -S --needed neovim
+	exit $?
 fi
 
-
-user=junegunn
-repo=fzf
+user=neovim
+repo=neovim
+fname=nvim-linux64.deb
 api_url="https://api.github.com/repos/${user}/${repo}/releases/latest"
 
+
 # Fetch the download link for the latest release
-echo "Requesting GitHub for the latest FZF release"
+echo "Requesting GitHub for the latest Neovim release"
 http_resp=$(curl -L -s -H 'Accept: application/json' ${api_url})
 if [[ $? -ne 0 ]]; then
 	>&2 echo "Error occured ($?). Exit"
@@ -31,7 +26,7 @@ if ! [[ -x "$(command -v jq)" ]]; then
 fi
 url=$(echo ${http_resp} | jq '.assets[]
 	| {name: .name, url: .browser_download_url}
-	| select(.name | test(".*-linux_amd64.tar.gz"))
+	| select(.name == "'${fname}'")
 	| .url' \
 	| tr -d '"')
 
@@ -41,13 +36,13 @@ if [[ -z ${url} ]]; then
 	exit 1
 fi
 
-tmp_fpath="/tmp/fzf_latest.tar.gz"
 echo "URL: ${url}"
 echo "Download binary"
+tmp_fpath="/tmp/${fname}"
 curl --silent --location ${url} --output ${tmp_fpath}
 
-echo "Unpack .tar archive"
-tar -xzf ${tmp_fpath} -C $HOME/.local/bin
+echo "Install .deb package"
+sudo dpkg -i ${tmp_fpath}
 
 echo "Cleanup"
 rm ${tmp_fpath}
