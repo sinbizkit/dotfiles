@@ -1,1 +1,5 @@
 set drawbox
+set icons
+set relativenumber
+
+map D delete
