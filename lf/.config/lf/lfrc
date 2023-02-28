@@ -24,7 +24,7 @@ cmd open ${{
 cmd fzf_jump ${{
 	if [[ -n "$FZF_ALT_C_COMMAND" ]]; then
 		find="$FZF_ALT_C_COMMAND"
-	elif [[ -n $(builtin type -p fd) ]]; then
+	elif [[ -n $(type -p fd) ]]; then
 		find="fd --type d --max-depth 3 --exclude .git --color never"
 	else
 		find="find . -type d -maxdepth 3"
@@ -36,7 +36,7 @@ cmd fzf_jump ${{
 cmd fzf_edit ${{
 	if [[ -n "$FZF_CTRL_T_COMMAND" ]]; then
 		find=$FZF_CTRL_T_COMMAND
-	elif [[ -n $(builtin type -p fd) ]]; then
+	elif [[ -n $(type -p fd) ]]; then
 		find="fd --type f --exclude .git --color never"
 	else
 		find="find . -type f"
