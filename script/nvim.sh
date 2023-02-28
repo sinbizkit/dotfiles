@@ -5,6 +5,14 @@ if [[ -f "/etc/arch-release" ]]; then
 	exit $?
 fi
 
+# Install/update all the required packages
+shell=/bin/bash
+script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+$shell "$script_dir/install_by_package_manager.sh" curl jq
+if [[ $? -ne 0 ]]; then
+	exit 1
+fi
+
 user=neovim
 repo=neovim
 fname=nvim-linux64.deb
@@ -19,11 +27,6 @@ if [[ $? -ne 0 ]]; then
 	exit 1
 fi
 
-if ! [[ -x "$(command -v jq)" ]]; then
-	>&2 echo "\`jq\` isn't found. Visit \"https://stedolan.github.io/jq\" for additional info."
-	>&2 echo "Error occured. Exit"
-	exit 1
-fi
 url=$(echo ${http_resp} | jq '.assets[]
 	| {name: .name, url: .browser_download_url}
 	| select(.name == "'${fname}'")
@@ -38,7 +41,7 @@ fi
 
 echo "URL: ${url}"
 echo "Download binary"
-tmp_fpath="/tmp/${fname}"
+tmp_fpath="/tmp/$(date +%s)_${fname}"
 curl --silent --location ${url} --output ${tmp_fpath}
 
 echo "Install .deb package"
