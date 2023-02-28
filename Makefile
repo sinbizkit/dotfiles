@@ -13,7 +13,8 @@ install: install-fish \
 	install-i3 \
 	install-mc \
 	install-lf \
-	install-fzf
+	install-fzf \
+	install-fd
 
 .PHONY: install-fish
 install-fish: preinstall install-stow
@@ -39,7 +40,7 @@ install-tmux: preinstall install-stow
 	stow --target=${TARGET_DIR} tmux
 
 .PHONY: install-alacritty
-install-alacritty: preinstall install-stow
+install-alacritty: preinstall install-stow install-lf
 	${SHELL} ${MKFILE_DIR}/script/alacritty.sh
 	stow --target=${TARGET_DIR} alacritty
 
@@ -48,18 +49,18 @@ install-i3: preinstall install-stow
 	${SHELL} ${MKFILE_DIR}/script/i3.sh
 	stow --target=${TARGET_DIR} i3 polybar rofi
 
-.PHONY: install-mc
-install-mc: install-stow
-	stow --adopt --target=${TARGET_DIR} mc
-
 .PHONY: install-lf
-install-lf: preinstall install-stow
+install-lf: preinstall install-stow install-fzf
 	${SHELL} ${MKFILE_DIR}/script/lf.sh
 	stow --adopt --target=${TARGET_DIR} lf
 
 .PHONY: install-fzf
-install-fzf: preinstall preinstall
+install-fzf: preinstall install-fd
 	${SHELL} ${MKFILE_DIR}/script/fzf.sh
+
+.PHONY: install-fd
+install-fd: preinstall
+	${SHELL} ${MKFILE_DIR}/script/fd.sh
 
 install-stow: preinstall
 	${SHELL} ${MKFILE_DIR}/script/stow.sh

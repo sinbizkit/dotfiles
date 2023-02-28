@@ -2,4 +2,64 @@ set drawbox
 set icons
 set relativenumber
 
-map D delete
+cmd mkdir ${{
+	printf "Dir name: "
+	read ans
+	mkdir -p $ans
+}}
+
+cmd mkfile ${{
+	printf "File Name: "
+	read ans
+	$EDITOR $ans
+}}
+
+cmd open ${{
+	case $(file $f --mime-type -bL) in
+		text/*|application/json) $EDITOR "$f";;
+		*) xdg-open "$f" ;;
+	esac
+}}
+
+cmd fzf_jump ${{
+	if [[ -n "$FZF_ALT_C_COMMAND" ]]; then
+		find="$FZF_ALT_C_COMMAND"
+	elif [[ -n $(builtin type -p fd) ]]; then
+		find="fd --type d --max-depth 3 --exclude .git --color never"
+	else
+		find="find . -type d -maxdepth 3"
+	fi
+	res="$($find | fzf --reverse --header='Jump to location' --height 100% --no-mouse)"
+	lf -remote "send $id cd \"$res\""
+}}
+
+cmd fzf_edit ${{
+	if [[ -n "$FZF_CTRL_T_COMMAND" ]]; then
+		find=$FZF_CTRL_T_COMMAND
+	elif [[ -n $(builtin type -p fd) ]]; then
+		find="fd --type f --exclude .git --color never"
+	else
+		find="find . -type f"
+	fi
+	res="$($find | fzf --reverse --header='Edit file' --height 100% --no-mouse)"
+	$EDITOR $res
+}}
+
+# unmap defaults
+map f
+
+# go
+map gh cd ~
+map gd cd ~/dotfiles
+map gm cd /mnt
+
+# find
+map fd fzf_jump
+map fe fzf_edit
+
+# file
+map <enter> open
+map ad mkdir
+map af mkfile
+map x delete
+
