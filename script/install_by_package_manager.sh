@@ -16,8 +16,7 @@ if ! [[ -x "$(command -v $pm)" ]]; then
 	exit 1
 fi
 
-for app in $@
-do
+for app in $@; do
 	sudo $pm install $app
 	if [[ $? -ne 0 ]]; then
 		>&2 echo "The installation for \`$app\` has been interrupted."
