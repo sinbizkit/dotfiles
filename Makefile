@@ -14,7 +14,8 @@ install: install-fish \
 	install-mc \
 	install-lf \
 	install-fzf \
-	install-fd
+	install-fd \
+	install-bat
 
 .PHONY: install-fish
 install-fish: preinstall install-stow
@@ -55,12 +56,16 @@ install-lf: preinstall install-stow install-fzf
 	stow --adopt --target=${TARGET_DIR} lf
 
 .PHONY: install-fzf
-install-fzf: preinstall install-fd
+install-fzf: preinstall install-fd install-bat
 	${SHELL} ${MKFILE_DIR}/script/fzf.sh
 
 .PHONY: install-fd
 install-fd: preinstall
 	${SHELL} ${MKFILE_DIR}/script/fd.sh
+
+.PHONY: install-bat
+install-bat: preinstall
+	${SHELL} ${MKFILE_DIR}/script/bat.sh
 
 install-stow: preinstall
 	${SHELL} ${MKFILE_DIR}/script/stow.sh
