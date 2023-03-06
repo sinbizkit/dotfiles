@@ -1,6 +1,7 @@
 set drawbox
 set icons
 set relativenumber
+set hidden
 
 cmd mkdir ${{
 	printf "Dir name: "
