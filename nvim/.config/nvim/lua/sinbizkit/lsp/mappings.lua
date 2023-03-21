@@ -5,7 +5,7 @@ return {
     -- s - show.
     km.buf_map("n", "<Leader>sh", vim.lsp.buf.hover)
     km.buf_map("n", "<Leader>si", vim.lsp.buf.signature_help)
-    km.buf_map("n", "<Leader>sm", vim.diagnostic.open_float)
+    km.buf_map("n", "<Leader>sd", vim.diagnostic.open_float)
 
     -- g - go.
     km.buf_map("n", "<Leader>ge", vim.lsp.buf.declaration)
