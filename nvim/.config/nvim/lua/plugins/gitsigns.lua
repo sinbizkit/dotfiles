@@ -31,7 +31,7 @@ function M.config()
       km.map("n", "<Leader>hR", gitsigns.reset_buffer)
       -- Misc
       km.map("n", "<Leader>hu", gitsigns.undo_stage_hunk)
-      km.map("n", "<Leader>hp", gitsigns.preview_hunk)
+      km.map("n", "<Leader>hv", gitsigns.preview_hunk)
       km.map("n", "<Leader>hd", gitsigns.diffthis)
       km.map("n", "<Leader>hD", function()
         gitsigns.diffthis "~"
@@ -40,6 +40,9 @@ function M.config()
       km.map("n", "<Leader>hB", function()
         gitsigns.blame_line { full = true }
       end)
+      -- Navigate
+      km.map("n", "<Leader>hn", gitsigns.next_hunk)
+      km.map("n", "<Leader>hp", gitsigns.prev_hunk)
     end,
   }
 end
