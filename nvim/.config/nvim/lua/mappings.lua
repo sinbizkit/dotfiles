@@ -1,5 +1,10 @@
 local km = require "sinbizkit.keymap"
 
+-- {{{ Motions
+km.map("n", "<", ",")
+km.map("n", ">", ";")
+-- }}}
+
 -- {{{ Buffer modification
 km.map("n", "J", ":m .+1<CR>==") -- Move current line down
 km.map("n", "K", ":m .-2<CR>==") -- Move current line up
