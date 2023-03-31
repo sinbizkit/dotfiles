@@ -29,7 +29,6 @@ function M.config()
       cmd = {
         "clangd",
         "--background-index",
-        "--suggest-missing-includes",
         "--clang-tidy",
         "--header-insertion=iwyu",
         "--header-insertion-decorators=false",
