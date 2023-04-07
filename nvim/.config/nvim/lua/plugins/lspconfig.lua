@@ -9,7 +9,7 @@ function M.config()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
   if has_cmp_nvim_lsp then
-    capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+    capabilities = cmp_nvim_lsp.default_capabilities()
   end
 
   local function default_lsp_attach_handler(_, bufnr)
@@ -38,6 +38,14 @@ function M.config()
         default_lsp_attach_handler(client, bufnr)
         require("sinbizkit.keymap").map("n", "<Leader>gs", "<Cmd>ClangdSwitchSourceHeader<CR>")
       end,
+    },
+    gopls = {
+      settings = {
+        gopls = {
+          semanticTokens = true,
+          usePlaceholders = true,
+        },
+      },
     },
     lua_ls = {
       settings = {
