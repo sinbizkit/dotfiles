@@ -4,6 +4,8 @@ local core_modules = {
   "mappings",
   -- Load all plugins.
   "plugin",
+
+  "sinbizkit.lsp"
 }
 
 for _, module in ipairs(core_modules) do

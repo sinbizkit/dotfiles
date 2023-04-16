@@ -8,7 +8,7 @@ return {
     km.buf_map("n", "<Leader>sd", vim.diagnostic.open_float)
 
     -- g - go.
-    km.buf_map("n", "<Leader>ge", vim.lsp.buf.declaration)
+    km.buf_map("n", "<Leader>gD", vim.lsp.buf.declaration)
     km.buf_map("n", "<Leader>gt", vim.lsp.buf.type_definition)
     km.buf_map("n", "<Leader>gI", vim.lsp.buf.implementation)
     km.buf_map("n", "<Leader>gn", vim.diagnostic.goto_next)
@@ -25,8 +25,8 @@ return {
       km.buf_map("n", "<Leader>gr", builtin.lsp_references)
       km.buf_map("n", "<Leader>gd", builtin.lsp_definitions)
       km.buf_map("n", "<Leader>gi", builtin.lsp_implementations)
-      km.buf_map("n", "<Leader>so", builtin.lsp_document_symbols)
-      km.buf_map("n", "<Leader>ss", builtin.lsp_dynamic_workspace_symbols)
+      km.buf_map("n", "<Leader>ss", builtin.lsp_document_symbols)
+      km.buf_map("n", "<Leader>sS", builtin.lsp_dynamic_workspace_symbols)
     end
   end,
 }
