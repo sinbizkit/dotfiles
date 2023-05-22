@@ -25,7 +25,7 @@ function M.config()
       km.map("n", "<leader>hS", gitsigns.stage_buffer)
       -- Reset
       km.map("n", "<Leader>hr", gitsigns.reset_hunk)
-      km.map("v", "<Leader>hh", function()
+      km.map("v", "<Leader>hr", function()
         gitsigns.reset_hunk { line ".", line "v" }
       end)
       km.map("n", "<Leader>hR", gitsigns.reset_buffer)
