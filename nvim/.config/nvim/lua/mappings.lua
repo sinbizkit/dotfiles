@@ -51,3 +51,7 @@ km.map("n", "<Leader>ol", "<Cmd>lopen<CR>")
 km.map("n", "<Leader>nl", "<Cmd>lnext<CR>")
 km.map("n", "<Leader>pl", "<Cmd>lprevious<CR>")
 -- }}}
+
+-- {{{ Terminal
+km.map("t", "<Esc>", "<C-\\><C-n>")
+-- }}}

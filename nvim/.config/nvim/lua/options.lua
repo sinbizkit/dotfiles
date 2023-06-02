@@ -42,10 +42,10 @@ opt.signcolumn = "yes" -- Always show the sign column.
 opt.completeopt = { "noinsert", "menuone", "noselect" }
 opt.laststatus = 2 -- The last window will always have a status line.
 
-local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-
 -- }}}
+
