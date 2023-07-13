@@ -12,8 +12,8 @@ scrolling:
 
 font:
   normal:
-    family: IosevkaTerm Nerd Font Propo
-    style: Medium
+    family: IosevkaTerm Nerd Font Mono
+    style: Regular
 
   bold:
     family: IosevkaTerm Nerd Font Mono
