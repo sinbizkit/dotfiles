@@ -27,7 +27,7 @@ font:
     family: JetBrainsMono Nerd Font Mono
     style: Bold Italic
 
-  size: 16
+  size: 14
   dynamic_title: true
 
 # TokyoNight Alacritty Colors
