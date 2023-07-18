@@ -98,6 +98,8 @@ function M.config()
     builtin.current_buffer_fuzzy_find { default_text = vis_selection() }
   end)
   km.map("n", "<Leader>fh", builtin.help_tags)
+  -- h- git
+  km.map("n", "<Leader>hs", builtin.git_status)
 
   km.map("n", "<Leader>v", require("sinbizkit.telescope.vimconf_picker").find_vimconf)
 end
