@@ -117,6 +117,4 @@ return {
       km.map("n", "<F5>", "<Cmd>SymbolsOutline<CR>")
     end,
   },
-
-  "tpope/vim-fugitive",
 }
