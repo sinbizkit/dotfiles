@@ -45,13 +45,23 @@ cmd fzf_edit ${{
 	$EDITOR $res
 }}
 
+cmd reload_config ${{
+    lf -remote "send $id source ~/.config/lf/lfrc"
+}}
+
+map C edit-config
+
 # unmap defaults
 map f
+
+map C reload_config
 
 # go
 map gh cd ~
 map gd cd ~/dotfiles
 map gm cd /mnt
+map J :updir; set dironly true; down; set dironly false; open
+map K :updir; set dironly true; up; set dironly false; open
 
 # find
 map fd fzf_jump
