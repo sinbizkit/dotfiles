@@ -73,3 +73,6 @@ map ad mkdir
 map af mkfile
 map x delete
 
+# Show warning message for nested instances.
+&[ $LF_LEVEL -eq 1 ] || lf -remote "send $id echoerr \"Warning: You're in a nested lf instance!\""
+
