@@ -9,10 +9,6 @@ return {
         number = false,
         signcolumn = "no",
         relativenumber = true,
-        mappings = {
-          custom_only = false,
-          list = {},
-        },
       },
       git = {
         enable = true,
