@@ -18,6 +18,14 @@ return {
     km.buf_map("n", "<Leader>dr", vim.lsp.buf.rename)
     km.buf_map({ "n", "v" }, "<Leader>df", vim.lsp.buf.format)
 
+    -- lspconfig
+    if pcall(require, "telescope") then
+      km.buf_map("n", "<Leader>rl", function()
+        vim.cmd [[ LspRestart ]]
+        print "[lspconfig] servers are reloaded."
+      end)
+    end
+
     -- Telescope
     if pcall(require, "telescope") then
       local builtin = require "telescope.builtin"

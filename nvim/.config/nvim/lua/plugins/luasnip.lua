@@ -58,7 +58,7 @@ function M.config()
   -- Snippets reload.
   km.map("n", "<Leader>rs", function()
     load_snippets()
-    print "Snippets are reloaded."
+    print "[luasnip] snippets are reloaded."
   end)
 end
 
