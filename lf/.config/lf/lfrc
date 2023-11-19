@@ -5,13 +5,13 @@ set relativenumber
 cmd mkdir ${{
 	printf "Dir name: "
 	read ans
-	mkdir -p $ans
+	mkdir -p "$ans"
 }}
 
 cmd mkfile ${{
 	printf "File Name: "
 	read ans
-	$EDITOR $ans
+	$EDITOR "$ans"
 }}
 
 cmd open ${{
