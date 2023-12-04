@@ -87,14 +87,14 @@ function M.config()
   km.map("n", "<Leader>st", builtin.resume)
   -- f- find
   km.map("n", "<Leader>t", builtin.find_files)
-  km.map("n", "<Leader>fg", function()
+  km.map("n", "<Leader>fG", function()
     builtin.live_grep { path_display = { "shorten" } }
   end)
-  km.map("v", "<Leader>fg", function()
+  km.map("v", "<Leader>fG", function()
     builtin.grep_string { search = vis_selection(), word_match = "-w", path_display = { "truncate" } }
   end)
-  km.map("n", "<Leader>fb", builtin.current_buffer_fuzzy_find)
-  km.map("v", "<Leader>fb", function()
+  km.map("n", "<Leader>fg", builtin.current_buffer_fuzzy_find)
+  km.map("v", "<Leader>fg", function()
     builtin.current_buffer_fuzzy_find { default_text = vis_selection() }
   end)
   km.map("n", "<Leader>fh", builtin.help_tags)
