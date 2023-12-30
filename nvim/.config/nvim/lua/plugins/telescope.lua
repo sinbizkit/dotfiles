@@ -58,6 +58,7 @@ function M.config()
       current_buffer_fuzzy_find = preview_picker_opts,
       jumplist = preview_picker_opts,
       help_tags = preview_picker_opts,
+      man_pages = preview_picker_opts,
       lsp_references = preview_picker_opts,
       lsp_document_symbols = preview_picker_opts,
       lsp_dynamic_workspace_symbols = preview_picker_opts,
@@ -98,6 +99,7 @@ function M.config()
     builtin.current_buffer_fuzzy_find { default_text = vis_selection() }
   end)
   km.map("n", "<Leader>fh", builtin.help_tags)
+  km.map("n", "<Leader>fm", builtin.man_pages)
   -- h- git
   km.map("n", "<Leader>ht", builtin.git_status)
 

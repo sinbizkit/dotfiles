@@ -9,6 +9,7 @@ local f = ls.function_node
 local sn = ls.snippet_node
 local d = ls.dynamic_node
 local rep = require("luasnip.extras").rep
+local git = require "sinbizkit.git"
 
 return {
   s(
@@ -30,4 +31,20 @@ return {
       }
     )
   ),
+  s(
+    "todo",
+    fmt("//{type}({email}: {date}) {descr}", {
+      type = c(1, {
+        t "TODO",
+        t "FIXME",
+        t "NOTE",
+      }),
+      email = f(git.user_email),
+      date = f(function()
+        return os.date "%d/%m/%y"
+      end),
+      descr = i(0, "description"),
+    })
+  ),
+
 }
