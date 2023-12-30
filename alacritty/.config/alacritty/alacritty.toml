@@ -1,0 +1,17 @@
+import = [
+	"~/.config/alacritty/theme.toml",
+	"~/.config/alacritty/font.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[scrolling]
+history = 1000
+
+[window]
+decorations = "Full"
+opacity = 1.0
+startup_mode = "Maximized"
+dynamic_title = true # Allow terminal applications to change Alacritty's window title.
+decorations_theme_variant = "Dark"
