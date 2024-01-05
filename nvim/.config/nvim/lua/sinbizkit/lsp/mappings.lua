@@ -19,10 +19,13 @@ return {
     km.buf_map({ "n", "v" }, "<Leader>df", vim.lsp.buf.format)
 
     -- lspconfig
-    if pcall(require, "telescope") then
+    if pcall(require, "lspconfig") then
       km.buf_map("n", "<Leader>rl", function()
         vim.cmd [[ LspRestart ]]
-        print "[lspconfig] servers are reloaded."
+        vim.notify("LSP servers are reloaded.", vim.log.levels.INFO, {
+          title = "LspConfig",
+          render = "compact",
+        })
       end)
     end
 

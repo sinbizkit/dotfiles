@@ -58,7 +58,10 @@ function M.config()
   -- Snippets reload.
   km.map("n", "<Leader>rs", function()
     load_snippets()
-    print "[luasnip] snippets are reloaded."
+    vim.notify("Snippets are reloaded.", vim.log.levels.INFO, {
+      title = "LuaSnip",
+      render = "compact",
+    })
   end)
 end
 
