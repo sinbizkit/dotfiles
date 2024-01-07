@@ -50,17 +50,16 @@ function M.config()
               [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
             },
           },
+          format = {
+            -- turn-off in case if stylua is found.
+            enable = vim.fn.executable "stylua" == 0,
+          },
           -- Do not send telemetry data containing a randomized but unique identifier
           telemetry = {
             enable = false,
           },
         },
       },
-      on_attach = function(client)
-        -- formatting provided by stylua.
-        client.server_capabilities.document_formatting = false
-        client.server_capabilities.document_range_formatting = false
-      end,
     },
     cmake = {},
     pyright = {},
