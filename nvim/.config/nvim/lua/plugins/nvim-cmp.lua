@@ -33,7 +33,7 @@ function M.config()
         return math.max(50, math.floor(0.45 * vim.o.columns))
       end,
       ellipsis_char = "...",
-      menu = { buffer = "[Buf]", nvim_lsp = "[LSP]", path = "[Path]" },
+      menu = { buffer = "[Buf]", luasnip = "[LuaSnip]", nvim_lsp = "[LSP]", path = "[Path]" },
     }
   end
 
@@ -45,7 +45,13 @@ function M.config()
       { name = "buffer", keyword_length = 5 },
     },
     window = {
-      completion = cmp.config.window.bordered(),
+      completion = {
+        border = "rounded",
+        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+        col_offset = -3,
+        side_padding = 1,
+        scrollbar = false,
+      },
       documentation = cmp.config.window.bordered(),
     },
     mapping = {
@@ -67,6 +73,7 @@ function M.config()
       expand = lsp_expand,
     },
     formatting = {
+      fields = { "kind", "abbr", "menu" },
       format = lspkind_format,
     },
     experimental = {
