@@ -8,7 +8,7 @@ local M = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-nvim-lua",
-    "onsails/lspkind-nvim",
+    "onsails/lspkind.nvim",
   },
 }
 
@@ -28,7 +28,11 @@ function M.config()
   if has_lspkind then
     lspkind_format = lspkind.cmp_format {
       with_text = true,
-      maxwidth = 50,
+      mode = "symbol",
+      maxwidth = function()
+        return math.max(50, 0.45 * vim.o.columns)
+      end,
+      ellipsis_char = "...",
       menu = { buffer = "[Buf]", nvim_lsp = "[LSP]", path = "[Path]" },
     }
   end
