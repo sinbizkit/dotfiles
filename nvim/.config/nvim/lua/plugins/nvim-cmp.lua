@@ -8,7 +8,6 @@ local M = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-nvim-lua",
-    "onsails/lspkind.nvim",
   },
 }
 
@@ -23,36 +22,12 @@ function M.config()
     end
   end
 
-  local has_lspkind, lspkind = pcall(require, "lspkind")
-  local lspkind_format
-  if has_lspkind then
-    lspkind_format = lspkind.cmp_format {
-      with_text = true,
-      mode = "symbol",
-      maxwidth = function()
-        return math.max(50, math.floor(0.45 * vim.o.columns))
-      end,
-      ellipsis_char = "...",
-      menu = { buffer = "[Buf]", luasnip = "[LuaSnip]", nvim_lsp = "[LSP]", path = "[Path]" },
-    }
-  end
-
   cmp.setup {
     sources = {
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "path" },
       { name = "buffer", keyword_length = 5 },
-    },
-    window = {
-      completion = {
-        border = "rounded",
-        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-        col_offset = -3,
-        side_padding = 1,
-        scrollbar = false,
-      },
-      documentation = cmp.config.window.bordered(),
     },
     mapping = {
       ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
@@ -71,10 +46,6 @@ function M.config()
     },
     snippet = {
       expand = lsp_expand,
-    },
-    formatting = {
-      fields = { "kind", "abbr", "menu" },
-      format = lspkind_format,
     },
     experimental = {
       native_menu = false,
