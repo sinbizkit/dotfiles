@@ -30,7 +30,7 @@ function M.config()
       with_text = true,
       mode = "symbol",
       maxwidth = function()
-        return math.max(50, 0.45 * vim.o.columns)
+        return math.max(50, math.floor(0.45 * vim.o.columns))
       end,
       ellipsis_char = "...",
       menu = { buffer = "[Buf]", nvim_lsp = "[LSP]", path = "[Path]" },
