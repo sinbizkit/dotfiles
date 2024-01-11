@@ -54,6 +54,33 @@ function M.config()
       native_menu = false,
       ghost_text = true,
     },
+    formatting = {
+      format = function(entry, item)
+        item.menu = ({
+          buffer = "[Buffer]",
+          nvim_lsp = "[LSP]",
+          luasnip = "[LuaSnip]",
+          path = "[Path]",
+        })[entry.source.name]
+
+        local content = item.abbr
+        -- Predefined max content width.
+        local fixed_max_width = 50
+        -- Get the width of the current window.
+        local win_width = vim.api.nvim_win_get_width(0)
+        -- Set the max content width based percentage of the window width, in this case 35%.
+        local max_content_width = math.min(fixed_max_width, math.floor(win_width * 0.35))
+        -- Truncate the completion entry text if it's longer than the
+        -- max content width. We subtract 3 from the max content width
+        -- to account for the "..." that will be appended to it.
+        if #content > max_content_width then
+          item.abbr = vim.fn.strcharpart(content, 0, max_content_width - 3) .. "..."
+        else
+          item.abbr = content .. (" "):rep(max_content_width - #content)
+        end
+        return item
+      end,
+    },
   }
 end
 
