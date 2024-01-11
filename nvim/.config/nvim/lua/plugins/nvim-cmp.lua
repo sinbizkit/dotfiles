@@ -23,6 +23,9 @@ function M.config()
   end
 
   cmp.setup {
+    completion = {
+      completeopt = "menu,menuone,preview,noselect",
+    },
     sources = {
       { name = "nvim_lsp" },
       { name = "luasnip" },
