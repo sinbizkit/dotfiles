@@ -58,22 +58,18 @@ return {
   },
 
   {
-    "phaazon/hop.nvim",
-    branch = "v2",
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
     keys = {
-      "<Leader><Leader>w",
-      "<Leader><Leader>f",
-      "<Leader><Leader>b",
-      "<Leader><Leader>c",
+      {
+        "<Leader>j",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+      },
     },
-    config = function()
-      require("hop").setup()
-      local km = require "sinbizkit.keymap"
-      km.map("n", "<Leader><Leader>w", "<Cmd>HopWord<CR>")
-      km.map("n", "<Leader><Leader>f", "<Cmd>HopWordAC<CR>")
-      km.map("n", "<Leader><Leader>b", "<Cmd>HopWordBC<CR>")
-      km.map("n", "<Leader><Leader>c", "<Cmd>HopChar1<CR>")
-    end,
   },
 
   "tpope/vim-surround",
