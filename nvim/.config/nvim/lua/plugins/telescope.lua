@@ -82,6 +82,7 @@ function M.config()
   km.map("n", "<Leader>sb", builtin.buffers)
   km.map("n", "<Leader>sr", builtin.registers)
   km.map("n", "<Leader>sj", builtin.jumplist)
+  km.map("n", "<Leader>sm", builtin.marks)
   km.map("n", "<Leader>sD", function()
     builtin.diagnostics { bufnr = 0 }
   end)
@@ -105,5 +106,5 @@ function M.config()
 
   km.map("n", "<Leader>v", require("sinbizkit.telescope.vimconf_picker").find_vimconf)
 end
-
 return M
+
