@@ -4,6 +4,8 @@ local core_modules = {
   "mappings",
   -- Load all plugins.
   "plugin",
+  -- Load autocommand groups.
+  "autocmd",
 
   "sinbizkit.lsp"
 }
