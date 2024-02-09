@@ -1,8 +1,8 @@
 local M = {
   "L3MON4D3/LuaSnip",
   -- follow latest release.
-  version = "1.*",
-  priority = 200,
+  version = "2.*",
+  build = "make install_jsregexp",
 }
 
 function M.config()
