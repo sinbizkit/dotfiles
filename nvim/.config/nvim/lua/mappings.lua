@@ -55,3 +55,16 @@ km.map("n", "<Leader>pl", "<Cmd>lprevious<CR>")
 -- {{{ Terminal
 km.map("t", "<Esc>", "<C-\\><C-n>")
 -- }}}
+
+-- {{{ Development
+km.map("n", "<Leader>`", function() -- Invoke test function.
+  require("sinbizkit.dev").test()
+end)
+km.map("n", "<Leader>r`", function() -- Force dev module reload.
+  package.loaded["sinbizkit.dev"] = nil
+  vim.notify("Dev module is flushed", vim.log.levels.INFO, {
+    title = "Dev",
+    render = "compact",
+  })
+end)
+-- }}}
