@@ -26,7 +26,8 @@ opt.listchars = { tab = "•·", space = "·", eol = "↲", extends = "❯", pre
 opt.cursorline = true -- Highlighting that moves with the cursor.
 opt.showmode = true -- Turn off the native mode indicator.
 opt.encoding = "utf-8" -- Default encoding.
-opt.foldmethod = "indent" -- Syntax highlighting items specify folds.
+opt.foldmethod = "expr" -- Use treesitter.
+opt.foldexpr = "nvim_treesitter#foldexpr()" -- Use treesitter.
 opt.foldlevel = 3 -- Close folds with the higher level.
 opt.number = true -- Print the linenumber in front of each line.
 opt.relativenumber = true -- Show the line number relative to the line.
