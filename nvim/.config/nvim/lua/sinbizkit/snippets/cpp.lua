@@ -214,7 +214,7 @@ return {
   ),
 
   s(
-    "fun",
+    "fn",
     fmt(
       [[
       {ret} {name}({params}) {{
@@ -231,7 +231,7 @@ return {
   ),
 
   s(
-    "mfun",
+    "mfn",
     fmt(
       [[ 
       {ret} {cl_name}::{name}({params}) {cv_qual}{{
