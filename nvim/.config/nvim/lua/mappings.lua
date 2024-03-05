@@ -26,8 +26,8 @@ km.map("n", "<Space>t", "<Cmd>tabnew<CR>") -- Open new tab.
 -- {{{ Panes resize
 km.map("n", "<", "<Cmd>vertical resize -3<CR>")
 km.map("n", ">", "<Cmd>vertical resize +3<CR>")
-km.map("n", "J", "<Cmd>resize -2<CR>")
-km.map("n", "K", "<Cmd>resize +2<CR>")
+km.map("n", "<M-.>", "<Cmd>resize -2<CR>")
+km.map("n", "<M-,>", "<Cmd>resize +2<CR>")
 -- }}}
 
 -- {{{ Panes navigation.
