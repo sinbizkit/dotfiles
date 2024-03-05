@@ -5,6 +5,8 @@ local s = ls.s
 local i = ls.i
 local f = ls.f
 local t = ls.t
+local c = ls.choice_node
+local git = require "sinbizkit.git"
 
 -- compute required module name from module path.
 local mod_name = function(args)
@@ -49,4 +51,20 @@ return {
   s("cmf", {
     t "-------------------------------------------------------------------------------",
   }),
+
+  s(
+    "todo",
+    fmt("-- {type}({email}: {date}) {descr}", {
+      type = c(1, {
+        t "TODO",
+        t "FIXME",
+        t "NOTE",
+      }),
+      email = f(git.user_email),
+      date = f(function()
+        return os.date "%d/%m/%y"
+      end),
+      descr = i(0, "description"),
+    })
+  ),
 }
