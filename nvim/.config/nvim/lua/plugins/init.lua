@@ -96,7 +96,7 @@ return {
     "simrat39/symbols-outline.nvim",
     opts = {
       auto_preview = false,
-      position = "left",
+      position = "right",
       relative_width = true,
       width = 25,
       show_relative_numbers = true,
