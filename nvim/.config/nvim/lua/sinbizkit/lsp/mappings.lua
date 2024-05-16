@@ -18,6 +18,20 @@ return {
     km.buf_map("n", "<Leader>dr", vim.lsp.buf.rename)
     km.buf_map({ "n", "v" }, "<Leader>df", vim.lsp.buf.format)
 
+    -- inlay-hints
+    km.buf_map("n", "<Leader>lh", function()
+      local enabled = vim.lsp.inlay_hint.is_enabled {}
+      vim.notify(
+        string.format("Inlay hints %s", enabled and "disabled" or "enabled"),
+        vim.log.levels.INFO,
+        {
+          title = "LSP",
+          render = "compact",
+        }
+      )
+      vim.lsp.inlay_hint.enable(not enabled)
+    end)
+
     -- lspconfig
     if pcall(require, "lspconfig") then
       km.buf_map("n", "<Leader>rl", function()
