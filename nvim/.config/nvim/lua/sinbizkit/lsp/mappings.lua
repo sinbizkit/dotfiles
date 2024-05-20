@@ -19,7 +19,7 @@ return {
     km.buf_map({ "n", "v" }, "<Leader>df", vim.lsp.buf.format)
 
     -- inlay-hints
-    km.buf_map("n", "<Leader>lh", function()
+    km.buf_map("n", "<F4>", function()
       local enabled = vim.lsp.inlay_hint.is_enabled {}
       vim.notify(
         string.format("Inlay hints %s", enabled and "disabled" or "enabled"),
