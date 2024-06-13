@@ -54,6 +54,11 @@ km.map("n", "<Leader>nl", "<Cmd>lnext<CR>")
 km.map("n", "<Leader>pl", "<Cmd>lprevious<CR>")
 -- }}}
 
+-- {{{ Options toggle
+km.map("n", "<Leader>ow", "<Cmd>set wrap!<CR>")
+km.map("n", "<Leader>ol", "<Cmd>set relativenumber!<CR>")
+-- }}}
+
 -- {{{ Terminal
 km.map("t", "<Esc>", "<C-\\><C-n>")
 -- }}}
