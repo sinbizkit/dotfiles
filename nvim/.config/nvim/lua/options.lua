@@ -45,6 +45,8 @@ opt.laststatus = 2 -- The last window will always have a status line.
 
 opt.inccommand = "split"
 
+opt.clipboard = "unnamedplus"
+
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
