@@ -55,8 +55,18 @@ km.map("n", "<Leader>pl", "<Cmd>lprevious<CR>")
 -- }}}
 
 -- {{{ Options toggle
-km.map("n", "<Leader>ow", "<Cmd>set wrap!<CR>")
-km.map("n", "<Leader>ol", "<Cmd>set relativenumber!<CR>")
+km.map("n", "<Leader>ow", function ()
+  vim.cmd [[ set wrap! ]]
+  vim.notify(
+    string.format("Line wrapping %s", vim.api.nvim_get_option_value("wrap", {}) and "disabled" or "enabled"),
+    vim.log.levels.INFO,
+    {
+      title = "Options",
+      render = "compact",
+    }
+  )
+end)
+km.map("n", "<Leader>on", "<Cmd>set relativenumber!<CR>")
 -- }}}
 
 -- {{{ Terminal
