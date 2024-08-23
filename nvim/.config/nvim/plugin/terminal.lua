@@ -1,7 +1,8 @@
 local opt = vim.opt_local
 
 vim.api.nvim_create_autocmd("TermOpen", {
-  group = vim.api.nvim_create_augroup("sb-term-open", {}),
+  desc = "Set default values to the terminal buffer on opening",
+  group = vim.api.nvim_create_augroup("sb-term-open", { clear = true }),
   callback = function()
     opt.number = false
     opt.relativenumber = false
