@@ -107,4 +107,3 @@ function M.config()
   km.map("n", "<Leader>v", require("sinbizkit.telescope.vimconf_picker").find_vimconf)
 end
 return M
-

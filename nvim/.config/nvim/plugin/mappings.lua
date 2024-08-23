@@ -69,10 +69,6 @@ end)
 km.map("n", "<Leader>on", "<Cmd>set relativenumber!<CR>")
 -- }}}
 
--- {{{ Terminal
-km.map("t", "<Esc>", "<C-\\><C-n>")
--- }}}
-
 -- {{{ Development
 km.map("n", "<Leader>`", function() -- Invoke test function.
   require("sinbizkit.dev").test()

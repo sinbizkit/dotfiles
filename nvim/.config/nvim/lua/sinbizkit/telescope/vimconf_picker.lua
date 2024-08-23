@@ -1,16 +1,16 @@
 local M = {}
 
 -- Search vim config files.
-M.find_vimconf = function(opts)
+function M.find_vimconf(opts)
   opts = opts or {
     prompt_title = "NeoVim Config",
   }
 
-  local path = vim.api.nvim_get_runtime_file("init.lua", false)
-  if #path ~= 1 then
+  local dirs = vim.api.nvim_get_runtime_file("init.lua", false)
+  if #dirs ~= 1 then
     error "Config directory not found."
   end
-  path = vim.fn.fnamemodify(path[1], ":p:h")
+  local path = vim.fn.fnamemodify(dirs[1], ":p:h")
 
   opts.cwd = path
   opts.search_dirs = { path }
