@@ -43,7 +43,7 @@ opt.splitright = true -- Splitting will put the new window right of the current 
 opt.number = true -- Print the linenumber in front of each line.
 opt.relativenumber = true -- Show the line number relative to the line.
 
-opt.wrap = false -- Disable line wrapping.
+opt.wrap = true -- Enable line wrapping.
 
 -- Search settings.
 opt.incsearch = true
