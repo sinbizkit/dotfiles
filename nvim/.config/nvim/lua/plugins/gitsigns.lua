@@ -41,8 +41,12 @@ function M.config()
         gitsigns.blame_line { full = true }
       end)
       -- Navigate
-      km.map("n", "<Leader>hn", gitsigns.next_hunk)
-      km.map("n", "<Leader>hp", gitsigns.prev_hunk)
+      km.map("n", "<Leader>hn", function()
+        gitsigns.nav_hunk "next"
+      end)
+      km.map("n", "<Leader>hp", function()
+        gitsigns.nav_hunk "prev"
+      end)
     end,
   }
 end
