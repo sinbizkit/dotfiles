@@ -57,6 +57,9 @@ end
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("sb-lsp-mappings", {}),
   callback = function(args)
+    if vim.opt.diff:get() then
+      return
+    end
     map_lsp_keys() -- map lsp-specific keymaps.
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client and client.server_capabilities.inlayHintProvider then
