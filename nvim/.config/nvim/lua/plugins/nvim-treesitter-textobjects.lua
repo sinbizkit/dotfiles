@@ -5,7 +5,7 @@ return {
     textobjects = {
       select = {
         enable = true,
-        lookahed = true, -- Automatically jump forward to textobjs.
+        lookahead = true, -- Automatically jump forward to textobjs.
         keymaps = {
           ["ac"] = "@class.outer",
           ["ic"] = "@class.inner",
