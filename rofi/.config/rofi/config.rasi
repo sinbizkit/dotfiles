@@ -5,3 +5,12 @@ configuration {
 }
 
 @theme "nord"
+
+error-message {
+    background-color: #d08770;
+    border-color: @foreground;
+    spacing: 0;
+    padding: 10;
+    border: 0px;
+    border-radius: 6px;
+}
