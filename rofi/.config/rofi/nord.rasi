@@ -80,7 +80,7 @@ entry, prompt, case-indicator {
 }
 
 prompt {
-    margin: 0px 11px 0px 0px ;
+    margin: 0px 1em 0em 0em ;
 }
 
 listview {
