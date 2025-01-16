@@ -119,4 +119,15 @@ return {
       km.map("n", "<F5>", "<Cmd>SymbolsOutline<CR>")
     end,
   },
+
+  {
+    "norcalli/nvim-colorizer.lua",
+    opts = { "css" },
+    keys = { "<Leader>sc" },
+    config = function(_, opts)
+      require("colorizer").setup(opts)
+      local km = require "sinbizkit.keymap"
+      km.map("n", "<Leader>sc", "<Cmd>ColorizerToggle<CR>")
+    end,
+  },
 }
