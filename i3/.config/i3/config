@@ -12,6 +12,10 @@ client.unfocused        #2e3440 #2e3440 #888888 #292d2e   #222222
 client.urgent           #2f343a #bf616a #d8dee9 #bf616a   #bf616a
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
+# Gaps.
+gaps outer 4px
+gaps inner 4px
+
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 4c566a
