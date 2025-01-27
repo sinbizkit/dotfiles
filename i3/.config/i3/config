@@ -54,6 +54,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run
 bindsym $mod+Shift+d exec rofi -show drun
 bindsym $mod+c exec rofi -show ssh
+bindsym $mod+Tab exec rofi -show window
 
 # change focus
 bindsym $mod+h focus left
