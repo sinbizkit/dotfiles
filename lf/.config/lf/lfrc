@@ -17,6 +17,7 @@ cmd mkfile ${{
 cmd open ${{
 	case $(file $f --mime-type -bL) in
 		text/*) $EDITOR "$f";;
+		inode/x-empty) $EDITOR "$f";;
 		application/json) $EDITOR "$f";;
 		*) xdg-open "$f" ;;
 	esac
