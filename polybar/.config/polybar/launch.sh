@@ -7,7 +7,7 @@ killall -q polybar
 
 # Launch bar1
 for m in $(polybar --list-monitors | cut -d":" -f1); do
-    echo "---" > /home/sinbizkit/polybar-$m.log
+    echo "---" >> /tmp/polybar-$m.log
     MONITOR=$m polybar --reload main_bar 2>&1 | tee -a /tmp/polybar-$m.log & disown
 done
 
