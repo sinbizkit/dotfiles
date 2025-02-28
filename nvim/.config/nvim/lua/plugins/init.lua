@@ -84,13 +84,6 @@ return {
           require("flash").jump()
         end,
       },
-      {
-        "<Leader>J",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").treesitter()
-        end,
-      },
     },
   },
 
