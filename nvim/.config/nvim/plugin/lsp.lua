@@ -9,8 +9,8 @@ local function map_lsp_keys()
   -- g - go.
   km.buf_map("n", "<Leader>gD", vim.lsp.buf.declaration)
   km.buf_map("n", "<Leader>gI", vim.lsp.buf.implementation)
-  km.buf_map("n", "<Leader>gn", vim.diagnostic.goto_next)
-  km.buf_map("n", "<Leader>gp", vim.diagnostic.goto_prev)
+  km.buf_map("n", "<Leader>gn", vim.diagnostic.jump({count=1, float=true}))
+  km.buf_map("n", "<Leader>gp", vim.diagnostic.jump({count=-1, float=true}))
 
   -- d - do
   km.buf_map("n", "<Leader>di", vim.lsp.buf.code_action)
