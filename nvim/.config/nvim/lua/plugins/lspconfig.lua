@@ -1,5 +1,6 @@
 local M = {
   "neovim/nvim-lspconfig",
+  dependecies = {'saghen/blink.cmp'},
 }
 
 local km = require "sinbizkit.keymap"
@@ -79,9 +80,9 @@ function M.config()
   }
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-  local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  if has_cmp_nvim_lsp then
-    capabilities = cmp_nvim_lsp.default_capabilities()
+  local has_blink_cmp, blink_cmp = pcall(require, "blink.cmp")
+  if has_blink_cmp then
+    capabilities = blink_cmp.get_lsp_capabilities(capabilities)
   end
 
   for name, config in pairs(configs) do
