@@ -24,7 +24,15 @@ opt.termguicolors = true
 opt.encoding = "utf-8" -- Default encoding.
 
 opt.list = true
-opt.listchars = { tab = "•·", space = "·", eol = "↲", extends = "❯", precedes = "❮", trail = "~", nbsp = "⦸" }
+opt.listchars = {
+  tab = "•·",
+  space = "·",
+  eol = "↲",
+  extends = "❯",
+  precedes = "❮",
+  trail = "~",
+  nbsp = "⦸",
+}
 opt.cursorline = true -- Highlighting that moves with the cursor.
 opt.showmode = false -- Turn off the native mode indicator.
 
@@ -59,9 +67,22 @@ vim.opt.smartcase = true
 opt.completeopt = { "noinsert", "menuone", "noselect" }
 opt.laststatus = 2 -- The last window will always have a status line.
 
-local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+vim.diagnostic.config {
+  virtual_text = false,
+  virtual_lines = false,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+    linehl = {
+      [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+      [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+      [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+      [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+    },
+  },
+}
 -- }}}
