@@ -51,7 +51,7 @@ function M.config()
     end
   end)
 
-  km.map({"i", "v"}, "<C-l>", function()
+  km.map({ "i", "v" }, "<C-l>", function()
     if luasnip.choice_active() then
       luasnip.change_choice(1)
     end
