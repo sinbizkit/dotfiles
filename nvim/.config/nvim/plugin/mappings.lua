@@ -38,14 +38,14 @@ km.map("n", "<C-H>", "<C-W><C-H>")
 -- }}}
 
 -- {{{ Tags.
-km.map("n", "<Leader>]n", "<Cmd>tnext<CR>")
-km.map("n", "<Leader>]p", "<Cmd>tprevious<CR>")
+km.map("n", "<Leader>nt", "<Cmd>tnext<CR>")
+km.map("n", "<Leader>pt", "<Cmd>tprevious<CR>")
 -- }}}
 
 -- {{{ QuickFix.
-km.map("n", "<Leader>oq", "<Cmd>copen<CR>")
-km.map("n", "<Leader>nq", "<Cmd>cnext<CR>")
-km.map("n", "<Leader>pq", "<Cmd>cprevious<CR>")
+km.map("n", "<Leader>oc", "<Cmd>copen<CR>")
+km.map("n", "<Leader>nc", "<Cmd>cnext<CR>")
+km.map("n", "<Leader>pc", "<Cmd>cprevious<CR>")
 -- }}}
 
 -- {{{ LocationList.

@@ -12,7 +12,10 @@ function M.config()
   -- Common.
   -------------------------------------------------------------------------------
   luasnip.config.set_config {
-    history = true,
+    keep_roots = false,
+    link_roots = false,
+    link_children = true,
+    exit_roots = true,
     -- Update more often, :h events for more info.
     update_events = "TextChanged,TextChangedI",
   }
@@ -20,7 +23,7 @@ function M.config()
   -------------------------------------------------------------------------------
   -- Find and load snippets.
   -------------------------------------------------------------------------------
-  local load_snippets = function()
+  local function load_snippets()
     local paths = vim.api.nvim_get_runtime_file("init.lua", false)
     if #paths ~= 1 then
       error "Config directory not found."
@@ -28,8 +31,7 @@ function M.config()
 
     local path = vim.fn.fnamemodify(paths[1], ":p:h")
     path = vim.fn.join({ path, "lua/sinbizkit/snippets" }, "/")
-    local from_lua = require "luasnip.loaders.from_lua"
-    from_lua.load { paths = path }
+    require("luasnip.loaders.from_lua").load { paths = path }
   end
   load_snippets()
 
@@ -49,7 +51,7 @@ function M.config()
     end
   end)
 
-  km.map("i", "<C-l>", function()
+  km.map({"i", "v"}, "<C-l>", function()
     if luasnip.choice_active() then
       luasnip.change_choice(1)
     end

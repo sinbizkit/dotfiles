@@ -5,6 +5,7 @@ local s = ls.s
 local i = ls.i
 local t = ls.t
 local c = ls.choice_node
+local r = ls.restore_node
 local f = ls.function_node
 local sn = ls.snippet_node
 local d = ls.dynamic_node
@@ -34,10 +35,10 @@ return {
 
   s("inc", {
     t "#include ",
-    c(1, {
-      fmt([[<{}>]], { i(1) }),
-      fmt([["{}"]], { i(1) }),
-    }),
+      c(1, {
+        sn(nil, { t '"', r(1, "header", i(1)), t'"' }),
+        sn(nil, { t '<', r(1, "header", i(1)), t'>' }),
+      }),
   }),
 
   s(
