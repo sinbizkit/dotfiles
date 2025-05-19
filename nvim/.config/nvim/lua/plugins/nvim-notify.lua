@@ -1,12 +1,16 @@
-return {
+local M = {
   "rcarriga/nvim-notify",
-  opts = {
-    timeout = 3000,
-    stages = "static",
-  },
-  config = function(_, opts)
-    local notify = require "notify"
-    vim.notify = notify
-    notify.setup(opts)
-  end,
 }
+
+M.opts = {
+  timeout = 3000,
+  stages = "static",
+}
+
+M.config = function(_, opts)
+  local notify = require "notify"
+  vim.notify = notify
+  notify.setup(opts)
+end
+
+return M
