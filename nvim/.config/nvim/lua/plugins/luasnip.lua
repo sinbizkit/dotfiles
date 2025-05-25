@@ -18,6 +18,7 @@ function M.config()
     exit_roots = true,
     -- Update more often, :h events for more info.
     update_events = "TextChanged,TextChangedI",
+    region_check_events = "InsertEnter",
   }
 
   -------------------------------------------------------------------------------
