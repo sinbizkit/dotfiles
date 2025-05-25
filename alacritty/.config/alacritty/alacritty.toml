@@ -12,6 +12,9 @@ startup_mode = "Maximized"
 dynamic_title = true # Allow terminal applications to change Alacritty's window title.
 decorations_theme_variant = "Dark"
 
+[terminal]
+osc52 = "CopyPaste"
+
 [general]
 import = [
 	"~/.config/alacritty/theme.toml",
