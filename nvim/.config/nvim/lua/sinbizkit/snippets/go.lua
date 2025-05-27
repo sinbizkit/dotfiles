@@ -46,5 +46,54 @@ return {
       descr = i(0, "description"),
     })
   ),
-
+  s(
+    "fn",
+    fmt(
+      [[
+      func {fn_name}({params}) {ret} {{
+        {code}
+      }}
+      ]],
+      {
+        fn_name = i(1, "FunctionName"),
+        params = i(2),
+        ret = i(3),
+        code = i(0),
+      }
+    )
+  ),
+  s(
+    "mfn",
+    fmt(
+      [[
+      func ({recv}) {fn_name}({params}) {ret} {{
+        {code}
+      }}
+      ]],
+      {
+        recv = i(1),
+        fn_name = i(2, "FunctionName"),
+        params = i(3),
+        ret = i(4),
+        code = i(0),
+      }
+    )
+  ),
+  s(
+    "ife",
+    fmt(
+      [[
+      if {} {{
+        {}
+      }}
+      ]],
+      {
+        c(1, {
+          t("err != nil"),
+          fmt("err := {}; err != nil", i(1, "expr"))
+        }),
+        i(0),
+      }
+    )
+  ),
 }
