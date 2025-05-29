@@ -1,8 +1,11 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },
-  branch = "main",
   build = ":TSUpdate",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter-context",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+  },
 }
 
 M.opts = {
@@ -41,5 +44,9 @@ M.opts = {
     enable = false,
   },
 }
+
+function M.config(_, opts)
+  require("nvim-treesitter.configs").setup(opts)
+end
 
 return M

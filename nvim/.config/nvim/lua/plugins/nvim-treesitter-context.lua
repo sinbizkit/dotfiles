@@ -1,12 +1,10 @@
 local M = {
   "nvim-treesitter/nvim-treesitter-context",
   lazy = true,
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
-}
-
-M.opts = {
-  multiline_threshold = 5,
-  separator = "―",
+  opts = {
+    multiline_threshold = 5,
+    separator = "―",
+  },
 }
 
 M.config = function(_, opts)
@@ -19,7 +17,7 @@ M.config = function(_, opts)
       string.format("Context %s", ctx.enabled() and "enabled" or "disabled"),
       vim.log.levels.INFO,
       {
-        title = "Treesitter",
+        title = "Tree-sitter",
         render = "compact",
       }
     )
