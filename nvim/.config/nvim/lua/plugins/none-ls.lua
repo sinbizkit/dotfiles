@@ -1,6 +1,7 @@
 local M = {
   "nvimtools/none-ls.nvim",
   ft = "lua",
+  dependecies = { "nvim-lua/plenary.nvim" },
 }
 
 M.opts = function(_, opts)

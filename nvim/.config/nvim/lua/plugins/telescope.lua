@@ -1,6 +1,7 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  version = "0.1.x",
+  -- TODO(ivan.berdnikov@kaspersky.com: 29/05/25) change the next release after 0.1.8.
+  branch = "master",
   dependencies = {
     "nvim-lua/plenary.nvim",
     {
@@ -13,13 +14,6 @@ local M = {
 
 M.opts = {
   defaults = {
-    theme = "ivy",
-    mappings = {
-      i = {
-        ["<C-j>"] = require("telescope.actions").move_selection_next,
-        ["<C-k>"] = require("telescope.actions").move_selection_previous,
-      },
-    },
     prompt_prefix = "  ",
     selection_caret = "➤ ",
     path_display = { "truncate" },

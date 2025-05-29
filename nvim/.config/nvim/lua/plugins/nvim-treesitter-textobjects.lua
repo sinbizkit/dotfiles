@@ -1,6 +1,8 @@
 local M = {
   "nvim-treesitter/nvim-treesitter-textobjects",
   lazy = true,
+  branch = "main",
+  dependencies = { "nvim-treesitter/nvim-treesitter" },
 }
 
 M.opts = {
@@ -41,9 +43,5 @@ M.opts = {
     },
   },
 }
-
-M.config = function(_, opts)
-  require("nvim-treesitter.configs").setup(opts)
-end
 
 return M

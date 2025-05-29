@@ -1,10 +1,12 @@
 local M = {
   "nvim-treesitter/nvim-treesitter-context",
   lazy = true,
-  opts = {
-    multiline_threshold = 5,
-    separator = "―",
-  },
+  dependencies = { "nvim-treesitter/nvim-treesitter" },
+}
+
+M.opts = {
+  multiline_threshold = 5,
+  separator = "―",
 }
 
 M.config = function(_, opts)
