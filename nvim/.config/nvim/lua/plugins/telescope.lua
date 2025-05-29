@@ -1,71 +1,42 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   version = "0.1.x",
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+    },
+  },
   priority = 100,
 }
 
-function M.config()
-  local telescope = require "telescope"
-  -------------------------------------------------------------------------------
-  -- Pickers layout setup.
-  -------------------------------------------------------------------------------
-  local default_picker_opts = {
-    theme = "dropdown",
-    previewer = false,
-    layout_config = {
-      width = 0.87,
-      height = 0.8,
-    },
-    path_display = { truncate = 2 },
-  }
-
-  local preview_picker_opts = {
-    layout_strategy = "vertical",
-    layout_config = {
-      width = 0.87,
-      height = 0.8,
-      prompt_position = "bottom",
-      preview_cutoff = 30,
-    },
-    path_display = { "smart", "truncate" },
-    fname_width = 50,
-    symbol_width = 50,
-    trim_text = true,
-  }
-
-  -------------------------------------------------------------------------------
-  -- Setup.
-  -------------------------------------------------------------------------------
-  telescope.setup {
-    defaults = {
-      mappings = {
-        i = {
-          ["<C-j>"] = require("telescope.actions").move_selection_next,
-          ["<C-k>"] = require("telescope.actions").move_selection_previous,
-        },
+M.opts = {
+  defaults = {
+    theme = "ivy",
+    mappings = {
+      i = {
+        ["<C-j>"] = require("telescope.actions").move_selection_next,
+        ["<C-k>"] = require("telescope.actions").move_selection_previous,
       },
-      prompt_prefix = "  ",
-      selection_caret = "➤ ",
-      path_display = { "truncate" },
     },
-    pickers = {
-      find_files = default_picker_opts,
-      buffers = default_picker_opts,
-      diagnostics = preview_picker_opts,
-      live_grep = preview_picker_opts,
-      grep_string = preview_picker_opts,
-      current_buffer_fuzzy_find = preview_picker_opts,
-      jumplist = preview_picker_opts,
-      help_tags = preview_picker_opts,
-      man_pages = preview_picker_opts,
-      lsp_references = preview_picker_opts,
-      lsp_document_symbols = preview_picker_opts,
-      lsp_dynamic_workspace_symbols = preview_picker_opts,
-      lsp_definitions = preview_picker_opts,
-      lsp_implementations = preview_picker_opts,
-    },
-  }
+    prompt_prefix = "  ",
+    selection_caret = "➤ ",
+    path_display = { "truncate" },
+  },
+  extensions = {
+    fzf = {},
+  },
+}
+
+function M.config(_, opts)
+  local telescope = require "telescope"
+  telescope.setup(opts)
+
+  -------------------------------------------------------------------------------
+  -- Extensions.
+  -------------------------------------------------------------------------------
+  telescope.load_extension "fzf"
 
   -------------------------------------------------------------------------------
   -- Keymaps.
@@ -93,7 +64,11 @@ function M.config()
     builtin.live_grep { path_display = { "shorten" } }
   end)
   km.map("v", "<Leader>fG", function()
-    builtin.grep_string { search = vis_selection(), word_match = "-w", path_display = { "truncate" } }
+    builtin.grep_string {
+      search = vis_selection(),
+      word_match = "-w",
+      path_display = { "truncate" },
+    }
   end)
   km.map("n", "<Leader>fg", builtin.current_buffer_fuzzy_find)
   km.map("v", "<Leader>fg", function()
@@ -106,4 +81,5 @@ function M.config()
 
   km.map("n", "<Leader>v", require("sinbizkit.telescope.vimconf_picker").find_vimconf)
 end
+
 return M

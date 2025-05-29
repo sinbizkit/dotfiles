@@ -43,7 +43,7 @@ M.opts = {
   },
 }
 
-M.config = function(_, opts)
+function M.config(_, opts)
   require("nvim-treesitter.configs").setup(opts)
 end
 
