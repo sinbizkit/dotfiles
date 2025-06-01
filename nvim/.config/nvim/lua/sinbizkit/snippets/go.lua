@@ -12,6 +12,38 @@ local d = ls.dynamic_node
 local rep = require("luasnip.extras").rep
 local git = require "sinbizkit.git"
 
+--- Returns a list of type names declared in the current buffer.
+local function buffer_type_names()
+  local node = vim.treesitter.get_node()
+  local tree = node and node:tree()
+  local root = tree and tree:root()
+  if not root then
+    return
+  end
+
+  local query = assert(vim.treesitter.query.get("go", "typenames"), "No query")
+  local result = {}
+  for _, capture in query:iter_captures(root, 0) do
+    table.insert(result, vim.treesitter.get_node_text(capture, 0))
+  end
+  return result
+end
+
+---Returns a list of Nodes applicable for types declared in the current buffer.
+local function buffer_typename_nodes()
+  local names = buffer_type_names()
+  if not names or #names == 0 then
+    return {i(nil, "Type")}
+  end
+
+  local result = {}
+  for _, name in ipairs(names) do
+    table.insert(result, i(nil, name))
+    table.insert(result, i(nil, "*"..name))
+  end
+  return result
+end
+
 --- Returns the first parent whose type is one of the callable - method, function
 --- or closure.
 local function ts_outer_function_node()
@@ -242,15 +274,16 @@ return {
     "mfn",
     fmta(
       [[
-      func (<recv>) <fn_name>(<params>) <ret> {
+      func (<recv_name> <recv_type>) <fn_name>(<params>) <ret> {
       	<code>
       }
       ]],
       {
-        recv = i(1),
-        fn_name = i(2, "FunctionName"),
-        params = i(3),
-        ret = i(4),
+        recv_type = c(1, buffer_typename_nodes()),
+        recv_name = i(2, "rname"),
+        fn_name = i(3, "FunctionName"),
+        params = i(4),
+        ret = i(5),
         code = i(0),
       }
     )
