@@ -12,8 +12,29 @@ local d = ls.dynamic_node
 local rep = require("luasnip.extras").rep
 local git = require "sinbizkit.git"
 
----Dictionary mapping a built-in Go type to its zero value.
+--- Returns the first parent whose type is one of the callable - method, function
+--- or closure.
+local function ts_outer_function_node()
+  -- Types of target nodes.
+  local func_node_types = {
+    function_declaration = true,
+    method_declaration = true,
+    func_literal = true,
+  }
+
+  -- Get a current node under the cursor and looking up the TSTree for a TSNode
+  -- with a suitable type.
+  local node = vim.treesitter.get_node()
+  while node ~= nil do
+    if func_node_types[node:type()] then
+      return node
+    end
+    node = node:parent()
+  end
+end
+
 local default_values = {
+  ---Dictionary mapping a built-in Go type to its zero value.
   -- basic Go types.
   bool = false,
 
@@ -39,7 +60,7 @@ local default_values = {
   -- etc.
   string = '""',
   error = function(_, info)
-    return t(info.err_name)
+    return t(info.err_name or "nil")
   end,
 
   -- reference types
@@ -118,58 +139,52 @@ local handlers = {
   qualified_type = function(node, info)
     local text = vim.treesitter.get_node_text(node, 0)
     return { transform(text, info) }
-  end
+  end,
 }
 
 ---Computes the return types of the current function where the cursor is located, and returns a table of snippets corresponding to each of them.
 local function retvals_snips_dict(info)
-  -- Types of target nodes.
-  local func_node_types = {
-    function_declaration = true,
-    method_declaration = true,
-    func_literal = true,
-  }
-
-  -- Get a current node under the cursor and looking up the TSTree for a TSNode
-  -- with a suitable type.
-  local node = vim.treesitter.get_node()
-  while node ~= nil do
-    if func_node_types[node:type()] then
-      break
-    end
-    node = node:parent()
-  end
-
+  local node = ts_outer_function_node()
   -- Return an InsertNode if no match.
   if not node then
-    vim.notify("Not inside a function", vim.log.levels.ERROR, {
-      title = "LuaSnip",
-      render = "compact",
-    })
-    return i(nil, "return_value")
+    return i(nil)
   end
 
   local query = assert(vim.treesitter.query.get("go", "outerfunc"), "No query")
   for _, capture in query:iter_captures(node, 0) do
-    local handler = handlers[capture:type()]
-    if handler then
-      return handler(capture, info)
+    if not capture:has_error() then
+      local handler = handlers[capture:type()]
+      if handler then
+        return handler(capture, info)
+      end
     end
   end
-  return i(1, "return_value")
+
+  return nil
+end
+
+local function fn_retvals_snip()
+  local snips = retvals_snips_dict {
+    index = 0,
+  }
+  if snips then
+    table.insert(snips, 1, t "return ")
+  else
+    snips = t ""
+  end
+  return sn(nil, snips)
 end
 
 --- Returns a DynamicNode with nested snippets constructed based on the return
 --- value(s) of the function or method where the cursor is located.
-local function retvals_snip(args)
-  return sn(
-    nil,
-    retvals_snips_dict {
-        index = 0,
-        err_name = args[1][1],
-        func_name = args[2][1],
-    }
-  )
+local function ife_retvals_snip(args)
+  local snips = retvals_snips_dict {
+    index = 0,
+    err_name = args[1] and args[1][1] or "",
+    func_name = args[2] and args[2][1] or "",
+  }
+  snips = snips or i(1, "")
+  return sn(nil, snips)
 end
 
 return {
@@ -212,14 +227,14 @@ return {
     fmta(
       [[
       func <fn_name>(<params>) <ret> {
-        <code>
+      	<finish>
       }
       ]],
       {
         fn_name = i(1, "FunctionName"),
         params = i(2),
         ret = i(3),
-        code = i(0),
+        finish = i(0),
       }
     )
   ),
@@ -228,7 +243,7 @@ return {
     fmta(
       [[
       func (<recv>) <fn_name>(<params>) <ret> {
-        <code>
+      	<code>
       }
       ]],
       {
@@ -240,15 +255,32 @@ return {
       }
     )
   ),
+  --- Insert dynamic node with function/method/closure return zero-values.
+  s({
+    trig = "ret",
+    condition = function()
+      return ts_outer_function_node() ~= nil
+    end,
+    show_condition = function()
+      return ts_outer_function_node() ~= nil
+    end,
+  }, d(1, fn_retvals_snip)),
   s(
-    "ife",
+    {
+      trig = "ife",
+      condition = function()
+        return ts_outer_function_node() ~= nil
+      end,
+      show_condition = function()
+        return ts_outer_function_node() ~= nil
+      end,
+    },
     fmta(
       [[
       <val>, <err> := <f>(<args>)
       if <err_rep> != nil {
-        return <result>
+      	return <result><fin>
       }
-      <fin>
       ]],
       {
         val = i(1),
@@ -256,7 +288,7 @@ return {
         f = i(3),
         args = i(4),
         err_rep = rep(2),
-        result = d(5, retvals_snip, { 2, 3 }),
+        result = d(5, ife_retvals_snip, { 2, 3 }),
         fin = i(0),
       }
     )
