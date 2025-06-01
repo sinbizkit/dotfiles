@@ -98,7 +98,8 @@ local default_values = {
   -- etc.
   string = '""',
   error = function(_, info)
-    return t(info.err_name or "nil")
+    info.index = info.index + 1
+    return i(info.index, info.err_name or "nil")
   end,
 
   -- reference types
@@ -219,7 +220,6 @@ local function ife_retvals_snip(args)
   local snips = retvals_snips_dict {
     index = 0,
     err_name = args[1] and args[1][1] or "",
-    func_name = args[2] and args[2][1] or "",
   }
   snips = snips or i(1, "")
   return sn(nil, snips)
@@ -328,10 +328,36 @@ return {
       {
         val = i(1),
         err = i(2, "err"),
-        f = i(3),
+        f = i(3, "Call"),
         args = i(4),
         err_rep = rep(2),
-        result = d(5, ife_retvals_snip, { 2, 3 }),
+        result = d(5, ife_retvals_snip, { 2 }),
+        fin = i(0),
+      }
+    )
+  ),
+  s(
+    {
+      trig = "ifi",
+      condition = function()
+        return ts_outer_function_node() ~= nil
+      end,
+      show_condition = function()
+        return ts_outer_function_node() ~= nil
+      end,
+    },
+    fmta(
+      [[
+      if <err> := <f>(<args>); <err_rep> != nil {
+      	return <result><fin>
+      }
+      ]],
+      {
+        err = i(1, "err"),
+        f = i(2, "Func"),
+        args = i(3),
+        err_rep = rep(1),
+        result = d(4, ife_retvals_snip, { 1 }),
         fin = i(0),
       }
     )
