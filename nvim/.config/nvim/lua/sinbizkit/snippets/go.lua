@@ -33,13 +33,13 @@ end
 local function buffer_typename_nodes()
   local names = buffer_type_names()
   if not names or #names == 0 then
-    return {i(nil, "Type")}
+    return { i(nil, "Type") }
   end
 
   local result = {}
   for _, name in ipairs(names) do
     table.insert(result, i(nil, name))
-    table.insert(result, i(nil, "*"..name))
+    table.insert(result, i(nil, "*" .. name))
   end
   return result
 end
@@ -63,6 +63,12 @@ local function ts_outer_function_node()
     end
     node = node:parent()
   end
+end
+
+---Returns true if the current node has `source_file` type.
+local function ts_source_file_scope()
+  local node = vim.treesitter.get_node()
+  return node and node:type() == "source_file"
 end
 
 local default_values = {
@@ -271,7 +277,11 @@ return {
     )
   ),
   s(
-    "mfn",
+    {
+      trig = "mfn",
+      condition = ts_source_file_scope,
+      show_condition = ts_source_file_scope,
+    },
     fmta(
       [[
       func (<recv_name> <recv_type>) <fn_name>(<params>) <ret> {
