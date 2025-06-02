@@ -322,7 +322,7 @@ return {
       }
       ]],
       {
-        recv_type = c(1, buffer_typename_nodes()),
+        recv_type = d(1, function() return sn(nil, c(1, buffer_typename_nodes())) end),
         recv_name = i(2, "rname"),
         fn_name = i(3, "FunctionName"),
         params = i(4),
