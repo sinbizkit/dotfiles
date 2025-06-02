@@ -74,7 +74,7 @@ end
 local default_values = {
   ---Dictionary mapping a built-in Go type to its zero value.
   -- basic Go types.
-  bool = false,
+  bool = "false",
 
   -- ints.
   int = "0",
@@ -155,7 +155,7 @@ end
 ---Dictionary of various TSNode::types used in Go as a return value expression
 ---with corresponding transforming handlers.
 local handlers = {
-  --- func Name(...) (a, b, c, d)
+  --- func Name(...) (a, b, c, gb.d)
   parameter_list = function(node, info)
     local result = {}
     local count = node:named_child_count()
@@ -322,7 +322,9 @@ return {
       }
       ]],
       {
-        recv_type = d(1, function() return sn(nil, c(1, buffer_typename_nodes())) end),
+        recv_type = d(1, function()
+          return sn(nil, c(1, buffer_typename_nodes()))
+        end),
         recv_name = i(2, "rname"),
         fn_name = i(3, "FunctionName"),
         params = i(4),
