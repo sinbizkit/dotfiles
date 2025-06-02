@@ -190,7 +190,7 @@ local function retvals_snips_dict(info)
   end
 
   local query = assert(vim.treesitter.query.get("go", "outerfunc"), "No query")
-  for _, capture in query:iter_captures(node, 0) do
+  for _, capture in query:iter_captures(node, 0, node:start(), node:end_(), { max_start_depth = 1 }) do
     if not capture:has_error() then
       local handler = handlers[capture:type()]
       if handler then
