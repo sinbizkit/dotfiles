@@ -192,7 +192,6 @@ local function retvals_snips_dict(info)
   local query = assert(vim.treesitter.query.get("go", "outerfunc"), "No query")
   for _, capture in query:iter_captures(node, 0) do
     if not capture:has_error() then
-      vim.notify(tostring(capture:type()))
       local handler = handlers[capture:type()]
       if handler then
         return handler(capture, info)
