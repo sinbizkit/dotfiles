@@ -186,12 +186,13 @@ local function retvals_snips_dict(info)
   local node = ts_outer_function_node()
   -- Return an InsertNode if no match.
   if not node then
-    return i(nil)
+    return nil
   end
 
   local query = assert(vim.treesitter.query.get("go", "outerfunc"), "No query")
   for _, capture in query:iter_captures(node, 0) do
     if not capture:has_error() then
+      vim.notify(tostring(capture:type()))
       local handler = handlers[capture:type()]
       if handler then
         return handler(capture, info)
@@ -223,6 +224,46 @@ local function ife_retvals_snip(args)
   }
   snips = snips or i(1, "")
   return sn(nil, snips)
+end
+
+local function ts_fn_node()
+  -- Closure if the cursor is in a function local scope.
+  if ts_outer_function_node() ~= nil then
+    return sn(
+      1,
+      fmta(
+        [[
+        <name> := func(<params>) <ret> {
+          <finish>
+        }
+        ]],
+        {
+          name = i(1, "f"),
+          params = i(2),
+          ret = i(3),
+          finish = i(4),
+        }
+      )
+    )
+  end
+
+  -- Global function otherwise.
+  return sn(
+    nil,
+    fmta(
+      [[
+      func <fn_name>(<params>) <ret> {
+        <finish>
+      }
+      ]],
+      {
+        fn_name = i(1, "FName"),
+        params = i(2),
+        ret = i(3),
+        finish = i(4),
+      }
+    )
+  )
 end
 
 return {
@@ -260,22 +301,15 @@ return {
       descr = i(0, "description"),
     })
   ),
-  s(
-    "fn",
-    fmta(
-      [[
-      func <fn_name>(<params>) <ret> {
-      	<finish>
-      }
-      ]],
-      {
-        fn_name = i(1, "FunctionName"),
-        params = i(2),
-        ret = i(3),
-        finish = i(0),
-      }
-    )
-  ),
+  s({
+    trig = "fn",
+    condition = function()
+      return ts_source_file_scope() or ts_outer_function_node() ~= nil
+    end,
+    show_condition = function()
+      return ts_source_file_scope() or ts_outer_function_node() ~= nil
+    end,
+  }, d(1, ts_fn_node)),
   s(
     {
       trig = "mfn",

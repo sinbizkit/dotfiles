@@ -17,7 +17,7 @@ function M.config()
     link_children = true,
     exit_roots = true,
     -- Update more often, :h events for more info.
-    update_events = "TextChanged,TextChangedI",
+    update_events = "InsertLeave",
     region_check_events = "InsertEnter",
   }
 
