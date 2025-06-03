@@ -12,7 +12,15 @@ M.opts = {
     nerd_font_variant = "mono",
   },
 
-  completion = { documentation = { auto_show = true } },
+  completion = {
+    documentation = { auto_show = true },
+    list = {
+      selection = {
+        preselect = false,
+        auto_insert = true,
+      },
+    },
+  },
   snippets = { preset = "luasnip" },
   sources = {
     default = { "snippets", "lsp", "path", "buffer" },
