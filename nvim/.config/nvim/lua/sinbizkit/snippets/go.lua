@@ -51,7 +51,7 @@ end
 --- or closure.
 ---@returns TSNode?
 ---@nodiscard
-local function ts_outer_function_node()
+local function outer_function_node()
   -- Types of target nodes.
   local func_node_types = {
     function_declaration = true,
@@ -73,7 +73,7 @@ end
 ---Returns true if the current node has `source_file` type.
 ---@returns boolean
 ---@nodiscard
-local function ts_source_file_scope()
+local function source_file_scope()
   local node = vim.treesitter.get_node()
   return node and node:type() == "source_file"
 end
@@ -170,7 +170,7 @@ end
 ---@return TSNode?
 ---@nodiscard
 local function retval_node()
-  local node = ts_outer_function_node()
+  local node = outer_function_node()
   -- Return an nil if no match.
   if not node then
     return nil
@@ -247,7 +247,7 @@ end
 
 local function ts_fn_node()
   -- Closure if the cursor is in a function local scope.
-  if ts_outer_function_node() ~= nil then
+  if outer_function_node() ~= nil then
     return sn(
       1,
       fmta(
@@ -323,17 +323,17 @@ return {
   s({
     trig = "fn",
     condition = function()
-      return ts_source_file_scope() or ts_outer_function_node() ~= nil
+      return source_file_scope() or outer_function_node() ~= nil
     end,
     show_condition = function()
-      return ts_source_file_scope() or ts_outer_function_node() ~= nil
+      return source_file_scope() or outer_function_node() ~= nil
     end,
   }, d(1, ts_fn_node)),
   s(
     {
       trig = "mfn",
-      condition = ts_source_file_scope,
-      show_condition = ts_source_file_scope,
+      condition = source_file_scope,
+      show_condition = source_file_scope,
     },
     fmta(
       [[
@@ -357,20 +357,20 @@ return {
   s({
     trig = "ret",
     condition = function()
-      return ts_outer_function_node() ~= nil
+      return outer_function_node() ~= nil
     end,
     show_condition = function()
-      return ts_outer_function_node() ~= nil
+      return outer_function_node() ~= nil
     end,
   }, d(1, fn_retvals_snip)),
   s(
     {
       trig = "ife",
       condition = function()
-        return ts_outer_function_node() ~= nil
+        return outer_function_node() ~= nil
       end,
       show_condition = function()
-        return ts_outer_function_node() ~= nil
+        return outer_function_node() ~= nil
       end,
     },
     fmta(
@@ -390,10 +390,10 @@ return {
     {
       trig = "ifi",
       condition = function()
-        return ts_outer_function_node() ~= nil
+        return outer_function_node() ~= nil
       end,
       show_condition = function()
-        return ts_outer_function_node() ~= nil
+        return outer_function_node() ~= nil
       end,
     },
     fmta(
