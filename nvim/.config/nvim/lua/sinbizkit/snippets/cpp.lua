@@ -12,6 +12,61 @@ local d = ls.dynamic_node
 local rep = require("luasnip.extras").rep
 local git = require "sinbizkit.git"
 
+---Returns parent TSNode whose type is namespace-like.
+---@return TSNode?
+local function outer_namespace_node()
+  local ns_node_types = {
+    translation_unit = true,
+    namespace_definition = true,
+  }
+  local node = vim.treesitter.get_node()
+  while node do
+    if ns_node_types[node:type()] then
+      return node
+    end
+    node = node:parent()
+  end
+end
+
+local function buffer_typenames()
+  local node = outer_namespace_node()
+  if not node then
+    return nil
+  end
+
+  local names_dict = {}
+  local query = assert(vim.treesitter.query.get("cpp", "typenames"), "No query")
+  local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  for _, capture in query:iter_captures(node, 0, node:start(), row, { max_start_depth = 2}) do
+    if capture:has_error() then
+      goto continue
+    end
+    names_dict[vim.treesitter.get_node_text(capture, 0)] = true
+    ::continue::
+  end
+
+  local result = {}
+  for name, _ in pairs(names_dict) do
+    table.insert(result, name)
+  end
+  return result
+end
+
+local function buffer_typename_nodes()
+  local names = buffer_typenames()
+  names = names or {}
+  table.insert(names, vim.fn.expand "%:t:r")
+  vim.notify(vim.inspect(names))
+
+  local result = {}
+  vim.notify(vim.inspect(names))
+  for _, name in ipairs(names) do
+    table.insert(result, i(nil, name))
+  end
+
+  return result
+end
+
 return {
   s(
     "li",
@@ -35,10 +90,10 @@ return {
 
   s("inc", {
     t "#include ",
-      c(1, {
-        sn(nil, { t '"', r(1, "header", i(1)), t'"' }),
-        sn(nil, { t '<', r(1, "header", i(1)), t'>' }),
-      }),
+    c(1, {
+      sn(nil, { t '"', r(1, "header", i(1)), t '"' }),
+      sn(nil, { t "<", r(1, "header", i(1)), t ">" }),
+    }),
   }),
 
   s(
@@ -242,7 +297,7 @@ return {
       {
         ret = i(5, "void"),
         cl_name = d(1, function()
-          return sn(nil, i(1, vim.fn.expand "%:t:r"))
+          return sn(nil, c(1, buffer_typename_nodes()))
         end),
         name = i(2, "name"),
         params = i(3),
