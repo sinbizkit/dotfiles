@@ -2,6 +2,7 @@ local M = {
   "nvim-treesitter/nvim-treesitter-context",
   lazy = true,
   opts = {
+    max_lines = 5,
     multiline_threshold = 5,
     separator = "―",
   },

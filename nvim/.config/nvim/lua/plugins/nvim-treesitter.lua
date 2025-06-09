@@ -21,6 +21,7 @@ M.opts = {
     "go",
     "lua",
     "python",
+    "sql",
     "cmake",
     "bash",
     "javascript",

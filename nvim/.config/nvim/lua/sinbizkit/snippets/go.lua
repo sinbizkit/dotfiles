@@ -355,18 +355,13 @@ return {
     },
     fmta(
       [[
-      <val>, <err> := <f>(<args>)
-      if <err_rep> != nil {
+      if <err> != nil {
       	return <result><fin>
       }
       ]],
       {
-        val = i(1),
-        err = i(2, "err"),
-        f = i(3, "Call"),
-        args = i(4),
-        err_rep = rep(2),
-        result = d(5, ife_retvals_snip, { 2 }),
+        err = i(1, "err"),
+        result = d(2, ife_retvals_snip, { 1 }),
         fin = i(0),
       }
     )
