@@ -15,7 +15,7 @@ local git = require "sinbizkit.git"
 ---Returns a list of type names declared in the current buffer.
 ---@return TSNode?
 ---@nodiscard
-local function buffer_type_names()
+local function buffer_typenames()
   local node = vim.treesitter.get_node()
   local tree = node and node:tree()
   local root = tree and tree:root()
@@ -34,7 +34,7 @@ end
 ---Returns a list of Nodes applicable for types declared in the current buffer.
 ---@nodiscard
 local function buffer_typename_nodes()
-  local names = buffer_type_names()
+  local names = buffer_typenames()
   if not names or #names == 0 then
     return { i(nil, "Type") }
   end
