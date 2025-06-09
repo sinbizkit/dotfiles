@@ -12,7 +12,9 @@ local d = ls.dynamic_node
 local rep = require("luasnip.extras").rep
 local git = require "sinbizkit.git"
 
---- Returns a list of type names declared in the current buffer.
+---Returns a list of type names declared in the current buffer.
+---@return TSNode?
+---@nodiscard
 local function buffer_type_names()
   local node = vim.treesitter.get_node()
   local tree = node and node:tree()
@@ -30,6 +32,7 @@ local function buffer_type_names()
 end
 
 ---Returns a list of Nodes applicable for types declared in the current buffer.
+---@nodiscard
 local function buffer_typename_nodes()
   local names = buffer_type_names()
   if not names or #names == 0 then
@@ -46,6 +49,8 @@ end
 
 --- Returns the first parent whose type is one of the callable - method, function
 --- or closure.
+---@returns TSNode?
+---@nodiscard
 local function ts_outer_function_node()
   -- Types of target nodes.
   local func_node_types = {
@@ -66,6 +71,8 @@ local function ts_outer_function_node()
 end
 
 ---Returns true if the current node has `source_file` type.
+---@returns boolean
+---@nodiscard
 local function ts_source_file_scope()
   local node = vim.treesitter.get_node()
   return node and node:type() == "source_file"
@@ -125,6 +132,9 @@ local default_values = {
 }
 
 ---Transforms the text info a snippet Node.
+---@param text string
+---@param info table
+---@return any
 local function transform(text, info)
   local function condition_matches(condition, ...)
     -- It is implied that the condition can be either a string or a functor.
@@ -141,6 +151,10 @@ local function transform(text, info)
       -- If the condition's handler type is a plain string - use it for
       -- constructing simple TextNode...
       if type(result) == "string" then
+        if info.modifiable then
+          info.index = info.index + 1
+          return i(info.index, result)
+        end
         return t(result)
       else
         -- ...Assume that it is a callable handler otherwise.
@@ -152,59 +166,64 @@ local function transform(text, info)
   return t(text .. "{}")
 end
 
----Dictionary of various TSNode::types used in Go as a return value expression
----with corresponding transforming handlers.
-local handlers = {
-  --- func Name(...) (a, b, c, gb.d)
-  parameter_list = function(node, info)
-    local result = {}
-    local count = node:named_child_count()
-    for idx = 0, count - 1 do
-      local child = node:named_child(idx)
-      local type_node = child:field("type")[1]
-      table.insert(result, transform(vim.treesitter.get_node_text(type_node, 0), info))
-      if idx ~= count - 1 then
-        table.insert(result, t { ", " })
-      end
-    end
-    return result
-  end,
-  --- func Name(...) bool/int/MyStruct
-  type_identifier = function(node, info)
-    local text = vim.treesitter.get_node_text(node, 0)
-    return { transform(text, info) }
-  end,
-  --- func Name(...) pb.Message
-  qualified_type = function(node, info)
-    local text = vim.treesitter.get_node_text(node, 0)
-    return { transform(text, info) }
-  end,
-}
-
----Computes the return types of the current function where the cursor is located, and returns a table of snippets corresponding to each of them.
-local function retvals_snips_dict(info)
+---Returns the current function return-value node where the cursor is located.
+---@return TSNode?
+---@nodiscard
+local function retval_node()
   local node = ts_outer_function_node()
-  -- Return an InsertNode if no match.
+  -- Return an nil if no match.
   if not node then
     return nil
   end
 
   local query = assert(vim.treesitter.query.get("go", "outerfunc"), "No query")
   for _, capture in query:iter_captures(node, 0, node:start(), node:end_(), { max_start_depth = 1 }) do
-    if not capture:has_error() then
-      local handler = handlers[capture:type()]
-      if handler then
-        return handler(capture, info)
-      end
+    if capture:has_error() then
+      return nil
     end
+    return capture
   end
-
-  return nil
 end
 
+---Computes the return types of the current function where the cursor is located,
+---and returns a table of snippets corresponding to each of them.
+---@param info table
+---@return table?
+local function retvals_snips_dict(info)
+  local node = retval_node()
+  -- Return an nil if no match.
+  if not node then
+    vim.notify("Return-value node not found.", vim.log.levels.WARN, {
+      title = "LuaSnip",
+      render = "compact",
+    })
+    return nil
+  end
+
+  if node:type() ~= "parameter_list" then
+    local text = vim.treesitter.get_node_text(node, 0)
+    return { transform(text, info) }
+  end
+
+  local result = {}
+  local count = node:named_child_count()
+  for idx = 0, count - 1 do
+    local child = node:named_child(idx)
+    ---@diagnostic disable-next-line:need-check-nil
+    local type_node = child:field("type")[1]
+    table.insert(result, transform(vim.treesitter.get_node_text(type_node, 0), info))
+    if idx ~= count - 1 then
+      table.insert(result, t { ", " })
+    end
+  end
+  return result
+end
+
+---Returns a TSNode list for function return values.
 local function fn_retvals_snip()
   local snips = retvals_snips_dict {
     index = 0,
+    modifable = true,
   }
   if snips then
     table.insert(snips, 1, t "return ")
@@ -220,6 +239,7 @@ local function ife_retvals_snip(args)
   local snips = retvals_snips_dict {
     index = 0,
     err_name = args[1] and args[1][1] or "",
+    modifable = false,
   }
   snips = snips or i(1, "")
   return sn(nil, snips)
