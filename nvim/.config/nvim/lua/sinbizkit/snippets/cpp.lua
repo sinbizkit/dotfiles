@@ -56,10 +56,8 @@ local function buffer_typename_nodes()
   local names = buffer_typenames()
   names = names or {}
   table.insert(names, vim.fn.expand "%:t:r")
-  vim.notify(vim.inspect(names))
 
   local result = {}
-  vim.notify(vim.inspect(names))
   for _, name in ipairs(names) do
     table.insert(result, i(nil, name))
   end
