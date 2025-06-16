@@ -16,7 +16,7 @@ M.opts = {
     documentation = { auto_show = true },
     list = {
       selection = {
-        preselect = false,
+        preselect = true,
         auto_insert = true,
       },
     },
