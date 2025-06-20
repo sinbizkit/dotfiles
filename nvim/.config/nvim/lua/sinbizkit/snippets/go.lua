@@ -193,10 +193,6 @@ local function retvals_snips_dict(info)
   local node = retval_node()
   -- Return an nil if no match.
   if not node then
-    vim.notify("Return-value node not found.", vim.log.levels.WARN, {
-      title = "LuaSnip",
-      render = "compact",
-    })
     return nil
   end
 
@@ -228,7 +224,7 @@ local function fn_retvals_snip()
   if snips then
     table.insert(snips, 1, t "return ")
   else
-    snips = t ""
+    snips = t "return"
   end
   return sn(nil, snips)
 end
