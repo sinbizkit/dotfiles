@@ -17,7 +17,7 @@ function M.config(_, opts)
   conform.setup(opts)
 
   local km = require "sinbizkit.keymap"
-  km.buf_map({ "n", "v" }, "<Leader>df", function()
+  km.map({ "n", "v" }, "<Leader>df", function()
     conform.format { lsp_format = "fallback" }
   end)
 end
