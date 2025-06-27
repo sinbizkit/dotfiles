@@ -1,6 +1,6 @@
 local M = {
   "neovim/nvim-lspconfig",
-  dependecies = {'saghen/blink.cmp'},
+  dependecies = { "saghen/blink.cmp" },
 }
 
 local km = require "sinbizkit.keymap"
