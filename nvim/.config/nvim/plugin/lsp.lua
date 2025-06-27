@@ -10,7 +10,7 @@ local function map_lsp_keys()
     if cfg.virtual_lines then
       cfg.virtual_lines = false
       vim.diagnostic.config(cfg)
-      vim.api.nvim_del_augroup_by_name("sb-lsp-diag-show")
+      vim.api.nvim_del_augroup_by_name "sb-lsp-diag-show"
       return
     end
 
@@ -41,7 +41,6 @@ local function map_lsp_keys()
   -- d - do
   km.buf_map("n", "<Leader>di", vim.lsp.buf.code_action)
   km.buf_map("n", "<Leader>dr", vim.lsp.buf.rename)
-  km.buf_map({ "n", "v" }, "<Leader>df", vim.lsp.buf.format)
 
   -- inlay-hints
   km.buf_map("n", "<F4>", function()
