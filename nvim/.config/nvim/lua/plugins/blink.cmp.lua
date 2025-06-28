@@ -13,14 +13,11 @@ M.opts = {
   },
 
   completion = {
+    list = { selection = { preselect = true, auto_insert = true } },
     documentation = { auto_show = true },
-    list = {
-      selection = {
-        preselect = true,
-        auto_insert = true,
-      },
-    },
+    ghost_text = { enabled = false },
   },
+
   snippets = { preset = "luasnip" },
   sources = {
     default = { "snippets", "lsp", "path", "buffer" },
