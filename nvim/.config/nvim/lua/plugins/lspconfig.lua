@@ -74,9 +74,6 @@ function M.config()
         },
       },
     },
-    cmake = {},
-    pyright = {},
-    bashls = {},
   }
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
