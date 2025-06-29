@@ -13,6 +13,7 @@ return {
       git = {
         enable = true,
         ignore = false,
+        timeout = 10000, -- set timeout for 10 seconds.
       },
     },
     keys = { "<F6>", "<Leader><F6>" },
