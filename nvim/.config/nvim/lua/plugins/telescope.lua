@@ -48,9 +48,6 @@ function M.config(_, opts)
   km.map("n", "<Leader>sr", builtin.registers)
   km.map("n", "<Leader>sj", builtin.jumplist)
   km.map("n", "<Leader>sm", builtin.marks)
-  km.map("n", "<Leader>sD", function()
-    builtin.diagnostics { bufnr = 0 }
-  end)
   km.map("n", "<Leader>st", builtin.resume)
   -- f- find
   km.map("n", "<Leader>t", builtin.find_files)

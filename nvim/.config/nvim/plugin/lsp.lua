@@ -4,29 +4,6 @@ local function map_lsp_keys()
   -- s - show.
   km.buf_map("n", "<Leader>sh", vim.lsp.buf.hover)
   km.buf_map("n", "<C-S>", vim.lsp.buf.signature_help)
-  km.buf_map("n", "<Leader>sd", function()
-    local cfg = vim.diagnostic.config() or {}
-    -- disable virtual lines if enabled and return.
-    if cfg.virtual_lines then
-      cfg.virtual_lines = false
-      vim.diagnostic.config(cfg)
-      vim.api.nvim_del_augroup_by_name "sb-lsp-diag-show"
-      return
-    end
-
-    -- enable virtual lines for current line and fire CursorMoved handler
-    -- to disable it later.
-    cfg.virtual_lines = { current_line = true }
-    vim.diagnostic.config(cfg)
-    vim.api.nvim_create_autocmd("CursorMoved", {
-      group = vim.api.nvim_create_augroup("sb-lsp-diag-show", {}),
-      once = true,
-      callback = function()
-        cfg.virtual_lines = false
-        vim.diagnostic.config(cfg)
-      end,
-    })
-  end)
 
   -- g - go.
   km.buf_map("n", "<Leader>gD", vim.lsp.buf.declaration)
