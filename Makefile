@@ -7,7 +7,6 @@ all: install
 
 install: install-fish \
 	install-nvim \
-	install-gdb \
 	install-tmux \
 	install-alacritty \
 	install-i3 \
@@ -25,14 +24,6 @@ install-fish: preinstall install-stow
 install-nvim: preinstall install-stow
 	${SHELL} ${MKFILE_DIR}/script/nvim.sh
 	stow --target=${TARGET_DIR} nvim
-
-.PHONY: install-gdb
-install-gdb:
-	rm -rf ${HOME}/.local/share/gdb/qt5
-	mkdir -p ${HOME}/.local/share/gdb/qt5
-	git clone https://invent.kde.org/ebuka/gdb_printers.git ${HOME}/.local/share/gdb/qt5
-	svn co svn://gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python ${HOME}/.local/share/gdb/stl
-	stow --target=${TARGET_DIR} gdb
 
 .PHONY: install-tmux
 install-tmux: preinstall install-stow
