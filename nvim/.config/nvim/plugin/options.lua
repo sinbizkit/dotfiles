@@ -68,7 +68,7 @@ opt.completeopt = { "noinsert", "menuone", "noselect" }
 opt.laststatus = 2 -- The last window will always have a status line.
 
 vim.diagnostic.config {
-  virtual_text = false,
+  virtual_text = true,
   virtual_lines = false,
   signs = {
     text = {
