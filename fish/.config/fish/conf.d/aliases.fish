@@ -5,8 +5,8 @@ if type -q nvim
 end
 
 if type -q exa
-	alias ls="exa --group-directories-first"
-	alias la="exa --all --group-directories-first"
-	alias ll="exa --long --group-directories-first"
-	alias lla="exa --long --all --group-directories-first"
+	alias ls="eza --group-directories-first"
+	alias la="eza --all --group-directories-first"
+	alias ll="eza --long --group-directories-first"
+	alias lla="eza --long --all --group-directories-first"
 end
