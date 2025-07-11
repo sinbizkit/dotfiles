@@ -28,11 +28,15 @@ return {
   {
     "stevearc/oil.nvim",
     dependencies = { "kyazdani42/nvim-web-devicons" },
-    config = function(_, opts)
-      require("oil").setup(opts)
-      local km = require "sinbizkit.keymap"
-      km.map("n", "-", "<Cmd>Oil<CR>")
-    end,
+    lazy = true,
+    opts = {},
+    keys = {
+      {
+        "-",
+        mode = "n",
+        "Oil",
+      },
+    },
   },
 
   {
