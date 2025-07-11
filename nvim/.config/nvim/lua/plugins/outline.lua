@@ -2,7 +2,7 @@ local M = {
   "hedyhli/outline.nvim",
   lazy = true,
   keys = {
-    { "<F5>", mode = { "n" }, "<Cmd>Outline<CR>" },
+    { "<F5>", mode = { "n", "v" }, "<Cmd>Outline<CR>" },
   },
 }
 

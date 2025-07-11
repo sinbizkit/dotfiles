@@ -33,8 +33,8 @@ return {
     keys = {
       {
         "-",
-        mode = "n",
-        "Oil",
+        mode = { "n", "v" },
+        "<Cmd>Oil<CR>",
       },
     },
   },
