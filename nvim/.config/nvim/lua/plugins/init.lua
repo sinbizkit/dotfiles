@@ -76,24 +76,6 @@ return {
   },
 
   {
-    "simrat39/symbols-outline.nvim",
-    opts = {
-      auto_preview = false,
-      position = "right",
-      relative_width = true,
-      width = 25,
-      show_relative_numbers = true,
-      show_symbol_details = false,
-    },
-    keys = "<F5>",
-    config = function(_, opts)
-      require("symbols-outline").setup(opts)
-      local km = require "sinbizkit.keymap"
-      km.map("n", "<F5>", "<Cmd>SymbolsOutline<CR>")
-    end,
-  },
-
-  {
     "norcalli/nvim-colorizer.lua",
     opts = { "css" },
     keys = { "<Leader>sc" },
