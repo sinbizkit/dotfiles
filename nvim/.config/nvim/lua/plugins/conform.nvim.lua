@@ -1,6 +1,17 @@
 local M = {
   "stevearc/conform.nvim",
   version = "9.*",
+  lazy = true,
+  keys = {
+    {
+      "<Leader>df",
+      mode = { "n", "v" },
+      function()
+        local conform = require "conform"
+        conform.format { lsp_format = "fallback" }
+      end,
+    },
+  },
 }
 
 M.opts = {
@@ -11,15 +22,5 @@ M.opts = {
     sql = { "sql_formatter" },
   },
 }
-
-function M.config(_, opts)
-  local conform = require "conform"
-  conform.setup(opts)
-
-  local km = require "sinbizkit.keymap"
-  km.map({ "n", "v" }, "<Leader>df", function()
-    conform.format { lsp_format = "fallback" }
-  end)
-end
 
 return M

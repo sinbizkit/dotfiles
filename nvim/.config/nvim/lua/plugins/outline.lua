@@ -1,6 +1,9 @@
 local M = {
   "hedyhli/outline.nvim",
-  keys = "<F5>",
+  lazy = true,
+  keys = {
+    { "<F5>", mode = { "n" }, "<Cmd>Outline<CR>" },
+  },
 }
 
 M.opts = {
@@ -19,11 +22,5 @@ M.opts = {
     auto_preview = false,
   },
 }
-
-function M.config(_, opts)
-  local km = require "sinbizkit.keymap"
-  km.map("n", "<F5>", "<Cmd>Outline<CR>", { desc = "Toggle Symbols Outline" })
-  require("outline").setup(opts)
-end
 
 return M

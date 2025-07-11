@@ -77,12 +77,10 @@ return {
 
   {
     "norcalli/nvim-colorizer.lua",
+    lazy = true,
     opts = { "css" },
-    keys = { "<Leader>sc" },
-    config = function(_, opts)
-      require("colorizer").setup(opts)
-      local km = require "sinbizkit.keymap"
-      km.map("n", "<Leader>sc", "<Cmd>ColorizerToggle<CR>")
-    end,
+    keys = {
+      { "<Leader>sc", modes = { "n" }, "<Cmd>ColorizerToggle<CR>" },
+    },
   },
 }
