@@ -62,24 +62,6 @@ return {
   "tpope/vim-surround",
 
   {
-    "numToStr/Comment.nvim",
-    opts = {
-      toggler = {
-        ---Line-comment toggle keymap
-        line = "<Leader>cc",
-        ---Block-comment toggle keymap
-        block = "<Leader>bc",
-      },
-      opleader = {
-        ---Line-comment keymap
-        line = "<Leader>c",
-        ---Block-comment keymap
-        block = "<Leader>b",
-      },
-    },
-  },
-
-  {
     "norcalli/nvim-colorizer.lua",
     lazy = true,
     opts = { "css" },
