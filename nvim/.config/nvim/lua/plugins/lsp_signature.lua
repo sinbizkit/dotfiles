@@ -5,6 +5,7 @@ local M = {
     bind = true,
     floating_window = true,
     hint_enable = false,
+    doc_lines = 0,
   },
 }
 
