@@ -43,9 +43,7 @@ km.map("n", "<Leader>pt", "<Cmd>tprevious<CR>")
 -- }}}
 
 -- {{{ QuickFix.
-km.map("n", "<Leader>oc", "<Cmd>copen<CR>")
-km.map("n", "<Leader>nc", "<Cmd>cnext<CR>")
-km.map("n", "<Leader>pc", "<Cmd>cprevious<CR>")
+km.map("n", "<Leader>q", "<Cmd>copen<CR>")
 -- }}}
 
 -- {{{ LocationList.
