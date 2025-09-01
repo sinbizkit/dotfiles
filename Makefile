@@ -10,10 +10,10 @@ install: install-fish \
 	install-tmux \
 	install-alacritty \
 	install-i3 \
-	install-mc \
 	install-lf \
 	install-fzf \
-	install-fd
+	install-fd \
+	install-dunst
 
 .PHONY: install-fish
 install-fish: preinstall install-stow
@@ -53,11 +53,16 @@ install-fzf: preinstall install-fd
 install-fd: preinstall
 	${SHELL} ${MKFILE_DIR}/script/fd.sh
 
+.PHONY: install-dunst
+install-dunst: preinstall
+	${SHELL} ${MKFILE_DIR}/script/dunst.sh
+	stow --target=${TARGET_DIR} dunst
+
 install-stow: preinstall
 	${SHELL} ${MKFILE_DIR}/script/stow.sh
 
 .PHONY: clean
-clean:
+clean:  preinstall
 	stow --delete --target=${TARGET_DIR} fish nvim gdb tmux alacritty mc i3 polybar rofi
 
 preinstall:
