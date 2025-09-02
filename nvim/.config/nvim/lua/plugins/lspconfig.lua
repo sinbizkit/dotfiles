@@ -6,8 +6,6 @@ local M = {
 local km = require "sinbizkit.keymap"
 
 function M.config()
-  local lspconfig = require "lspconfig"
-
   -- An LSP config dictionary which need be extended with server settings.
   local configs = {
     clangd = {
@@ -74,17 +72,11 @@ function M.config()
         },
       },
     },
+    bashls = {},
   }
 
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  local has_blink_cmp, blink_cmp = pcall(require, "blink.cmp")
-  if has_blink_cmp then
-    capabilities = blink_cmp.get_lsp_capabilities(capabilities)
-  end
-
   for name, config in pairs(configs) do
-    config.capabilities = capabilities
-    lspconfig[name].setup(config)
+    vim.lsp.config(name, config)
   end
 end
 

@@ -7,8 +7,8 @@ local M = {
 }
 
 M.opts = {
-  ensure_installed = { "clangd", "gopls", "lua_ls" },
-  automatic_enable = false,
+  ensure_installed = { "clangd", "gopls", "lua_ls", "bashls" },
+  automatic_enable = true,
 }
 
 return M
