@@ -249,7 +249,7 @@ local function ts_fn_node()
       fmta(
         [[
         <name> := func(<params>) <ret> {
-          <finish>
+        	<finish>
         }
         ]],
         {
@@ -268,7 +268,7 @@ local function ts_fn_node()
     fmta(
       [[
       func <fn_name>(<params>) <ret> {
-        <finish>
+      	<finish>
       }
       ]],
       {
