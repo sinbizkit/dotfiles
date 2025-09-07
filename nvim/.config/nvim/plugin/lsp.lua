@@ -33,17 +33,6 @@ local function map_lsp_keys()
     vim.lsp.inlay_hint.enable(not enabled)
   end)
 
-  -- lspconfig
-  if pcall(require, "lspconfig") then
-    km.buf_map("n", "<Leader>rl", function()
-      vim.cmd [[ LspRestart ]]
-      vim.notify("LSP servers are reloaded.", vim.log.levels.INFO, {
-        title = "LspConfig",
-        render = "compact",
-      })
-    end)
-  end
-
   -- Telescope
   if pcall(require, "telescope") then
     local builtin = require "telescope.builtin"
@@ -63,9 +52,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return
     end
     map_lsp_keys() -- map lsp-specific keymaps.
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client and client.server_capabilities.inlayHintProvider then
-      vim.lsp.inlay_hint.enable(true)
-    end
+    -- local client = vim.lsp.get_client_by_id(args.data.client_id)
+    -- if client and client.server_capabilities.inlayHintProvider then
+    --   vim.lsp.inlay_hint.enable(true)
+    -- end
   end,
 })
