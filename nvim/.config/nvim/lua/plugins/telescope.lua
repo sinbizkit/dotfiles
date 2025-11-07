@@ -1,7 +1,7 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   -- TODO(ivan.berdnikov@kaspersky.com: 29/05/25) change the next release after 0.1.8.
-  branch = "master",
+  version = "0.1.*",
   dependencies = {
     "nvim-lua/plenary.nvim",
     {
