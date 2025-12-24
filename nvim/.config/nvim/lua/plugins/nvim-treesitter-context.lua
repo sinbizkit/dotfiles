@@ -18,7 +18,7 @@ M.config = function(_, opts)
       string.format("Context %s", ctx.enabled() and "enabled" or "disabled"),
       vim.log.levels.INFO,
       {
-        title = "Tree-sitter",
+        title = "tree-sitter",
         render = "compact",
       }
     )

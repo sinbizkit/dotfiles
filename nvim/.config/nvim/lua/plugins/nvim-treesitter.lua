@@ -1,7 +1,8 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" },
+  lazy = false,
   build = ":TSUpdate",
+  branch = "main",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-context",
     "nvim-treesitter/nvim-treesitter-textobjects",
@@ -27,36 +28,31 @@ M.opts = {
     "javascript",
     "json",
   },
-  sync_install = false,
-  highlight = { -- enable highlighting for all file types
-    enable = true, -- you can also use a table with list of langs here (e.g. { "python", "javascript" })
-    ---@diagnostic disable-next-line: unused-local
-    disable = function(lang, buf)
-      local max_filesize = 100 * 1024 -- 100 KB
-      ---@diagnostic disable-next-line: undefined-field
-      local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
-      if ok and stats and stats.size > max_filesize then
-        return true
-      end
-      return false
-    end,
-  },
-  indent = { -- indentation based on treesitter for the |=| operator.
-    enable = false,
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "<A-o>",
-      node_incremental = "<A-o>",
-      scope_incremental = "<A-O>",
-      node_decremental = "<A-i>",
-    },
-  },
 }
 
 function M.config(_, opts)
-  require("nvim-treesitter.configs").setup(opts)
+  local ts = require "nvim-treesitter"
+  ts.install(opts.ensure_installed)
+
+  vim.api.nvim_create_autocmd("FileType", {
+    desc = "enable nvim-treesitter features",
+    group = vim.api.nvim_create_augroup("sb-treesitter-filetype", { clear = true }),
+    callback = function(args)
+      -- Search for an installed parser compatible with the buffer.
+      local bufnr = args.buf
+      local ok, parser = pcall(vim.treesitter.get_parser, bufnr)
+      if not ok or not parser then
+        return
+      end
+      -- syntax highlighting, provided by Neovim
+      vim.treesitter.start()
+      -- folds, provided by Neovim
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      vim.wo.foldmethod = 'expr'
+      -- indentation, provided by nvim-treesitter
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  })
 end
 
 return M
