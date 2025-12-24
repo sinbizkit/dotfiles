@@ -232,9 +232,9 @@ return {
 
   s(
     "ctor",
-    fmt([[ {name}::{name_rep}({params}) {body}]], {
-      name = d(1, function()
-        return sn(nil, i(1, vim.fn.expand "%:t:r"))
+    fmt([[ {cl_name}::{name_rep}({params}) {body}]], {
+      cl_name = d(1, function()
+        return sn(nil, c(1, buffer_typename_nodes()))
       end),
       name_rep = rep(1),
       params = i(2),
@@ -251,9 +251,9 @@ return {
 
   s(
     "dtor",
-    fmt([[ {name}::~{name_rep}() {body}]], {
-      name = d(1, function()
-        return sn(nil, i(1, vim.fn.expand "%:t:r"))
+    fmt([[ {cl_name}::~{name_rep}() {body}]], {
+      cl_name = d(1, function()
+        return sn(nil, c(1, buffer_typename_nodes()))
       end),
       name_rep = rep(1),
       body = c(2, {
