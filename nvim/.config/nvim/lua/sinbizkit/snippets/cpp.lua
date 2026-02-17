@@ -37,7 +37,7 @@ local function buffer_typenames()
   local names_dict = {}
   local query = assert(vim.treesitter.query.get("cpp", "typenames"), "No query")
   local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
-  for _, capture in query:iter_captures(node, 0, node:start(), row, { max_start_depth = 2}) do
+  for _, capture in query:iter_captures(node, 0, node:start(), row, { max_start_depth = 2 }) do
     if capture:has_error() then
       goto continue
     end
@@ -140,6 +140,13 @@ return {
     })
   ),
 
+  s(
+    "cmf",
+    c(1, {
+      t "//------------------------------------------------------------------------------",
+      t "//-------------------------------"
+    })
+  ),
   s("if", { t "if (", i(1), t { ") {", "\t" }, i(0), t { "", "}" } }),
 
   s("cast", {
@@ -287,7 +294,7 @@ return {
   s(
     "mfn",
     fmt(
-      [[ 
+      [[
       {ret} {cl_name}::{name}({params}) {cv_qual}{{
         {content}
       }}
