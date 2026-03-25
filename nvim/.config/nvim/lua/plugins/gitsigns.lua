@@ -40,10 +40,10 @@ M.opts = {
       gitsigns.blame_line { full = true }
     end)
     -- Navigate
-    km.map("n", "<Leader>hn", function()
+    km.map("n", "]h", function()
       gitsigns.nav_hunk "next"
     end)
-    km.map("n", "<Leader>hp", function()
+    km.map("n", "[h", function()
       gitsigns.nav_hunk "prev"
     end)
   end,
