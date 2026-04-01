@@ -1,0 +1,21 @@
+language = en
+
+# Font.
+font-family = "JetBrainsMono Nerd Font"
+font-size = 14
+
+# Colors.
+theme = Kanagawa Wave
+background = #181616
+foreground = #c5c9c5
+selection-background = #2d4f67
+selection-foreground = #c8c093
+
+
+# Window.
+confirm-close-surface=false
+gtk-titlebar = false
+
+# Keybinds.
+# Disable Ctrl+Enter fullscreen keybind
+keybind = ctrl+enter=unbind

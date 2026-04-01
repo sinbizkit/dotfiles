@@ -36,9 +36,9 @@ install-alacritty: preinstall install-stow install-lf
 	stow --target=${TARGET_DIR} alacritty
 
 .PHONY: install-ghostty
-install-ghostty: preinstall install-show
+install-ghostty: preinstall install-stow
 	${SHELL} ${MKFILE_DIR}/script/ghostty.sh
-	stow --target=${TARGET_DIR} alacritty
+	stow --target=${TARGET_DIR} ghostty
 
 .PHONY: install-i3
 install-i3: preinstall install-stow
