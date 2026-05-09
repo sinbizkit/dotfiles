@@ -40,8 +40,8 @@ function M.config(_, opts)
     callback = function(args)
       -- Search for an installed parser compatible with the buffer.
       local bufnr = args.buf
-      local ok, parser = pcall(vim.treesitter.get_parser, bufnr)
-      if not ok or not parser then
+      local parser = vim.treesitter.get_parser(bufnr)
+      if not parser then
         return
       end
       -- syntax highlighting, provided by Neovim
