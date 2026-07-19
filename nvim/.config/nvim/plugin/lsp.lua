@@ -3,7 +3,7 @@ local function map_lsp_keys()
 
   -- s - show.
   km.buf_map("n", "<Leader>sh", vim.lsp.buf.hover)
-  km.buf_map("n", "<C-S>", vim.lsp.buf.signature_help)
+  km.buf_map("n", "<Leader>si", vim.lsp.buf.signature_help)
 
   -- g - go.
   km.buf_map("n", "<Leader>gD", vim.lsp.buf.declaration)
