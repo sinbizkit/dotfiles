@@ -15,7 +15,7 @@ M.opts = {
   completion = {
     list = { selection = { preselect = true, auto_insert = true } },
     documentation = { auto_show = true },
-    ghost_text = { enabled = false },
+    ghost_text = { enabled = true },
   },
 
   snippets = { preset = "luasnip" },
