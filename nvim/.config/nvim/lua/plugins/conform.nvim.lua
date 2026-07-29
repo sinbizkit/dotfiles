@@ -20,6 +20,7 @@ M.opts = {
     go = { "gofmt" },
     lua = { "stylua" },
     sql = { "sql_formatter" },
+    json = { "jq" },
   },
 }
 

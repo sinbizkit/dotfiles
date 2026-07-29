@@ -1,9 +1,9 @@
-local km = require "sinbizkit.keymap"
-
 local function map_lsp_keys()
+  local km = require "sinbizkit.keymap"
+
   -- s - show.
   km.buf_map("n", "<Leader>sh", vim.lsp.buf.hover)
-  km.buf_map("n", "<C-S>", vim.lsp.buf.signature_help)
+  km.buf_map("n", "<Leader>si", vim.lsp.buf.signature_help)
 
   -- g - go.
   km.buf_map("n", "<Leader>gD", vim.lsp.buf.declaration)
@@ -28,13 +28,15 @@ local function map_lsp_keys()
   end)
 
   -- Telescope
-  if pcall(require, "telescope") then
-    local builtin = require "telescope.builtin"
+  local ok, builtin = pcall(require, "telescope.builtin")
+  if ok then
     km.buf_map("n", "<Leader>gr", builtin.lsp_references)
     km.buf_map("n", "<Leader>gd", builtin.lsp_definitions)
     km.buf_map("n", "<Leader>gt", builtin.lsp_type_definitions)
     km.buf_map("n", "<Leader>gi", builtin.lsp_implementations)
-    km.buf_map("n", "<Leader>ss", builtin.lsp_document_symbols)
+    km.buf_map("n", "<Leader>ss", function()
+      builtin.lsp_document_symbols { symbol_width = 60 }
+    end)
     km.buf_map("n", "<Leader>sS", builtin.lsp_dynamic_workspace_symbols)
   end
 end

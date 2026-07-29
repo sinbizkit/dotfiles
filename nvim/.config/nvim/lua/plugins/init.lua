@@ -43,6 +43,13 @@ return {
     "folke/flash.nvim",
     event = "VeryLazy",
     opts = {
+      search = {
+        -- behave like `incsearch`
+        incremental = true,
+      },
+      jump = {
+        nohlsearch = true,
+      },
       modes = {
         search = { enabled = true },
         char = { enabled = true },
