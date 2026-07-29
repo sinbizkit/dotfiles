@@ -11,7 +11,6 @@ foreground = #c5c9c5
 selection-background = #2d4f67
 selection-foreground = #c8c093
 
-
 # Window.
 confirm-close-surface=false
 gtk-titlebar = false
@@ -19,3 +18,6 @@ gtk-titlebar = false
 # Keybinds.
 # Disable Ctrl+Enter fullscreen keybind
 keybind = ctrl+enter=unbind
+
+# Notifications.
+app-notifications = no-clipboard-copy
