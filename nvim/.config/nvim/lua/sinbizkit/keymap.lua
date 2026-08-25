@@ -1,7 +1,7 @@
 local M = {}
 
 -- A handy shorthand for vim.api.nvim_set_keymap with reasonable default opts.
-M.map = function(modes, bind, exec, opts)
+function M.map(modes, bind, exec, opts)
   local options = { noremap = true, silent = true }
   if opts then
     options = vim.tbl_extend("force", options, opts)
@@ -10,7 +10,7 @@ M.map = function(modes, bind, exec, opts)
 end
 
 -- A handy shorthand for vim.api.nvim_buf_set_keymap with reasonable default opts.
-M.buf_map = function(mode, bind, exec, opts)
+function M.buf_map(mode, bind, exec, opts)
   local options = { noremap = true, silent = true, buffer = true }
   if opts then
     options = vim.tbl_extend("force", options, opts)

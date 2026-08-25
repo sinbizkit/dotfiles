@@ -6,9 +6,20 @@ km.map("n", "K", ":m .-2<CR>==") -- Move current line up
 km.map("v", "J", ":m '>+1<CR>gv=gv") -- Move selected block down
 km.map("v", "K", ":m '<-2<CR>gv=gv") -- Move selected block up
 km.map("n", "<Space>w", function() -- Save the buffer
+  -- Get full filename for the current buffer.
+  local api = require "sinbizkit.api"
+  local filename = api.get_cur_buf_filename()
+  if filename == "" then
+    vim.notify("Save: empty buffer", vim.log.levels.ERROR, {
+      title = "nvim",
+      render = "compact",
+    })
+    return
+  end
   vim.cmd [[ write ]]
-  vim.notify("Saved", vim.log.levels.INFO, {
-    title = "Options",
+
+  vim.notify(string.format("Buffer saved: %s", filename), vim.log.levels.INFO, {
+    title = "nvim",
     render = "compact",
   })
 end)
