@@ -5,6 +5,17 @@ km.map("n", "J", ":m .+1<CR>==") -- Move current line down
 km.map("n", "K", ":m .-2<CR>==") -- Move current line up
 km.map("v", "J", ":m '>+1<CR>gv=gv") -- Move selected block down
 km.map("v", "K", ":m '<-2<CR>gv=gv") -- Move selected block up
+km.map("n", "<Space>w", function() -- Save the buffer
+  vim.cmd [[ write ]]
+  vim.notify("Saved", vim.log.levels.INFO, {
+    title = "Options",
+    render = "compact",
+  })
+end)
+km.map("n", "<Space>q", "<Cmd>quit<CR>") -- Close the buffer
+km.map("n", "<Space>Q", "<Cmd>quit!<CR>") -- Close without saving
+-- }}}
+
 -- }}}
 
 -- {{{ Tabs moving
@@ -53,10 +64,13 @@ km.map("n", "<Leader>pl", "<Cmd>lprevious<CR>")
 -- }}}
 
 -- {{{ Options toggle
-km.map("n", "<Leader>ow", function ()
+km.map("n", "<Leader>ow", function()
   vim.cmd [[ set wrap! ]]
   vim.notify(
-    string.format("Line wrapping %s", vim.api.nvim_get_option_value("wrap", {}) and "disabled" or "enabled"),
+    string.format(
+      "Line wrapping %s",
+      vim.api.nvim_get_option_value("wrap", {}) and "disabled" or "enabled"
+    ),
     vim.log.levels.INFO,
     {
       title = "Options",

@@ -31,7 +31,7 @@ local M = {
       switch_source_header(0)
     end, { desc = 'Switch between source/header' })
     local km = require "sinbizkit.keymap"
-    km.map("n", "<Leader>gs", "<Cmd>LspClangdSwitchSourceHeader<CR>")
+    km.map("n", "<Leader>gs", "<Cmd>LspClangdSwitchSourceHeader<CR>", { buffer = bufnr })
   end,
 }
 
