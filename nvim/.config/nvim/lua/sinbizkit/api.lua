@@ -5,7 +5,7 @@ function M.get_cur_buf_filename()
   if filepath == "" then
     return filepath
   end
-  local filename = string.match(filepath, "/[%w.]+$")
+  local filename = string.match(filepath, "/[%w-_.]+$")
   if filename == nil then
     return ""
   end
