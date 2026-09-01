@@ -7,6 +7,11 @@ km.map("v", "J", ":m '>+1<CR>gv=gv") -- Move selected block down
 km.map("v", "K", ":m '<-2<CR>gv=gv") -- Move selected block up
 km.map("n", "<Space>w", function() -- Save the buffer
   -- Get full filename for the current buffer.
+  if vim.bo.filetype == "oil" then
+    vim.cmd [[ write ]]
+    return
+  end
+
   local api = require "sinbizkit.api"
   local filename = api.get_cur_buf_filename()
   if filename == "" then
@@ -18,7 +23,7 @@ km.map("n", "<Space>w", function() -- Save the buffer
   end
   vim.cmd [[ write ]]
 
-  vim.notify(string.format("Buffer saved: %s", filename), vim.log.levels.INFO, {
+  vim.notify(string.format("Buffer saved => %s", filename), vim.log.levels.INFO, {
     title = "nvim",
     render = "compact",
   })
