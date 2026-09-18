@@ -6,7 +6,7 @@ local M = {
 function M.config()
   local km = require "sinbizkit.keymap"
   km.buf_map("n", "<Leader>rl", function()
-    vim.cmd [[ LspRestart ]]
+    vim.cmd [[ lsp restart ]]
     vim.notify("LSP servers are reloaded.", vim.log.levels.INFO, {
       title = "LspConfig",
       render = "compact",

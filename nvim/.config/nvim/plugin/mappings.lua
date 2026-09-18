@@ -28,6 +28,14 @@ km.map("n", "<Space>w", function() -- Save the buffer
     render = "compact",
   })
 end)
+km.map("n", "<Space>W", function() -- Save all buffers
+  vim.cmd [[ wall ]]
+
+  vim.notify(string.format("All buffers saved"), vim.log.levels.INFO, {
+    title = "nvim",
+    render = "compact",
+  })
+end)
 km.map("n", "<Space>q", "<Cmd>quit<CR>") -- Close the buffer
 km.map("n", "<Space>Q", "<Cmd>quit!<CR>") -- Close without saving
 -- }}}
@@ -94,6 +102,7 @@ km.map("n", "<Leader>ow", function()
     }
   )
 end)
+
 km.map("n", "<Leader>on", "<Cmd>set relativenumber!<CR>")
 -- }}}
 

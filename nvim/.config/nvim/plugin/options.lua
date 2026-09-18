@@ -38,7 +38,7 @@ opt.showmode = false -- Turn off the native mode indicator.
 
 opt.foldmethod = "expr" -- Use treesitter.
 opt.foldexpr = "nvim_treesitter#foldexpr()" -- Use treesitter.
-opt.foldlevel = 3 -- Close folds with the higher level.
+opt.foldlevel = 5 -- Close folds with the higher level.
 
 opt.showtabline = 2 -- Always show the line with tab page labels.
 opt.shortmess = "atIc" -- Remove all useless messages.
