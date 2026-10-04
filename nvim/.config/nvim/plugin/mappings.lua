@@ -15,7 +15,7 @@ km.map("n", "<Space>w", function() -- Save the buffer
   local api = require "sinbizkit.api"
   local filename = api.get_cur_buf_filename()
   if filename == "" then
-    vim.notify("Save: empty buffer", vim.log.levels.ERROR, {
+    vim.notify(" Save: empty buffer", vim.log.levels.ERROR, {
       title = "nvim",
       render = "compact",
     })
@@ -23,7 +23,7 @@ km.map("n", "<Space>w", function() -- Save the buffer
   end
   vim.cmd [[ write ]]
 
-  vim.notify(string.format("Buffer saved => %s", filename), vim.log.levels.INFO, {
+  vim.notify(string.format(" Buffer is saved => %s", filename), vim.log.levels.INFO, {
     title = "nvim",
     render = "compact",
   })
@@ -31,7 +31,7 @@ end)
 km.map("n", "<Space>W", function() -- Save all buffers
   vim.cmd [[ wall ]]
 
-  vim.notify(string.format("All buffers saved"), vim.log.levels.INFO, {
+  vim.notify(" All buffers are saved", vim.log.levels.INFO, {
     title = "nvim",
     render = "compact",
   })
@@ -40,6 +40,47 @@ km.map("n", "<Space>q", "<Cmd>quit<CR>") -- Close the buffer
 km.map("n", "<Space>Q", "<Cmd>quit!<CR>") -- Close without saving
 -- }}}
 
+-- {{{ Yank
+-- Yank the buffer filename.
+km.map("n", "yf", function()
+  local api = require "sinbizkit.api"
+  local filename = api.get_cur_buf_filename()
+  if filename == "" then
+    vim.notify(" Clipboard => Empty buffer", vim.log.levels.ERROR, {
+      title = "nvim",
+      render = "compact",
+    })
+    return
+  end
+  vim.fn.setreg("+", filename)
+  vim.fn.setreg('"', filename)
+  vim.notify(string.format(' Clipboard => "%s"', filename), vim.log.levels.INFO, {
+    title = "nvim",
+    render = "compact",
+  })
+end)
+
+-- Yank the buffer filepath.
+km.map("n", "yF", function()
+  local filepath = vim.api.nvim_buf_get_name(0)
+  if filepath == "" then
+    vim.notify(" Clipboard => Empty buffer", vim.log.levels.ERROR, {
+      title = "nvim",
+      render = "compact",
+    })
+    return
+  end
+  vim.fn.setreg("+", filepath)
+  vim.fn.setreg('"', filepath)
+
+  local displayCharLimit = 32
+  filepath = (string.len(filepath) <= displayCharLimit) and filepath
+    or "..." .. string.sub(filepath, string.len(filepath) - displayCharLimit, -1)
+  vim.notify(string.format(' Clipboard => "%s"', filepath), vim.log.levels.INFO, {
+    title = "nvim",
+    render = "compact",
+  })
+end)
 -- }}}
 
 -- {{{ Tabs moving
