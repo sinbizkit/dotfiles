@@ -4,7 +4,7 @@ if type -q nvim
 	alias vim="nvim"
 end
 
-if type -q exa
+if type -q eza
 	alias ls="eza --group-directories-first"
 	alias la="eza --all --group-directories-first"
 	alias ll="eza --long --group-directories-first"

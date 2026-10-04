@@ -27,6 +27,29 @@ local function map_lsp_keys()
     vim.lsp.inlay_hint.enable(not enabled)
   end)
 
+  -- Toggle disagnostics.
+  km.buf_map("n", "<Leader>od", function()
+    local cfg = vim.diagnostic.config()
+    -- check previous state.
+    local enabled = (cfg ~= nil) and cfg.virtual_text
+    -- toggle enable flag.
+    enabled = not enabled
+
+    vim.diagnostic.config {
+      virtual_text = enabled,
+      underline = enabled,
+      signs = true,
+    }
+    vim.notify(
+      string.format(" Diagnostic %s", enabled and "enabled" or "disabled"),
+      vim.log.levels.INFO,
+      {
+        title = "LSP",
+        render = "compact",
+      }
+    )
+  end)
+
   -- Telescope
   local ok, builtin = pcall(require, "telescope.builtin")
   if ok then

@@ -65,7 +65,7 @@ vim.opt.smartcase = true
 -- prevent automatic selection (noselect) and prevent automatic text injection
 -- into the current line (noinsert).
 opt.completeopt = { "noinsert", "menuone", "noselect" }
-opt.laststatus = 2 -- The last window will always have a status line.
+opt.laststatus = 3 -- The last window will always have a status line.
 
 vim.diagnostic.config {
   severity_sort = true,
