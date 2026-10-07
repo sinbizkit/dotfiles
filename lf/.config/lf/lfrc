@@ -47,6 +47,14 @@ cmd fzf_edit ${{
 	$EDITOR $res
 }}
 
+cmd yank_filepath ${{
+    printf '%s' "$f" | xclip -selection clipboard
+}}
+
+cmd yank_filename ${{
+    printf '%s' $(basename "$f") | xclip -selection clipboard
+}}
+
 cmd reload_config ${{
     lf -remote "send $id source ~/.config/lf/lfrc"
 }}
@@ -58,22 +66,26 @@ map f
 
 map C reload_config
 
-# go
+# Go.
 map gh cd ~
 map gd cd ~/dotfiles
 map gm cd /mnt
 map J :updir; set dironly true; down; set dironly false; open
 map K :updir; set dironly true; up; set dironly false; open
 
-# find
+# Find.
 map fd fzf_jump
 map fe fzf_edit
 
-# file
+# File.
 map <enter> open
 map ad mkdir
 map af mkfile
 map x delete
+
+# Copy filename.
+map fY yank_filepath
+map fy yank_filename
 
 # Show warning message for nested instances.
 &[ $LF_LEVEL -eq 1 ] || lf -remote "send $id echoerr \"Warning: You're in a nested lf instance!\""
