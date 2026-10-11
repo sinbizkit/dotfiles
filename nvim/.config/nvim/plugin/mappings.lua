@@ -42,7 +42,7 @@ km.map("n", "<Space>Q", "<Cmd>quit!<CR>") -- Close without saving
 
 -- {{{ Yank
 -- Yank the buffer filename.
-km.map("n", "yf", function()
+km.map("n", "yp", function()
   local api = require "sinbizkit.api"
   local filename = api.get_cur_buf_filename()
   if filename == "" then
@@ -61,7 +61,7 @@ km.map("n", "yf", function()
 end)
 
 -- Yank the buffer filepath.
-km.map("n", "yF", function()
+km.map("n", "yP", function()
   local filepath = vim.api.nvim_buf_get_name(0)
   if filepath == "" then
     vim.notify(" Clipboard => Empty buffer", vim.log.levels.ERROR, {
