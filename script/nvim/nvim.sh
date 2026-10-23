@@ -1,36 +1,13 @@
 #!/bin/bash
 
-# if [[ -f "/etc/arch-release" ]]; then
-# 	sudo pacman -S --needed neovim
-# 	exit $?
-# fi
-
-api_url="https://api.github.com/repos/neovim/neovim/releases/latest"
-# Fetch the download link for the latest release
-echo "Requesting GitHub for the latest Neovim release"
-http_resp=$(curl -L -s -H 'Accept: application/json' ${api_url})
-if [[ $? -ne 0 ]]; then
-	>&2 echo "Error occured ($?). Exit"
-	exit 1
+if [[ "$OS" == "arch" ]]; then
+	sudo pacman -S --needed neovim
+	exit $?
 fi
 
-if ! [[ -x "$(command -v jq)" ]]; then
-	>&2 echo "\`jq\` isn't found. Visit \"https://stedolan.github.io/jq\" for additional info."
-	>&2 echo "Error occured. Exit"
-	exit 1
-fi
-
+version="v0.12.6"
 archname="nvim-linux-x86_64.tar.gz"
-url=$(echo ${http_resp} | jq -r ".assets[]
-    | select(.name == \"$archname\")
-    | .browser_download_url")
-echo "Download URL: ${url}"
-
-if [[ -z "${url}" ]]; then
-	>&2 echo "Error: Empty download URL!. Exit"
-	exit 1
-fi
-
+url="https://github.com/neovim/neovim/releases/download/${version}/${archname}"
 echo "URL: ${url}"
 echo "Download binary"
 sdir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )

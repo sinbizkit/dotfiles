@@ -1,5 +1,6 @@
 SHELL := /bin/bash
-LOCAL_DIR := $(HOME)/.local
+LOCAL_DIR := ${HOME}/.local
+CONFIG_DIR := ${HOME}/.config
 MKFILE_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 OS := $(shell ${SHELL} ${MKFILE_DIR}/script/os.sh)
 
@@ -25,11 +26,12 @@ install-fish: preinstall install-stow
 .PHONY: install-nvim
 install-nvim: preinstall install-stow
 	${SHELL} ${MKFILE_DIR}/script/nvim/nvim.sh
-	stow --target=${HOME} nvim
+	stow --target=${CONFIG_DIR} nvim
 
 .PHONY: clean-nvim
 clean-nvim:
 	stow --delete --dir=${MKFILE_DIR}/script/nvim --target=${LOCAL_DIR} .root
+	stow --delete --dir=${}/script/nvim --target=${LOCAL_DIR} .root
 
 .PHONY: install-tmux
 install-tmux: preinstall install-stow
