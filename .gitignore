@@ -3,6 +3,7 @@ nvim/.config/nvim/plugged
 
 fish/.config/fish/fish_variables
 
+.root/
 tmux/.tmux/resurrect
 tmux/.tmux/plugins
 

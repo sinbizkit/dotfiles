@@ -1,9 +1,11 @@
-#!/bin/bash
+#!/bin/env bash
 
-if [[ -f "/etc/arch-release" ]]; then
+if [[ "$OS" == "arch" ]]; then
 	sudo pacman -Syu
-else
+elif [[ "$OS" == "ubuntu" ]]; then
 	sudo apt update && sudo apt upgrade 
+else
+    exit 1
 fi
 
 exit $?
