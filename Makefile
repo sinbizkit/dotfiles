@@ -32,6 +32,7 @@ install-nvim: preinstall
 clean-nvim:
 	stow --delete --dir=${MKFILE_DIR}/script/nvim --target=${LOCAL_DIR} .root
 	stow --delete --target=${CONFIG_DIR} nvim
+	rm -rf ${MKFILE_DIR}/script/nvim/.root
 
 .PHONY: install-tmux
 install-tmux: preinstall
