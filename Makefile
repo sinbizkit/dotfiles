@@ -58,6 +58,7 @@ install-i3: preinstall
 install-lf: preinstall install-fzf
 	${SHELL} ${MKFILE_DIR}/script/lf/lf.sh
 	stow --target=${CONFIG_DIR} lf
+	rm -rf ${MKFILE_DIR}/script/lf/.root
 
 .PHONY: clean-lf
 clean-lf:
