@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 if [[ "$OS" == "arch" ]]; then
 	sudo pacman -S --needed neovim
 	exit $?

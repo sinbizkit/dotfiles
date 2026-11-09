@@ -1,5 +1,7 @@
 #!/bin/env bash
 
+set -euo pipefail
+
 if [[ ${OS} == "arch" ]]; then
 	sudo pacman -S --needed lf
 	exit $?
