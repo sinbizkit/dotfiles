@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -eo pipefail
 
 if [[ "$OS" == "arch" ]]; then
 	sudo pacman -S --needed neovim
@@ -22,12 +22,6 @@ http_resp=$(curl -L -s \
 
 if [[ $? -ne 0 ]]; then
 	>&2 echo "Error occured ($?). Exit"
-	exit 1
-fi
-
-if [[ ! -x "$(command -v jq)" ]]; then
-	>&2 echo "\`jq\` isn't found. Visit \"https://stedolan.github.io/jq\" for additional info."
-	>&2 echo "Error occured. Exit"
 	exit 1
 fi
 

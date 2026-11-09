@@ -34,12 +34,17 @@ uninstall-nvim:
 	stow --delete --target=${CONFIG_DIR} nvim
 
 .PHONY: install-tmux
-install-tmux: preinstall
-	${SHELL} ${MKFILE_DIR}/script/tmux.sh
+install-tmux:
+	${SHELL} ${MKFILE_DIR}/script/tmux/install.sh
 	stow --target=${HOME} tmux
 
+.PHONY: uninstall-tmux
+uninstall-tmux:
+	${SHELL} ${MKFILE_DIR}/script/tmux/uninstall.sh
+	stow --delete --target=${HOME} tmux
+
 .PHONY: install-alacritty
-install-alacritty: preinstall install-lf
+install-alacritty: preinstall
 	${SHELL} ${MKFILE_DIR}/script/alacritty.sh
 	stow --target=${HOME} alacritty
 
@@ -54,15 +59,14 @@ install-i3: preinstall
 	stow --target=${HOME} i3 polybar rofi
 
 .PHONY: install-lf
-install-lf: preinstall install-fzf
-	${SHELL} ${MKFILE_DIR}/script/lf/lf.sh
+install-lf: preinstall github
+	${SHELL} ${MKFILE_DIR}/script/lf/install.sh
 	stow --target=${CONFIG_DIR} lf
 
-.PHONY: clean-lf
-clean-lf:
-	stow --delete --dir=${MKFILE_DIR}/script/lf --target=${LOCAL_DIR} .root
+.PHONY: uninstall-lf
+uninstall-lf:
+	${SHELL} ${MKFILE_DIR}/script/lf/uninstall.sh
 	stow --delete --target=${CONFIG_DIR} lf
-	rm -rf ${MKFILE_DIR}/script/lf/.root
 
 .PHONY: install-fzf
 install-fzf: preinstall install-fd

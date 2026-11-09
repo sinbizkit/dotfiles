@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-set -euo pipefail
+set -eo pipefail
 
 if [[ ${OS} == "arch" ]]; then
 	sudo pacman -S --needed lf
