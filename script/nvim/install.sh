@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -eo pipefail
 
 if [[ "$OS" == "arch" ]]; then
 	sudo pacman -S --needed neovim
@@ -46,7 +46,7 @@ fi
 
 echo "URL: ${url}"
 echo "Download binary"
-sdir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+sdir=$( cd -- "$( dirname -- ${BASH_SOURCE[0]} )" &> /dev/null && pwd )
 archpath="${sdir}/${archname}"
 curl --silent --location ${url} --output "${archpath}"
 

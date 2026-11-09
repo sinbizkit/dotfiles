@@ -25,14 +25,13 @@ install-fish: preinstall
 
 .PHONY: install-nvim
 install-nvim: preinstall
-	${SHELL} ${MKFILE_DIR}/script/nvim/nvim.sh
+	${SHELL} ${MKFILE_DIR}/script/nvim/install.sh
 	stow --target=${CONFIG_DIR} nvim
 
-.PHONY: clean-nvim
-clean-nvim:
-	stow --delete --dir=${MKFILE_DIR}/script/nvim --target=${LOCAL_DIR} .root
+.PHONY: uninstall-nvim
+uninstall-nvim:
+	${SHELL} ${MKFILE_DIR}/script/nvim/uninstall.sh
 	stow --delete --target=${CONFIG_DIR} nvim
-	rm -rf ${MKFILE_DIR}/script/nvim/.root
 
 .PHONY: install-tmux
 install-tmux: preinstall
@@ -79,7 +78,7 @@ install-dunst: preinstall
 	stow --target=${HOME} dunst
 
 .PHONY: clean
-clean:  preinstall clean-nvim
+clean:  preinstall uninstall-nvim
 	stow --delete --target=${HOME} fish gdb tmux alacritty mc i3 polybar rofi
 
 .PHONY: preinstall
