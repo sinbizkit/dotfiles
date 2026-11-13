@@ -1,0 +1,7 @@
+# Set floating mode for all popups.
+for_window [window_role="pop-up"] floating enable
+for_window [class="Xpra"] floating enable
+for_window [class="Xpra-GUI"] floating enable
+for_window [class="xpra-configure-gui"] floating enable
+for_window [class="xpra-launcher-gui"] floating enable
+for_window [class="GoldenDict-ng"] floating enable

@@ -1,0 +1,239 @@
+/* Colors */
+@define-color bg-1       #1d2021;
+@define-color bg-2       #282828;
+@define-color bg-3       #4c3836;
+@define-color bg-4       #504945;
+@define-color bg-5       #665c54;
+@define-color bg-6       #7c6f64;
+@define-color gray-1     #928374;
+@define-color gray-2     #a89984;
+@define-color fg-1       #f8f8f2;
+@define-color textfg     #fbf1c7;
+@define-color bodyfg     #ebdbb2;
+@define-color red        #fb4934;
+@define-color red-acc    #cc241d;
+@define-color green      #b8bb26;
+@define-color green-acc  #98971a;
+@define-color yellow     #fabd2f;
+@define-color yellow-acc #d79921;
+@define-color blue       #83a598;
+@define-color blue-acc   #458588;
+@define-color purple     #d3869b;
+@define-color purple-acc #b12682;
+@define-color aqua       #8ec07c;
+@define-color aqua-acc   #689d6a;
+@define-color orange     #fe8019;
+@define-color orange-acc #d65d0e;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: InputSansCompressed Nerd Font, JetBrainsMono Nerd Font Mono;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background: transparent;
+    color: @textfg;
+}
+
+/*=== Left modules ===*/
+
+.modules-left {
+    background: @bg-1;
+    border-radius: 0 0 8px 0;
+    padding: 0 8px 0 4px;
+}
+
+#disk {
+    min-width: 72px;
+    background-color: transparent;
+    box-shadow: inset 0 -4px @yellow;
+}
+
+#cpu {
+    min-width: 72px;
+    background-color: transparent;
+    box-shadow: inset 0 -4px @blue;
+}
+
+#memory {
+    min-width: 72px;
+    background-color: transparent;
+    box-shadow: inset 0 -4px @purple;
+}
+
+#temperature {
+    min-width: 72px;
+    background-color: transparent;
+    box-shadow: inset 0 -4px @aqua;
+}
+
+#temperature.critical {
+    background-color: @red-acc;
+    box-shadow: inset 0 -4px @red-acc;
+}
+
+#backlight {
+    min-width: 72px;
+    background-color: transparent;
+    box-shadow: inset 0 -4px @gray-1;
+    color: @textfg;
+}
+
+#mode {
+    background-color: transparent;
+    padding: 0 4px 0 4px;
+    color: @red-acc;
+    box-shadow: inset 0 -4px @red-acc;
+}
+
+/*=== Center modules ===*/
+#workspaces {
+    background-color: @bg-1;
+    border-radius: 0 0 8px 8px;
+    transition: none;
+    min-width: 0px;
+}
+
+#workspaces button {
+    min-width: 20px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    color: @textfg;
+}
+
+#workspaces button:hover {
+    background-color: @bg-3;
+}
+
+#workspaces button.focused {
+    background-color: @bg-5;
+}
+
+#workspaces button.urgent {
+    background: @red-acc;
+}
+
+/*=== Right modules ===*/
+.modules-right {
+    background: @bg-1;
+    border-radius: 0 0 0 8px;
+    padding: 0 4px 0 8px;
+}
+
+#idle_inhibitor {
+    background-color: @bg-2;
+    padding: 0 16px 0 12px;
+}
+
+#idle_inhibitor.activated {
+    background-color: @blue;
+    color: @textfg;
+}
+
+#tray {
+    background-color: @bg-2;
+    padding: 0 12px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+}
+
+#battery {
+    background-color: @bg-1;
+    color: @green-acc;
+    min-width: 72px;
+    box-shadow: inset 0 -4px @green-acc;
+}
+
+#battery.charging, #battery.plugged {
+    color: @textfg;
+    background: @purple-acc;
+    padding: 0 4px 0 4px;
+    box-shadow: none;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @red;
+    color: @textfg;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#clock {
+    background-color: transparent;
+    min-width: 64px;
+}
+
+#language {
+    background: @blue;
+    color: @bg-1;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 24px;
+}
+
+#custom-admin {
+    color: @yellow;
+    padding: 0 8px;
+}
+
+#custom-admin:hover {
+    background-color: @bg-3;
+    padding: 0 8px;
+}
+
+#custom-power {
+    color: @red;
+    padding: 0 8px;
+}
+
+#custom-power:hover {
+    background-color: @bg-3;
+}
+
+#custom-reboot {
+    padding: 0 8px;
+}
+
+#custom-reboot:hover {
+    background-color: @bg-3;
+}
+
+#custom-logout {
+    padding: 0 8px;
+}
+
+#custom-logout:hover {
+    background-color: @bg-3;
+}
+
+#custom-lock {
+    padding: 0 8px;
+}
+
+#custom-lock:hover {
+    background-color: @bg-3;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+label:focus {
+    background-color: #000000;
+}
