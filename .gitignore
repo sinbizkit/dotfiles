@@ -3,8 +3,11 @@ nvim/.config/nvim/plugged
 
 fish/.config/fish/fish_variables
 
-.root/
+**/.root/
+
 tmux/.tmux/resurrect
 tmux/.tmux/plugins
+
+.local*
 
 .envrc
