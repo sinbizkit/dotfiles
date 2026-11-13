@@ -1,0 +1,2 @@
+# Ignore local lua plugins.
+/lua/**/local.*.lua

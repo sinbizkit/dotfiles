@@ -95,11 +95,20 @@ uninstall-lf:
 
 .PHONY: install-fzf
 install-fzf: preinstall install-fd
-	${SHELL} ${MKFILE_DIR}/script/fzf.sh
+	${SHELL} ${MKFILE_DIR}/script/fzf/fzf.sh
+
+.PHONY: clean-fzf
+clean-fzf:
+	stow --delete --dir=${MKFILE_DIR}/script/fzf --target=${LOCAL_DIR} .root
+	rm -rf ${MKFILE_DIR}/script/fzf/.root
 
 .PHONY: install-fd
 install-fd: preinstall
 	${SHELL} ${MKFILE_DIR}/script/fd.sh
+
+.PHONY: clean-fd
+clean-fd:
+	sudo apt purge -y fd-musl
 
 .PHONY: install-dunst
 install-dunst: preinstall
