@@ -1,5 +1,6 @@
 nvim/.config/nvim/plugin/packer_compiled.lua
 nvim/.config/nvim/plugged
+lazy-lock.json
 
 fish/.config/fish/fish_variables
 
