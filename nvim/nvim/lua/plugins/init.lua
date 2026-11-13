@@ -44,8 +44,7 @@ return {
     event = "VeryLazy",
     opts = {
       search = {
-        -- behave like `incsearch`
-        incremental = true,
+        incremental = false,
       },
       jump = {
         nohlsearch = true,
@@ -91,7 +90,7 @@ return {
     lazy = true,
     opts = { "css" },
     keys = {
-      { "<Leader>sc", modes = { "n" }, "<Cmd>ColorizerToggle<CR>" },
+      { "<Leader>sc", "<Cmd>ColorizerToggle<CR>" },
     },
   },
 }
