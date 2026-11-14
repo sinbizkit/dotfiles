@@ -119,7 +119,7 @@ install-fd: preinstall
 
 .PHONY: clean-fd
 clean-fd:
-	sudo apt purge -y fd-musl
+	# todo
 
 .PHONY: install-dunst
 install-dunst: preinstall
@@ -133,7 +133,6 @@ uninstall-dunst:
 
 .PHONY: install-xdg-desktop-portal-wlr
 install-xdg-desktop-portal-wlr: preinstall
-	sudo apt install -y xdg-desktop-portal libdrm2 libgbm1 libinih1 libpipewire-0.3-0 libwayland-client0 pipewire
 	${SHELL} ${MKFILE_DIR}/script/xdg-desktop-portal-wlr/install.sh
 
 uninstall-xdg-desktop-portal-wlr:

@@ -3,7 +3,7 @@
 set -eo pipefail
 
 if [[ ${OS} == "arch" ]]; then
-    sudo pacman -Rns sway swaylock swaybg grimshot
+    sudo pacman -Rns sway swaylock swaybg grim
     exit 0
 fi
 

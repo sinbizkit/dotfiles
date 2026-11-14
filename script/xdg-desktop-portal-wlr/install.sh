@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-if [[ "$OS" == "arch" ]]; then
+if [[ $OS == "arch" ]]; then
 	sudo pacman -S --needed xdg-desktop-portal-wlr
 	exit $?
 fi

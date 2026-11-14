@@ -5,6 +5,9 @@ if [[ ${OS} == "arch" ]]; then
     exit 0
 fi
 
+echo "Install dependencies"
+sudo apt install -y xdg-desktop-portal libdrm2 libgbm1 libinih1 libpipewire-0.3-0 libwayland-client0 pipewire
+
 # Fetch the download link for the latest release
 echo "Requesting GitHub for the latest waybar release"
 AUTH_HEADER=()
