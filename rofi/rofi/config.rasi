@@ -1,10 +1,10 @@
 configuration {
+    dpi: 96;
     display-run: "";
     display-drun: "";
-    font: "JetBrainsMono Nerd Font Mono 20";
+    display-ssh: "󰑩";
+    font: "InputSansCompressed Nerd Font 12";
 }
-
-@theme "nord"
 
 error-message {
     background-color: #d08770;
@@ -14,3 +14,7 @@ error-message {
     border: 0px;
     border-radius: 6px;
 }
+
+//@theme "/home/ivan/.local/share/rofi/themes/gruvbox-dark.rasi"
+
+@theme "/usr/local/share/rofi/themes/gruvbox-dark.rasi"

@@ -3,8 +3,6 @@ RUN apt update && apt upgrade -y \
 	&& apt install -y linux-libc-dev build-essential \
 	curl meson ninja-build cmake
 
-RUN apt update && apt upgrade -y
-
 FROM base AS builder
 ARG TMUX_ARCHIVE_URL
 WORKDIR /src

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eo pipefail
+
 if [[ "${OS}" == "arch" ]]; then
 	sudo pacman -S --needed fzf
 	exit $?

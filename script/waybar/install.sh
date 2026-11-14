@@ -38,5 +38,5 @@ docker buildx build --no-cache-filter builder \
     --build-arg WAYBAR_ARCHIVE_URL=${url} \
     --output type=local,dest="${sdir}/.root" "${sdir}"
 
-echo "stow -> ${HOME}/.local/bin"
-stow --target="${HOME}/.local/bin" --dir="${sdir}" .root
+echo "stow -> /usr/local/bin"
+sudo stow --target="/usr/local/bin" --dir="${sdir}" .root

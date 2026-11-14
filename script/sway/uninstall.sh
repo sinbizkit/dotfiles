@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eo pipefail
+
 if [[ ${OS} == "arch" ]]; then
     sudo pacman -Rns sway swaylock swaybg grimshot
     exit 0

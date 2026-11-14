@@ -90,10 +90,10 @@ input "1267:23:Elan_Touchpad" {
     bindsym $mod+Shift+q kill
 
     # rofi setup.
-    bindsym $mod+d exec rofi -show run
-    bindsym $mod+Shift+d exec rofi -show drun
-    bindsym $mod+c exec rofi -show ssh
-    bindsym $mod+Tab exec rofi -show window
+    bindsym $mod+d exec --no-startup-id rofi -show run
+    bindsym $mod+Shift+d exec --no-startup-id rofi -show drun
+    bindsym $mod+c exec --no-startup-id rofi -show ssh
+    bindsym $mod+Tab exec --no-startup-id rofi -show window
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -234,9 +234,9 @@ bindsym Ctrl+Print exec grimshot --notify copy area
 
 #
 ### Status Bar:
-exec --no-startup-id ~/.local/bin/waybar
+exec --no-startup-id waybar
 ## Notifications:
-exec --no-startup-id ~/.local/bin/dunst
+exec --no-startup-id dunst
 
 ### Startup.
 # PolKit agent setup.
