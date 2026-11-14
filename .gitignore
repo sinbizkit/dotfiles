@@ -1,10 +1,8 @@
 fish/.config/fish/fish_variables
 
-**/.root/
+**/local.config.d/*
+**/.root
+**/.local*
 
-tmux/.tmux/resurrect
-tmux/.tmux/plugins
-
-.local*
 
 .envrc

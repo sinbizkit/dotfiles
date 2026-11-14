@@ -1,5 +1,6 @@
 SHELL := /bin/bash
-LOCAL_DIR := ${HOME}/.local
+LOCAL_DIR := /usr/local
+HOME_LOCAL_DIR := ${HOME}/.local
 CONFIG_DIR := ${HOME}/.config
 PICS_DIR := ${HOME}/Pictures
 MKFILE_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
@@ -57,7 +58,7 @@ install-ghostty: preinstall
 .PHONY: install-i3
 install-i3: preinstall
 	${SHELL} ${MKFILE_DIR}/script/i3.sh
-	stow --target=${HOME} i3 polybar rofi
+	stow --target=${HOME} i3 polybar
 
 .PHONY: install-sway
 install-sway: preinstall
@@ -83,6 +84,16 @@ uninstall-waybar:
 	${SHELL} ${MKFILE_DIR}/script/waybar/uninstall.sh
 	stow --delete --target=${CONFIG_DIR} waybar
 
+.PHONY: install-rofi
+install-rofi:
+	${SHELL} ${MKFILE_DIR}/script/rofi/install.sh
+	stow --target=${CONFIG_DIR} rofi
+	
+.PHONY: uninstall-rofi
+uninstall-rofi:
+	${SHELL} ${MKFILE_DIR}/script/rofi/uninstall.sh
+	stow --delete --target=${CONFIG_DIR} rofi
+
 .PHONY: install-lf
 install-lf: preinstall github
 	${SHELL} ${MKFILE_DIR}/script/lf/install.sh
@@ -99,7 +110,7 @@ install-fzf: preinstall install-fd
 
 .PHONY: clean-fzf
 clean-fzf:
-	stow --delete --dir=${MKFILE_DIR}/script/fzf --target=${LOCAL_DIR} .root
+	stow --delete --dir=${MKFILE_DIR}/script/fzf --target=${HOME_LOCAL_DIR} .root
 	rm -rf ${MKFILE_DIR}/script/fzf/.root
 
 .PHONY: install-fd
