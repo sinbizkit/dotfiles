@@ -2,6 +2,9 @@
 font = JetBrainsMono Nerd Font Mono 12
 corner_radius = 12
 corners = all
+width = (300, 600)
+icon_theme = Yaru-dark
+enable_recursive_icon_lookup = true
 
 frame_color = "#8caaee"
 separator_color= frame

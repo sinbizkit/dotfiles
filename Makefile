@@ -112,8 +112,13 @@ clean-fd:
 
 .PHONY: install-dunst
 install-dunst: preinstall
-	${SHELL} ${MKFILE_DIR}/script/dunst.sh
-	stow --target=${HOME} dunst
+	${SHELL} ${MKFILE_DIR}/script/dunst/install.sh
+	stow --target=${CONFIG_DIR} dunst
+
+.PHONY: uninstall-dunst
+uninstall-dunst:
+	${SHELL} ${MKFILE_DIR}/script/dunst/uninstall.sh
+	stow --delete --target=${CONFIG_DIR} dunst
 
 .PHONY: install-xdg-desktop-portal-wlr
 install-xdg-desktop-portal-wlr: preinstall
