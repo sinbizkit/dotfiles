@@ -1,0 +1,6 @@
+{
+	// Default modules configuration.
+    "modules-left": ["disk", "cpu", "memory", "temperature", "sway/scratchpad", "sway/mode" ],
+    "modules-center": ["sway/workspaces"],
+    "modules-right": [ "idle_inhibitor", "tray", "clock", "sway/language", "group/group-power" ]
+}

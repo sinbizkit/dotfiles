@@ -4,13 +4,9 @@
     "min-height": 40, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
 
-    // Include local configurations.
-    "include": "~/.config/waybar/.local.config.d/*",
-
-    // Default modules configuration.
-    "modules-left": ["disk", "cpu", "memory", "temperature", "backlight", "sway/scratchpad", "sway/mode" ],
-    "modules-center": ["sway/workspaces"],
-    "modules-right": [ "idle_inhibitor", "tray", "battery", "clock", "sway/language", "group/group-power" ],
+    // Include local configurations first.
+    "include": ["~/.config/waybar/local.config.d/*",
+                "~/.config/waybar/config.d/*"],
 
     "cpu": {
         "format": " {usage}%",
