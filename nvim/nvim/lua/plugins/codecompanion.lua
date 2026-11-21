@@ -16,6 +16,7 @@ local M = {
 local has_localsettings, local_settings = pcall(require, "sinbizkit.local.codecompanion")
 if not has_localsettings then
   M.enabled = false
+  return M
 end
 
 M.opts = local_settings.options()
